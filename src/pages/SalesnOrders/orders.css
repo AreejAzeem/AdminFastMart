@@ -1,0 +1,93 @@
+.orders {
+    display: block;
+    width: 100%;
+    --bg-opacity: 1;
+    background-color: rgba(249,250,251,var(--bg-opacity));
+  }
+  .ordersWrapper{
+    margin:3%;
+    
+  }
+  .orders_title {
+    font-size: 1.5rem;
+    font-family: sans-serif;
+    display: flex;
+    width: 100%;
+    height: 30px;
+  }
+  .orders_searchContainer {
+   
+    
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid;
+    border-color: #ddd;
+    background-color: white;
+    border-radius: 5px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 10px;
+    margin-left: 10px;
+    
+  }
+  .orders_searchContainer_wrapper{
+    display: flex;
+    flex: 4;
+   
+  }
+  .orders_searchField {
+    position:relative;
+    width:40%;
+  }
+ 
+  .orders_Field {
+    position: relative;
+ width: 20%;
+   
+  }
+  .download_orders {
+    position: relative;
+   width: 20%;
+   
+  }
+  .downloadOrders_btn {
+   
+    background-color: #de751f;
+    border: none;
+    border-radius: 3px;
+    font-size: 15px;
+    color: #ffffff;
+    padding: 13px;
+    width: fit-content;
+    text-align: center;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  /*
+  .addProduct_btn:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s;
+  }
+  
+  .addProduct_btn:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s;
+  }*/
+  .orders_table{
+    margin:10px;
+  }

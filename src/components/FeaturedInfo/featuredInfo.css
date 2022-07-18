@@ -1,0 +1,42 @@
+.featured{
+    width:100%;
+    display: flex;
+    justify-content:space-around;
+}
+.featuredItem{
+    display: block;
+    text-align: center;
+    flex:1;
+    background-color: rgb(255, 255, 255);
+    margin: 10px 20px;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #faae6c;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #F2C94C, #f3b177);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f7d97f, #F2994A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    align-content: center;
+}
+.featuredTitle{
+    font-size: 20px;
+    flex-direction: column;
+
+}
+.featuredMoneyImgContainer{
+    margin: 10px 0px;
+   flex-direction: column;
+    align-items: center;
+}
+.featuredMoney{
+    font-size: 30px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.featuredIcon{
+    font-size: 14px;
+    margin-left: 5px;
+    color: green;
+}
+

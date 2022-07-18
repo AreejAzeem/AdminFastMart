@@ -1,0 +1,13 @@
+.myreact-icons {
+    color: red;
+    height: 40px;
+  }
+  .table_container {
+    width: 100% !important;
+  }
+  .table_order th,
+  td {
+    text-align: center !important;
+    padding: 10px !important;
+  }
+  

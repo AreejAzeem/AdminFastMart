@@ -1,0 +1,25 @@
+
+.submitbtn{
+    position: relative;
+    background-color: #de751f;
+    border: none;
+    border-radius: 3px;
+    font-size: 15px;
+    color: #ffffff;
+    padding: 11px;
+    width: 90px;
+    text-align: center;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+.heading{
+    font-weight:bold;
+}
+.form-control{
+    height: 3rem;
+}
+.display-4{
+font-size: 5px;
+}

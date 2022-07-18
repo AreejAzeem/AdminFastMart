@@ -1,0 +1,16 @@
+.roundChild{
+    display: flex;
+    flex-direction: row;
+    width:fit-content;
+}
+.roundChild_name{
+flex:content;
+background: #f1f1f1;
+padding: 7px;
+-moz-border-radius: 6px;
+-webkit-border-radius: 6px;
+-o-border-radius: 6px;
+-ms-border-radius: 6px;
+border-radius: 6px;
+font-size: 1rem;
+}

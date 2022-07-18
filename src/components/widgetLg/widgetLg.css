@@ -1,0 +1,44 @@
+.widgetLg{
+  display: flex;
+  align-items: space-evenly;
+}
+.widgetLg1 {
+  flex: 1;
+  background-color: rgb(255, 255, 255);
+  margin: 0px 20px;
+  padding: 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 14px 10px 30px -8px rgba(107, 100, 100, 0.79);
+  -webkit-box-shadow: 14px 10px 30px -8px rgba(107, 100, 100, 0.79);
+  -moz-box-shadow: 14px 10px 30px -8px rgba(107, 100, 100, 0.79);
+}
+.featuredTitle {
+  font-size: 20px;
+}
+.featuredNumberContainer {
+  margin: 10px 0px;
+  display: flex;
+  align-items: center;
+}
+.featuredNumber {
+  font-size: 30px;
+  font-weight: 600;
+}
+.featuredMoneyRate {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+.featuredIcon {
+  font-size: 14px;
+  margin-left: 5px;
+  color: green;
+}
+.featuredIcon.negative {
+  color: red;
+}
+.featuredSub {
+  font-size: 15px;
+  color: rgb(75, 72, 72);
+}
