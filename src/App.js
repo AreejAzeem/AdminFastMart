@@ -20,6 +20,7 @@ function App() {
   const [hide, setHide] = useState(false);
   return (
     <div className="App">
+    <div className="AppGlass">
       <main>
         <>
           {/* <Topbar />
@@ -161,6 +162,7 @@ function App() {
           {/* </div> */}
         </>
       </main>
+      </div>
     </div>
   );
 }
