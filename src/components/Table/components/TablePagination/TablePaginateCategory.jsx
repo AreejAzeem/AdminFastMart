@@ -29,7 +29,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { IconContext } from "react-icons";
 import RoundChild from "../RoundChild";
 
-import "./TablePagination.css";
+import "./TablePaginateCategory.css";
 import config from "../../../../config/config";
 
 // function createData(
