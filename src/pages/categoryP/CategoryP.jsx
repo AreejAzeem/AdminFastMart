@@ -5,6 +5,7 @@ import Category from "../../components/select/Category.jsx";
 import CategoryTable from "../../components/Table/components/CategoryTable";
 import { Drawer } from "@mui/material";
 import CategoryDrawer from "../../components/Table/components/CategoryDrawer/CategoryDrawer";
+import TablePaginateCategory from "../../components/Table/components/TablePagination/TablePaginateCategory";
 function CategoryP() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   return (
@@ -25,7 +26,8 @@ function CategoryP() {
         </div>
       </div>
       <div className="category_table">
-        <CategoryTable />
+              <TablePaginateCategory />
+  {/* <CategoryTable/> */}
       </div>
     </div>
     </div>
