@@ -7,6 +7,7 @@ import Price from "../../components/select/Price.jsx";
 import ProductTable from "../../components/Table/components/ProductTable";
 import { Drawer } from "@mui/material";
 import ProductDrawer from "../../components/Table/components/productDrawer/ProductDrawer";
+import TablePaginateProduct from "../../components/Table/components/TablePagination/TablePaginateProduct";
 
 function Product() {
 
@@ -89,7 +90,8 @@ function Product() {
           </div>
         </div>
         <div className="product_table">
-          <ProductTable tableData={tableData}/>
+          {/* <ProductTable tableData={tableData}/> */}
+          <TablePaginateProduct/>
         </div>
       </div>
       </div>

@@ -12,3 +12,8 @@ td {
   padding-left: 0px;
 
 }
+
+.checked-item{
+  background-color: aquamarine !important;
+  text-decoration: line-through;
+}

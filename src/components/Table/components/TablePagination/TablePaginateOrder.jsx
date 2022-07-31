@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { alpha } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -22,24 +23,35 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
 import "./TablePagination.css";
+import config from "../../../../config/config";
 
-function createData(id, product, quantity, price) {
+function createData(
+  orderNum,
+  orderDate,
+  customerName,
+  paymentMethod,
+  quantity,
+  total
+) {
   return {
-    id,
-    product,
+    orderNum,
+    orderDate,
+    customerName,
+    paymentMethod,
     quantity,
-    price,
+    total,
   };
 }
 
-const rows = [
-  createData(1, "Donut", 3.7, 67),
-  createData(2, "Aonut", 452, 25.0),
-  createData(3, "Eclair", 262, 16.0),
-  createData(4, "Donut", 3.7, 67),
-  createData(5, "Conut", 452, 25.0),
-  createData(6, "Fclair", 262, 16.0),
-];
+// const rows = [
+//   createData("6743e", "25/3/2020", "areej", "cash",12,9876),
+//   createData("6743e", "25/3/2020", "areej", "cash",12,9876),
+//    createData("6743e", "25/3/2020", "areej", "cash",12,9876),
+//    createData("6743e", "25/3/2020", "areej", "cash",12,9876),
+//     createData("6743e", "25/3/2020", "areej", "cash",12,9876),
+//      createData("6743e", "25/3/2020", "areej", "cash",12,9876),
+//      createData("6743e", "25/3/2020", "areej", "cash",12,9876),
+// ];
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -59,31 +71,34 @@ function getComparator(order, orderBy) {
 
 // This method is created for cross-browser compatibility, if you don't
 // need to support IE11, you can use Array.prototype.sort() directly
-function stableSort(array, comparator) {
-  const stabilizedThis = array.map((el, index) => [el, index]);
-  stabilizedThis.sort((a, b) => {
-    const order = comparator(a[0], b[0]);
-    if (order !== 0) {
-      return order;
-    }
-    return a[1] - b[1];
-  });
-  return stabilizedThis.map((el) => el[0]);
-}
 
 const headCells = [
   {
-    id: "id",
-    numeric: true,
-    disablePadding: true,
-    label: "ID",
+    id: "orderNum",
+    numeric: false,
+    disablePadding: false,
+    label: "Order Number",
     align: "center",
   },
   {
-    id: "product",
+    id: "orderDate",
     numeric: false,
     disablePadding: false,
-    label: "Product",
+    label: "Order Date",
+    align: "center",
+  },
+  {
+    id: "customerName",
+    numeric: false,
+    disablePadding: false,
+    label: "Customer Name",
+    align: "center",
+  },
+  {
+    id: "paymentMethod",
+    numeric: false,
+    disablePadding: false,
+    label: "Payment Method",
     align: "center",
   },
   {
@@ -93,10 +108,10 @@ const headCells = [
     label: "Quantity",
   },
   {
-    id: "Price",
+    id: "total",
     numeric: true,
     disablePadding: false,
-    label: "Price",
+    label: "Total",
   },
 ];
 
@@ -123,14 +138,14 @@ function EnhancedTableHead(props) {
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
             inputProps={{
-              "aria-label": "select all desserts",
+              "aria-label": "select all orders",
             }}
           />
         </TableCell>
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? "right" : "left"}
+            align={headCell.numeric ? "right" : "center"}
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -195,7 +210,7 @@ const EnhancedTableToolbar = (props) => {
           id="tableTitle"
           component="div"
         >
-          Sales
+          Orders
         </Typography>
       )}
 
@@ -220,14 +235,72 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
 
-export default function TablePaginate() {
+export default function TablePaginateOrder() {
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("calories");
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [orderResult, setOrderResult] = useState([]);
+  const [rows, setRows] = useState([]);
 
+  useEffect(
+    () => {
+     
+      getOrders();
+    },[]
+  );
+
+  const getOrders = async () => {
+    setRows([]);
+    // let result = await fetch("http://192.168.30.176:4000/categories/category");
+    // let result = await fetch("http://localhost:5000/products/product");
+    let result = await fetch(config.apiURL + "/orders/orderAll");
+    result = await result.json();
+    console.log("before ordernum");
+    console.log(result["data"][0]);
+    setOrderResult(result["data"]);
+    // for(var i=0; i<=result["data"].length;i++){
+    //   setOrderResult(orderResult.concat(result["data"][i]));
+    //   console.log("in line 270"+ result["data"][i].orderUser.username);
+    // }
+    //     result["data"].map((item,i)=>{
+    // setOrderResult(item[i]);
+    // console.log("in line 270"+ item[i]);
+    //     });
+    // setOrderResult(result["data"]);
+    console.log("hghghuhg");
+    // orderResult.forEach((item) => {
+    //     console.log("in line 276" + item.orderUser.username);
+    //    var obj= createData(
+    //       item.orderNo,
+    //       item.orderDate,
+    //       item.orderUser.username,
+    //       item.paymentMethod,
+    //       item.quantity,
+    //       item.total
+    //     )
+    //     setRows([...rows,obj]);
+    //     console.log("in line 297 "+ rows.length);
+
+    // });
+    //   createData(result["data"].orderNo)
+  };
+  function stableSort(array, comparator) {
+    console.log("line 75 "+rows.length);
+    const stabilizedThis = array.map((el, index) => [el, index]);
+    console.log("in line 77"+ stabilizedThis.length);
+    stabilizedThis.sort((a, b) => {
+      const order = comparator(a[0], b[0]);
+      if (order !== 0) {
+        return order;
+      }
+      return a[1] - b[1];
+    });
+    return stabilizedThis.map((el) => el[0]);
+  }
+  
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
@@ -261,6 +334,7 @@ export default function TablePaginate() {
     }
 
     setSelected(newSelected);
+    console.log(selected + "  in selected");
   };
 
   const handleChangePage = (event, newPage) => {
@@ -299,15 +373,16 @@ export default function TablePaginate() {
               onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
-              style={{textAlign:"center"}}
-            
+              style={{ textAlign: "center" }}
             />
             <TableBody>
               {/* if you don't need to support IE11, you can replace the `stableSort` call with:
                  rows.slice().sort(getComparator(order, orderBy)) */}
-              {stableSort(rows, getComparator(order, orderBy))
+             { console.log("line 382")}
+             { stableSort(orderResult, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
+                  console.log("in line 386"+row[index]);
                   const isItemSelected = isSelected(row.id);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
@@ -337,11 +412,13 @@ export default function TablePaginate() {
                         padding="none"
                         align="center"
                       >
-                        {row.id}
+                        {row.orderNo}
                       </TableCell>
-                      <TableCell align="center">{row.product}</TableCell>
+                      <TableCell align="center">{row.orderDate}</TableCell>
+                      <TableCell align="center">{row.orderUser.username}</TableCell>
+                      <TableCell align="center">{row.paymentMethod}</TableCell>
                       <TableCell align="center">{row.quantity}</TableCell>
-                      <TableCell align="center">{row.price}</TableCell>
+                      <TableCell align="center">{row.total}</TableCell>
                     </TableRow>
                   );
                 })}
@@ -360,7 +437,7 @@ export default function TablePaginate() {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={rows.length}
+          count={orderResult.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

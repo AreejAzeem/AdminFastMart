@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { apiURL } from "../../config/config";
 import "./Login.css";
 
 function Login() {
@@ -15,7 +16,7 @@ function Login() {
   });
   const handleSubmit = async () => {
     console.log({ email, password });
-    let result = await fetch("http://localhost:2000/adminlogin", {
+    let result = await fetch(apiURL +"/adminlogin", {
       method: "post",
       body: JSON.stringify({ email, password }),
       headers: {
@@ -23,9 +24,11 @@ function Login() {
       },
     });
     result = await result.json();
+    console.log("aaaaaaaaaaa");
     console.log(result);
     if (result.email) {
       localStorage.setItem("admin", JSON.stringify(result));
+      console.log(localStorage.getItem("admin"));
       navigate("/home");
     } else {
       alert("please enter correct details");

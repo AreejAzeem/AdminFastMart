@@ -2,12 +2,8 @@ import { React, useState } from "react";
 import { Link } from "react-router-dom";
 import "./orders.css";
 import Search from "../../components/search/Search";
-import OrdersTable from "../../components/Table/components/OrdersTable";
-import Category from "../../components/select/Category.jsx";
 import Price from "../../components/select/Price.jsx";
-import ProductTable from "../../components/Table/components/ProductTable";
-import { Drawer } from "@mui/material";
-import ProductDrawer from "../../components/Table/components/productDrawer/ProductDrawer";
+import TablePaginateOrder from "../../components/Table/components/TablePagination/TablePaginateOrder";
 
 function Orders() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -51,26 +47,29 @@ function Orders() {
       <div className="orders">
         <div className="ordersWrapper">
           <h2 className="orders_title">Orders</h2>
-          <div className="orders_searchContainer"  >
-          <div className="orders_searchContainer_wrapper" style={{justifyContent:"space-evenly"}}>
-            <div className="orders_searchField">
-              <Search placeholder="Search Order" />
-            </div>
-            <div className="orderslimit_Field">
-              <Price />
-            </div>
-            <div className="download_orders">
-              <button
-                className="downloadOrders_btn"
-                onClick={() => setIsDrawerOpen(true)}
-              >
-                Download Orders
-              </button>
-            </div>
+          <div className="orders_searchContainer">
+            <div
+              className="orders_searchContainer_wrapper"
+              style={{ justifyContent: "space-evenly" }}
+            >
+              <div className="orders_searchField">
+                <Search placeholder="Search Order" />
+              </div>
+              <div className="orderslimit_Field">
+                <Price />
+              </div>
+              <div className="download_orders">
+                <button
+                  className="downloadOrders_btn"
+                  onClick={() => setIsDrawerOpen(true)}
+                >
+                  Download Orders
+                </button>
+              </div>
             </div>
           </div>
           <div className="orders_table">
-             <OrdersTable/>
+            <TablePaginateOrder />
           </div>
         </div>
       </div>

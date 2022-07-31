@@ -103,6 +103,7 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
     });
     console.log(result);
     //setProduct(result['data']);
+    
     alert("data has been saved");
     //  navigate('/products')
 

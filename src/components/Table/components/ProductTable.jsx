@@ -5,9 +5,11 @@ import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { IconContext } from "react-icons";
 import config from "../../../config/config";
+import ReactPaginate from "react-paginate";
 import "./ProductTable.css";
 import { Domain } from "@mui/icons-material";
-function ProductTable({ tableData }) {
+import { checkboxClasses } from "@mui/material";
+ export default function ProductTable({ tableData }) {
   const [productSKU, setProductSKU] = useState("");
   const [productName, setProductName] = useState("");
   const [category, setCategory] = useState("");
@@ -18,9 +20,22 @@ function ProductTable({ tableData }) {
   var categor;
   // const [tableDat, setTableDat] = useState([  { id: 1, name: "surf excel", category_id:"Beverages",price: 20, stock: 2000 }]);
   const [product, setProduct] = useState([]);
+  const [isChecked, setIsChecked] =useState([]);
+
+   // We start with an empty list of items.
+ const [currentItems, setCurrentItems] = useState([]);
+ const [pageCount, setPageCount] = useState(0);
+ // Here we use item offsets; we could also use page offsets
+ // following the API or data you're working with.
+ const [itemOffset, setItemOffset] = useState(0);
+ const itemsPerPage=3;
   useEffect(() => {
     getProduct();
-  }, []);
+    const endOffset = itemOffset + itemsPerPage;
+    setCurrentItems(product.slice(itemOffset, endOffset));
+   setPageCount(Math.ceil(product.length / itemsPerPage));
+ }, [itemOffset, itemsPerPage,product]);
+
   const getProduct = async () => {
     // let result = await fetch("http://192.168.30.176:4000/categories/category");
     // let result = await fetch("http://localhost:5000/products/product");
@@ -30,6 +45,14 @@ function ProductTable({ tableData }) {
     console.log(result);
     setProduct(result["data"]);
   };
+  ////
+ // Invoke when user click to request another page.
+ const handlePageClick = (event) => {
+   const newOffset = (event.selected * itemsPerPage) % product.length;
+   setItemOffset(newOffset);
+
+ };
+  //////
   const deleteProduct = async (id) => {
     console.warn("hi deleteee" + id);
     let result = await fetch(config.apiURL + "/products/product/" + id, {
@@ -42,8 +65,22 @@ function ProductTable({ tableData }) {
       setProduct(product.filter((item) => item.productId !== id));
     }
   };
-  console.warn("Products", product);
-
+ 
+const handleCheckbox=(e)=>{
+ 
+const {value, checked}=e.target;
+if(checked){
+  console.log("gugyh");
+  e.className="table_checkbox";
+  setIsChecked([...isChecked], value);
+}
+else{
+  setIsChecked(isChecked.filter((e)=>e!==value));
+}
+console.log(value);
+};
+var isRowSelected=(item)=>
+  isChecked.includes(item) ? "checked-item" : "not-checked-item";
   return (
     <div className="table_container">
       <table
@@ -64,6 +101,7 @@ function ProductTable({ tableData }) {
           }}
         >
           <tr>
+           <th>#</th>
             <th>Product SKU</th>
             <th>Image</th>
             <th>Name</th>
@@ -82,10 +120,15 @@ function ProductTable({ tableData }) {
             border: "1px solid #ddd",
           }}
         >
-          {product.map((item, index) => {
+          {currentItems.map((item, index) => {
             var url = config.apiURL;
+           
             return (
-              <tr key={item.productId}>
+              
+              <tr className={isRowSelected(item)}  key={item.productId}>
+              <td>
+                <input type='checkbox' value={item.productId} checked={item.isChecked} onChange={(e)=>handleCheckbox(e)}/>
+              </td>
                 <td>{item.productSKU}</td>
                 <td>
                   <div style={{ backgroundColor: "white", width: "3px" }}>
@@ -243,8 +286,22 @@ function ProductTable({ tableData }) {
           </tr>*/}
         </tbody>
       </table>
+      <div className="pagination_container">
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={6}
+        pageCount={pageCount}
+        previousLabel="< previous"
+        renderOnZeroPageCount={null}
+        containerClassName="pagination"
+        pageLinkClassName='page-num'
+        previousLinkClassName	='page-num'
+        nextLinkClassName="page-num"
+        activeLinkClassName="active"
+      />
+      </div>
     </div>
   );
 }
-
-export default ProductTable;

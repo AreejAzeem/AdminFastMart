@@ -1,4 +1,4 @@
-.css-m1xwsv-MuiTableCell-root  {
+/* .css-m1xwsv-MuiTableCell-root  {
   text-align: center !important;
  margin-right: 7px;
 }
@@ -11,4 +11,7 @@
 }
 .css-1azl6jz-MuiTableCell-root{
     text-align: center !important;
+} */
+.css-1q1u3t4-MuiTableRow-root.MuiTableRow-hover:hover{
+  background-color: aqua;
 }
