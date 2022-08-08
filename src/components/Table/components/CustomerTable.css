@@ -1,0 +1,20 @@
+.myreact-icons {
+    color: red;
+    height: 40px;
+  }
+  .table_container {
+    width: 100% !important;
+  }
+  .table_customer{
+    width: "100%";
+    align-items: "center";
+    border: "1px solid #ddd";
+    border-radius:"20px ";
+  }
+  .table_product th,
+  td {
+    text-align: center !important;
+    padding: 10px !important;
+    align-items: center;
+  }
+  

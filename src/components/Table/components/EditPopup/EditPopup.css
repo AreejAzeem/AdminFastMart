@@ -1,0 +1,28 @@
+.popup{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    background-color: rgb(250, 250, 243); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+    margin-top: 25px;
+ 
+  
+}
+.popup_inner{
+    position: relative;
+    padding: 32px;
+    width: 100%;
+    max-width: 640px;
+    height: 100vh;
+    background-color: #fff;
+    /* margin:20%; */
+}
+.popup_inner.submit_btn{
+position: absolute;
+top:16px;
+right:16px
+}

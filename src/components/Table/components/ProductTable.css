@@ -1,0 +1,19 @@
+.myreact-icons {
+  color: red;
+  height: 40px;
+}
+.table_container {
+  width: 100% !important;
+}
+.table_product th,
+td {
+  text-align: center !important;
+  padding: 10px !important;
+  padding-left: 0px;
+
+}
+
+.checked-item{
+  background-color: aquamarine !important;
+  text-decoration: line-through;
+}

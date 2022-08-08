@@ -1,0 +1,17 @@
+.chart{
+    margin: 20px;
+    padding:20px;
+    box-shadow: 14px 10px 30px -8px rgba(107,100,100,10); 
+  
+     -webkit-box-shadow: 14px 10px 30px -8px rgba(107,100,100,10);
+    -moz-box-shadow: 14px 10px 30px -8px rgba(107,100,100,10);
+    /* width: 100%; */
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.chartTitle{
+    margin-bottom: 20px;
+}
+.recharts-wrapper{
+    width: 100% !important;
+}

@@ -1,0 +1,10 @@
+.price_select{
+    background-color: rgba(229,231,235);
+    width: 100%;
+    height: 45px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}

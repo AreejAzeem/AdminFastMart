@@ -1,0 +1,47 @@
+.myreact-icons {
+    color: red;
+    height: 40px;
+  }
+  .table_container {
+    width: 100% !important;
+  }
+  .table_order th,
+  td {
+    text-align: center !important;
+    padding: 10px !important;
+  }
+  .pagination{
+    list-style: none;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 1rem; */
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  gap: 5px;
+height: 3rem;
+
+  }
+  .pagination .page-num{
+padding: 4px 11px;
+cursor: pointer;
+border: 3px;
+font-weight: 400;
+color: black;
+text-decoration: none;
+
+  }
+  .pagination .page-num:hover{
+  background-color: #de751f;
+ color: white;
+  }
+  .pagination .active{
+    background-color: #de751f;
+    color: white;
+  }
+  .pagination_container{
+    margin-top: 0;
+    background-color: white;
+   height:3rem;
+    border: 1px solid #ddd;
+  }

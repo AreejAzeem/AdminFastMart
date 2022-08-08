@@ -1,0 +1,41 @@
+.product_form{
+    display: flex;
+
+}
+
+.product_form_container{
+    display: flex !important;
+    flex-direction: row;
+    flex:1;
+    width:100%;
+}
+.MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-1osj8n2-MuiGrid-root{
+    display: flex !important;
+    flex-direction: row;
+}
+.field{
+width: 80%;
+margin:7% !important;
+}
+.submitbtn{
+    position: relative;
+    background-color: #de751f;
+    border: none;
+    border-radius: 3px;
+    font-size: 15px;
+    color: #ffffff;
+    padding: 11px;
+    width: 90px;
+    text-align: center;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+.heading{
+    font-weight:bold;
+    
+}
+.form-control{
+    height:2.3rem;
+}

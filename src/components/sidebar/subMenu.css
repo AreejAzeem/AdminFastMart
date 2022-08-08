@@ -1,0 +1,27 @@
+.submenu{
+    margin-left: 25% !important;
+}
+.submenu_wrapper {
+  background-color: white;
+}
+.submenu_item {
+  padding: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  
+}
+
+.submenu_item.active,
+.submenu_item:hover {
+ background-color: rgb(228, 228, 250);
+  transform: scale(1.1);
+  transition-duration: 0.5s;
+  color: black;
+
+}
+.link{
+  text-decoration: none !important;
+   color: black;
+ }
