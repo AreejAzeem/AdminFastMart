@@ -69,10 +69,14 @@ const[subMenu, showSubMenu]=useState(false);
               Category
             </li>
             </Link>
+            <Link
+              to="/demand" className="link"
+            >
             <li className="sidebarListItem">
               <DynamicFeed className="sidebarIcon" />
               Demand
             </li>
+            </Link>
             <li className="sidebarListItem">
               <ChatBubbleOutline className="sidebarIcon" />
               Feedback
