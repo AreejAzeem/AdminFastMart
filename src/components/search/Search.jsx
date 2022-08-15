@@ -16,6 +16,7 @@ export default function Search({setSearchInput}) {
     <div className="search_contain">
       {/* <input placeholder={placeholder} className="search_input" style={{borderRadius:"7px"}}/> */}
       <TextField
+      className="search_input"
           id="outlined-basic"
           variant="outlined"
           fullWidth

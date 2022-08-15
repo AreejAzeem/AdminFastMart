@@ -3,6 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./productDrawer.css";
 import config from "../../../../config/config";
+import { Dropdown } from 'semantic-ui-react'
+
+
+
 {
   /*<link
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -103,7 +107,7 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
     });
     console.log(result);
     //setProduct(result['data']);
-    
+
     alert("data has been saved");
     //  navigate('/products')
 
@@ -161,6 +165,7 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
                 name="category_id"
                 className="form-control"
                 onChange={changeCategory}
+                
                 onClick={getCategory}
                 value={category}
                 multiple={false}
@@ -172,14 +177,15 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
                     </option>
                   );
                 })}
-                {/* <option>Bakery</option>
+                 {/* <option>Bakery</option>
                     <option>Beverages</option>
                     <option>Dairy</option>
                     <option>Grains</option>
                     <option>Meat</option>
                     <option>Snacks</option>
-                    <option>Spices</option> */}
-              </select>
+              <option>Spices</option> */}
+              </select>  
+            
             </div>
             <div className="form-group mb-3">
               <label>Price</label>

@@ -1,0 +1,20 @@
+.demand{
+   display: block;
+        width: 100%;
+        --bg-opacity: 1;
+        background-color: rgba(249, 250, 251, var(--bg-opacity));
+      }
+.demandWrapper {
+        margin: 2.5%;
+      }
+.demand_title {
+        font-size: 1.5rem;
+        font-family: sans-serif;
+        display: flex;
+        width: 100%;
+        height: 30px;
+        margin-left: 0.5%;
+      }
+.demand_list_container{
+
+}
