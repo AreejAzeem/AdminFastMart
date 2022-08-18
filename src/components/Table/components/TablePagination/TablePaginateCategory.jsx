@@ -402,7 +402,7 @@ const getCategory = async () => {
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.categoryId)}
+                      // // onClick={(event) => handleClick(event, row.categoryId)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
@@ -411,6 +411,7 @@ const getCategory = async () => {
                     >
                       <TableCell padding="checkbox">
                         <Checkbox
+                        onClick={(event) => handleClick(event, row.categoryId)}
                           color="primary"
                           checked={isItemSelected}
                           inputProps={{
