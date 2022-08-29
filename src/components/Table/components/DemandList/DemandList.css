@@ -8,10 +8,22 @@
   border-radius: 10px;
     margin-bottom: 5%;
     cursor:pointer; 
- 
+
+    vertical-align: center;
 
 }
 .demandlist:hover{
+  background-color: white;
+  
+    -webkit-transform: scale(1.1, 1.1);
+    transform: scale(1.1);
+    
+  
+}
+.demandlist:focus{
+  background-color: aqua;
+}
+.demandlist_active{
   background-color: white;
 }
 .demandlist_wrapper{

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./productDetail.css";
 import { Link, useParams } from "react-router-dom";
 import config from "../../config/config";
+import QRCode from "../../components/Message/QRCode";
 
 function ProductDetail() {
   const [produc, setProduc] = useState([]);
@@ -38,9 +39,15 @@ function ProductDetail() {
             <div className="product_title">
               <h3 style={{ fontWeight: "bold" }}>{produc.productName}</h3>
             </div>
+            <div className="product_QRCode">
+              <div className="product_QRCode_animation">
+                <QRCode />
+              </div>
+              <h5 style={{ fontWeight: "normal", opacity: 0.6 }}>ELE00001</h5>
+            </div>
             <div className="product_price">
               <h3 style={{ fontWeight: "bold" }}>
-                {"Rs " + produc.productPrice}
+                {"Rs. " + produc.productPrice}
               </h3>
             </div>
             <div className="product_stock_quantity">

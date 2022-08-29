@@ -375,16 +375,13 @@ EnhancedTableToolbar.propTypes = {
                       aria-checked={isItemSelected}
                       tabIndex={-1}
                       key={row.id}
-                      selected={isItemSelected}
-                    >
-
+                      selected={isItemSelected}  >
                       <TableCell
                         component="th"
                         id={labelId}
                         scope="row"
                         padding="none"
-                        align="center"
-                      >
+                        align="center"  >
                         {row.orderNo}
                       </TableCell>
                       <TableCell align="center">{row.orderDate}</TableCell>

@@ -79,10 +79,10 @@ function getComparator(order, orderBy) {
 
 const headCells = [
   {
-    id: "productSKU",
+    id: "productQRcode",
     numeric: false,
     disablePadding: false,
-    label: "Product SKU",
+    label: "QR code",
     align: "center",
   },
   {

@@ -16,6 +16,8 @@ import PrivateComponent from "./components/PrivateComponent";
 import UpdateCategory from "./pages/categoryP/UpdateCategory";
 import UpdateProduct from "./pages/products/UpdateProduct";
 import Demand from "./pages/Demand/Demand";
+import AcceptedDemand from "./pages/Demand/AcceptedDemand";
+import RejectedDemand from "./pages/Demand/RejectedDemand";
 
 function App() {
   const [hide, setHide] = useState(false);
@@ -143,6 +145,41 @@ function App() {
                         <Sidebar /> <Demand/>
                       </div>
                     </>}></Route>
+                    <Route
+                  path="/demands/pending"
+                  element={
+                    <>
+                      <Topbar />
+                      <div style={{ display: "flex" }}>
+                        <Sidebar /> <Demand />
+                      </div>
+                    </>
+                  }
+                />
+                  <Route
+                  path="/demands/accepted"
+                  element={
+                    <>
+                      <Topbar />
+                      <div style={{ display: "flex" }}>
+                        <Sidebar /> <AcceptedDemand/>
+                      </div>
+                    </>
+                  }
+                />
+                  <Route
+                  path="/demands/rejected"
+                  element={
+                    <>
+                      <Topbar />
+                      <div style={{ display: "flex" }}>
+                        <Sidebar /> <RejectedDemand/>
+                      </div>
+                    </>
+                  }
+                />
+              
+                    
               </Route>
               <Route
                 path="/"

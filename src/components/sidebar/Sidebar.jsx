@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./sidebar.css";
-import { IoMdArrowDropdown} from 'react-icons/io';
+import { IoMdArrowDropdown, IoMdArrowUp} from 'react-icons/io';
+import {IoMdArrowDropup} from 'react-icons/io';
 import { Link } from "react-router-dom";
 import {
   LineStyle,
@@ -15,14 +16,31 @@ import {
   DocumentScanner,
 } from "@mui/icons-material";
 import SubMenu from "./SubMenu";
+import SubMenuDemand from "./SubMenuDemand";
 
 function Sidebar() {
 const[subMenu, showSubMenu]=useState(false);
+const[subMenuDemand, showSubMenuDemand]=useState(false);
+const [arrowToggle, setArrowToggle]=useState(true);
+const [arrowToggleDemand, setArrowToggleDemand]=useState(true);
+const [active, setActive]=useState('');
 {/* function handleClick(e){
    showSubMenu=()=>{
     subMenu(!subMenu);
    }
   }*/}
+  const handleClick=event=>{
+   if(event.currentTarget.className.contains(active)){
+    setActive('');
+   }
+ else{
+  setActive('active');
+ }
+  }
+  const logout=()=>{
+    console.log("apple");
+    localStorage.clear();
+  }
   return (
    <>
     <div className="sidebar">
@@ -30,15 +48,17 @@ const[subMenu, showSubMenu]=useState(false);
         <div className="sidebarMenu">
           <ul className="sidebarList">
           <Link to="/home" className="link">
-            <li className="sidebarListItem active">
+            <li className="sidebarListItem" >
               <LineStyle className="sidebarIcon" />
               Home
             </li>
             </Link>
-            <li className="sidebarListItem" onClick={() => showSubMenu(subMenu => !subMenu)}>  
+            <li className="sidebarListItem" onClick={() => {
+              setArrowToggle(arrowToggle=>!arrowToggle);
+              showSubMenu(subMenu => !subMenu)}}>  
               <TrendingUp className="sidebarIcon" />
                Sales & Orders
-               <IoMdArrowDropdown/>
+               {arrowToggle?<IoMdArrowDropdown/>:<IoMdArrowDropup/>}
             {/*   <div className="sidebarListSubItem">
                <ul>
                  <li>Sales</li>
@@ -70,13 +90,19 @@ const[subMenu, showSubMenu]=useState(false);
             </li>
             </Link>
             <Link
-              to="/demand" className="link"
-            >
-            <li className="sidebarListItem">
+              to="/demand" className="link" >
+            <li className="sidebarListItem" onClick={() => {
+               setArrowToggleDemand(arrowToggleDemand=>!arrowToggleDemand);
+              showSubMenuDemand(subMenuDemand => !subMenuDemand)}}>
               <DynamicFeed className="sidebarIcon" />
               Demand
+              {arrowToggleDemand?<IoMdArrowDropdown/>:<IoMdArrowDropup/>}
+            
             </li>
             </Link>
+            {subMenuDemand ? <SubMenuDemand firstMenu="Pending" secondMenu="Accepted" thirdMenu="Rejected"/>:null}
+              
+           
             <li className="sidebarListItem">
               <ChatBubbleOutline className="sidebarIcon" />
               Feedback
@@ -94,6 +120,13 @@ const[subMenu, showSubMenu]=useState(false);
               Reports
             </li>
           </ul>
+        </div>
+        <div className="sidebar_logout">
+        <Link to="/adminlogin" onClick={logout}>
+                <button className="sidebar_logout_btn" onClick={logout}>
+                  Logout
+                </button>
+              </Link>
         </div>
       </div>
     </div>

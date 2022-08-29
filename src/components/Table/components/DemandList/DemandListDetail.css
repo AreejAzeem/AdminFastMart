@@ -2,18 +2,51 @@
     /* background-color: var(--lightgray); */
     width:100%;
     border-radius: 20px;
+    /* -webkit-box-shadow: 1px 3px 1px #9E9E9E;
+    -moz-box-shadow: 1px 3px 1px #9E9E9E;
+    box-shadow: 1px 3px 1px #9E9E9E; */
+
   
 
 }
 .demandListDetailWrapper{
-    box-shadow: var(--darkgray);
-    background-color: white;
-    margin:3%;
-    display: flex;
-    flex-direction: column;
+  /* box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12); */
+  /* -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);   */
+box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+0 2px 4px rgba(0,0,0,0.07), 
+0 4px 8px rgba(0,0,0,0.07), 
+0 8px 16px rgba(0,0,0,0.07),
+0 16px 32px rgba(0,0,0,0.07), 
+0 16px 32px rgba(0,0,0,0.07), 
+0 32px 64px rgba(0,0,0,0.07);
+  background-color: white;
+  margin-left:-0.2%; 
+  margin-top: -4%;
+  margin-right: -1%;
+  display: flex;
+  flex-direction: column;
 }
 .demandListDetail_header{
+  margin-top: 2%;
     margin-bottom: 5px;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+.demandListDetail_head{
+    
 }
 .demandlistDetail_userContainer{
 display: flex;
@@ -61,10 +94,13 @@ font-weight: 100;
 }
 .demandListDetail_orderContainer{
     display: flex;
-    margin-left: 2%;
+    flex-direction: row;
+    margin-left: 4%;
 
 }
 .demandListDetail_orderLabel{
+  
+  
     font-size: 16px;
     font-weight: bold;
     color: black;
@@ -84,14 +120,28 @@ padding: 5px;
 font-size: 18px;
 }
 .demandListDetail_buttonContainer{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3%;
+   
+    /* justify-items: center;
+    align-content: center; */
+     /* margin-top: 5%;
+    display: flex;
+    /* justify-content: space-around; 
+    margin-bottom: 5%;  */
+}
+.demandListDetail_buttons{
     margin-top: 5%;
     display: flex;
-    justify-content: space-around;
-    margin-bottom: 5%;
+    flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 5%;
+  
 }
 .accept_btn {
     position: relative;
-    background-color: green;
+    background-color:#34c759;
     border: none;
     border-radius: 3px;
     font-size: 15px;
@@ -103,20 +153,35 @@ font-size: 18px;
     text-decoration: none;
     overflow: hidden;
     cursor: pointer;
-  }
-  .reject_btn {
-    position: relative;
-    background-color: red;
-    border: none;
-    border-radius: 3px;
-    font-size: 15px;
-    color: #ffffff;
-    padding: 13px;
-    width: 140px;
-    text-align: center;
-    transition-duration: 0.4s;
-    text-decoration: none;
-    overflow: hidden;
-    cursor: pointer;
+    -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
   
+  .accept_btn:hover{
+    -webkit-transform: scale(1.1, 1.1);
+    transform: scale(1.1, 1.1);
+  }
+
+  .reject_btn {
+    width: 130px;
+    height: 50px;
+    position: relative;
+    background-color:	#FF0000;
+    border: none;
+    border-radius: 3px;
+    font-size: 15px;
+    color: #ffffff;
+    padding: 13px;
+    
+    text-align: center;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  .reject_btn:hover{
+    -webkit-transform: scale(1.1, 1.1);
+    transform: scale(1.1, 1.1);
+  }

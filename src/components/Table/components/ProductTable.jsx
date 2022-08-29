@@ -102,7 +102,7 @@ var isRowSelected=(item)=>
         >
           <tr>
            <th>#</th>
-            <th>Product SKU</th>
+            <th>Product QRcode</th>
             <th>Image</th>
             <th>Name</th>
             <th>Category</th>

@@ -12,9 +12,8 @@
 .product_detailWrapper {
   margin: 2.5%;
   display: block !important;
- 
- 
 }
+
 .product_detail_head{
     font-size: 1.5rem;
     font-family: sans-serif;
@@ -41,11 +40,20 @@
   height:40%; 
 justify-content: space-around;
 margin-left: 2%;
-
-
+}
+.product_title{
+  
+}
+.product_QRCode{
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+}
+.product_QRCode_animation{
+  margin-left: -5%;
 }
 .product_price{
-margin-top: 10px;
+
 }
 .product_stock_quantity{
   display: flex;

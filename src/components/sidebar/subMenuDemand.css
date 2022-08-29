@@ -1,0 +1,27 @@
+.submenuDemand{
+    margin-left: 25% !important;
+}
+.submenuDemand_wrapper {
+  background-color: white;
+}
+.submenuDemand_item {
+  padding: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  
+}
+
+.submenuDemand_item.active,
+.submenuDemand_item:hover {
+ background-color: rgb(228, 228, 250);
+  transform: scale(1.1);
+  transition-duration: 0.5s;
+  color: black;
+
+}
+.link{
+  text-decoration: none !important;
+   color: black;
+ }

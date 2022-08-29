@@ -1,10 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 import { List, Datagrid, TextField } from "react-admin";
 import "./DemandList.css";
 
 function DemandList(props) {
+  const ref = React.createRef();
+  const [active, setActive]=useState(true);
+
+  const makeActive=()=>{
+    if(active){
+  document.getElementById('demandlistId').classList.add('demandlist_active');
+setActive(false);}
+  else{
+    document.getElementById('demandlistId').classList.remove('demandlist_active');
+    setActive(true);
+  }
+  }
   return (
-    <div className="demandlist">
+    <div className="demandlist" id="demandlistId" onClick={makeActive} ref={ref}>
       <div className="demandlist_wrapper">
         <div className="demandlist_imgContainer">
           <img  className="demandlist_img"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi-xWvyG5XvLvCVTQbdwWI6CDW80F1UZES4dXIS3si91RTeS9zs6gxyDAN39JUOe-6xQw&usqp=CAU"></img>

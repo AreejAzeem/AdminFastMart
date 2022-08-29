@@ -101,13 +101,13 @@ const headCells = [
     label: "Parent",
     align: "center",
   },
-  {
-    id: "categoryChild",
-    numeric: false,
-    disablePadding: false,
-    label: "Children",
-    align: "center",
-  },
+  // {
+  //   id: "categoryChild",
+  //   numeric: false,
+  //   disablePadding: false,
+  //   label: "Children",
+  //   align: "center",
+  // },
 
   // {
   //   id: "details",
@@ -172,6 +172,7 @@ function EnhancedTableHead(props) {
             </TableSortLabel>
           </TableCell>
         ))}
+ <TableCell style={{textAlign:'center'}}><Typography className="tablehead_detail" style={{fontSize:"0.875rem", fontWeight:"500",fontFamily: "'Inter', sans-serif"}}>Children</Typography></TableCell>
         <TableCell><Typography className="tablehead_detail" style={{fontSize:"0.875rem", fontWeight:"500",fontFamily: "'Inter', sans-serif"}}>Details</Typography></TableCell>
         <TableCell><Typography className="tablehead_edit" style={{fontSize:"0.875rem", fontWeight:"500",fontFamily: "'Inter', sans-serif"}}>Edit</Typography></TableCell>
       </TableRow>
@@ -273,7 +274,7 @@ const getCategory = async () => {
             id="tableTitle"
             component="div"
           >
-            Products
+            Categories
           </Typography>
         )}
   

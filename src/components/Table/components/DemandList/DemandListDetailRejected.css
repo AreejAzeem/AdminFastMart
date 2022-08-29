@@ -1,0 +1,111 @@
+.demandListDetail_rejected{
+    /* background-color: var(--lightgray); */
+    width:100%;
+    border-radius: 20px;
+  
+
+}
+.demandListDetail_rejectedWrapper{
+    box-shadow: var(--darkgray);
+    background-color: white;
+    margin:3%;
+    display: flex;
+    flex-direction: column;
+}
+.demandListDetail_rejected_header{
+    margin-top: 2%;
+    margin-bottom: 5px;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+  
+}
+.demandlistDetail_rejected_userContainer{
+display: flex;
+flex-direction: column;
+width: 100%;
+align-content: center;
+text-align: center;
+align-items: center;
+align-self: center;
+}
+.demandlistDetail_rejected_imgDiv{
+    width:50%;
+    height: 20%;
+   
+}
+.demandlistDetail_rejected_img{
+    width:50%;
+    height: 50%;
+}
+.demandlistDetail_rejected_userDiv{
+margin-top: 7px;
+width:100%;
+height:80%;
+text-align: center;
+}
+.demandListDetail_rejected_user{
+    font-size: 18px;
+}.demandListDetail_rejected_dateDiv{
+text-align: center;
+}
+.demandListDetail_rejected_date{
+font-size: 14px;
+color: var(--darkestgray);
+font-style:normal;
+font-weight: 100;
+}
+.demandList_rejected_message{
+   margin-left: 4%;
+   margin-right: 4%;
+}
+.demandList_rejected_messageText{
+    font-size: 15px;
+    opacity: 80%;
+
+}
+.demandListDetail_rejected_orderContainer{
+    display: flex;
+    margin-left: 4%;
+
+}
+.demandListDetail_rejected_orderLabel{
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    opacity: 70%;
+}
+.demandListDetail_rejected_orderNoDiv{
+   margin-top: -3px;
+    border: 1px solid var(--darkgray);
+    padding: 2px;
+    border-radius: 18px;
+    background-color: var(--orangestandard);
+}
+.demandListDetail_rejected_orderNo{
+color: white;
+font-weight: 600;
+padding: 5px;
+font-size: 18px;
+}
+.demandListDetail_rejected_buttonContainer{
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5%;
+
+width:100%;
+justify-items: center;
+}
+.rejected_demandListDetail{
+    text-align: center;
+    width: 20%;
+    background-color: 	#DC143C;
+    color: white;
+    padding: 3%;
+    opacity: 80%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+
+}

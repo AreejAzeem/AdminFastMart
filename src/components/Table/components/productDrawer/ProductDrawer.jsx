@@ -26,7 +26,7 @@ const initialFvalues = {
 };
 
 function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
-  const [productSKU, setProductSKU] = useState("");
+  const [productQRCode, setProductQRCode] = useState("");
   const [productName, setProductName] = useState("");
   const [category, setCategory] = useState("");
   const [productShortDesc, setProductShortDesc] = useState("");
@@ -66,7 +66,7 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
     //     console.log("hbjhjg")
     //   );
     console.warn(
-      productSKU,
+      productQRCode,
       productName,
       category,
       productShortDesc,
@@ -77,7 +77,7 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
     const adminId = JSON.parse(localStorage.getItem("admin"))._id;
     console.log(
       JSON.stringify({
-        productSKU,
+        productQRCode,
         productName,
         category,
         productShortDesc,
@@ -86,7 +86,7 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
       })
     );
     const formData = new FormData();
-    formData.append("productSKU", productSKU);
+    formData.append("productQRCode", productQRCode);
     formData.append("productName", productName);
     formData.append("category", category);
     formData.append("productShortDesc", productShortDesc);
@@ -137,15 +137,15 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
             </div>
 
             <div className="form-group mb-3">
-              <label>Product SKU</label>
+              <label>Product QR Code</label>
               <input
                 type="text"
                 name="sku"
                 className="form-control"
                 onChange={(e) => {
-                  setProductSKU(e.target.value);
+                  setProductQRCode(e.target.value);
                 }}
-                value={productSKU}
+                value={productQRCode}
               ></input>
             </div>
             <div className="form-group mb-4">
