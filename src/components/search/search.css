@@ -1,5 +1,5 @@
 .search_input {
-  width: 100%;
+  width: 100% !important;
   
   border-radius: 5px solid grey !important;
   /* background-color: rgb(238, 238, 240); */
@@ -11,4 +11,8 @@
 }
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
   height: 20% !important;
+  width: 100% !important;
+}
+.search_contain{
+  width: 75% !important;
 }

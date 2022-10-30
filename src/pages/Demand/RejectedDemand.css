@@ -3,7 +3,7 @@
          width: 100%;
          --bg-opacity: 1;
           background-color: var(--darkgray);
- 
+          background-color: rgba(249, 250, 251, var(--bg-opacity));  
     /* background-color: rgba(249, 250, 251, var(--bg-opacity));   */
        }
  .rejectedDemandWrapper {

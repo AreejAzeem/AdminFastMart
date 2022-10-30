@@ -2,9 +2,9 @@
    display: block;
         width: 100%;
         --bg-opacity: 1;
-         background-color: var(--darkgray);
-   
-   /* background-color: rgba(249, 250, 251, var(--bg-opacity));   */
+         /* background-color: var(--darkgray); */
+       
+   background-color: rgba(249, 250, 251, var(--bg-opacity));  
       }
 .demandWrapper {
   margin-left: 5px;
@@ -38,7 +38,7 @@ flex-direction: row;
 .demand_list_collapser{
  
   height: 100%;
-  background-color: var(--darkgray);
+  /* background-color: var(--darkgray); */
 width: fit-content;
 border-radius: 20px;
 }
@@ -64,7 +64,7 @@ opacity:60%;
 .demand_list_detail{
   margin-top: 5%;
  display: flex;
-  border:1px solid var(--darkergray);
+  border:0.1px solid var(--darkergray);
   /* margin-left: 1%; */
   width: 100%;
   /* border-radius: 20px; */

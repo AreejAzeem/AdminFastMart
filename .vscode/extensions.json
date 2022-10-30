@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "lottiefiles.vscode-lottie"
+        "lottiefiles.vscode-lottie",
+        "GitHub.copilot"
     ]
 }

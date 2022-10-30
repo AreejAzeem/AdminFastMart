@@ -87,13 +87,13 @@ const headCells = [
     label: "Order Date",
     align: "center",
   },
-  {
-    id: "customerName",
-    numeric: false,
-    disablePadding: false,
-    label: "Customer Name",
-    align: "center",
-  },
+  // {
+  //   id: "customerName",
+  //   numeric: false,
+  //   disablePadding: false,
+  //   label: "Customer Name",
+  //   align: "center",
+  // },
   {
     id: "paymentMethod",
     numeric: false,
@@ -139,7 +139,7 @@ export default function TablePaginateOrder() {
     setRows([]);
     // let result = await fetch("http://192.168.30.176:4000/categories/category");
     // let result = await fetch("http://localhost:5000/products/product");
-    let result = await fetch(config.apiURL + "/orders/orderAll");
+    let result = await fetch(config.apiURL + "/orders/order");
     result = await result.json();
     console.log("before ordernum");
     console.log(result["data"][0]);
@@ -189,7 +189,7 @@ export default function TablePaginateOrder() {
           {headCells.map((headCell) => (
             <TableCell
               key={headCell.id}
-              align={headCell.numeric ? "right" : "center"}
+              align={headCell.numeric ? "center" : "center"}
               padding={headCell.disablePadding ? "none" : "normal"}
               sortDirection={orderBy === headCell.id ? order : false}
             >
@@ -385,7 +385,7 @@ EnhancedTableToolbar.propTypes = {
                         {row.orderNo}
                       </TableCell>
                       <TableCell align="center">{row.orderDate}</TableCell>
-                      <TableCell align="center">{row.orderUser.username}</TableCell>
+                      {/* <TableCell align="center">{row.orderUser.username}</TableCell> */}
                       <TableCell align="center">{row.paymentMethod}</TableCell>
                       <TableCell align="center">{row.quantity}</TableCell>
                       <TableCell align="center">{row.total}</TableCell>

@@ -8,11 +8,14 @@ import ProductTable from "../../components/Table/components/ProductTable";
 import { Drawer } from "@mui/material";
 import ProductDrawer from "../../components/Table/components/productDrawer/ProductDrawer";
 import TablePaginateProduct from "../../components/Table/components/TablePagination/TablePaginateProduct";
-
+import { BiSearch  } from 'react-icons/bi';
+import config from "../../config/config";
 function Product() {
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [tableData, setTableData] = useState([])
+  const [searchInput, setSearchInput]=useState("");
+  const [product, setProduct]=useState('')
  const [formInputData, setformInputData] = useState(
      {
      name:'',
@@ -24,6 +27,12 @@ function Product() {
      description:''
     }
  );
+ const getFilteredData=async()=>{
+  let result = await fetch(config.apiURL+`/products/product?productName=${searchInput}`);
+  result = await result.json();
+  console.log(result);
+  setProduct(result["data"]);
+}
  
  const handleChange=(evnt)=>{  
      const newInput = (data)=>({...data, [evnt.target.name]:evnt.target.value})
@@ -69,17 +78,20 @@ function Product() {
     <>
       <div className="product">
       <div className="productWrapper">
-        <h2 className="product_title">Products</h2>
+        <div >
+        <h2 className="product_title">Products</h2></div>
         <div className="product_searchContainer">
           <div className="product_searchField">
-            <Search placeholder="Search Product" />
+            <Search placeholder="Search Product" setSearchInput={setSearchInput} />
+            <BiSearch size={38} color="orange" style={{marginTop:'7px', marginLeft:'3px', cursor:'pointer'}} 
+           onClick={getFilteredData}/>
           </div>
-          <div className="category_Field">
+          {/* <div className="category_Field">
             <Category />
-          </div>
-          <div className="price_Field">
+          </div> */}
+          {/* <div className="price_Field">
             <Price />
-          </div>
+          </div> */}
           <div className="add_product">
             <button
               className="addProduct_btn"
@@ -91,7 +103,7 @@ function Product() {
         </div>
         <div className="product_table">
           {/* <ProductTable tableData={tableData}/> */}
-          <TablePaginateProduct/>
+          <TablePaginateProduct filteredData={product}/>
         </div>
       </div>
       </div>

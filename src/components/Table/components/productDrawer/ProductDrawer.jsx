@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./productDrawer.css";
 import config from "../../../../config/config";
 import { Dropdown } from 'semantic-ui-react'
+import { number } from "react-admin";
 
 
 
@@ -26,17 +27,25 @@ const initialFvalues = {
 };
 
 function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
-  const [productQRCode, setProductQRCode] = useState("");
+  const [productBarcode, setProductBarcode] = useState("");
   const [productName, setProductName] = useState("");
   const [category, setCategory] = useState("");
   const [productShortDesc, setProductShortDesc] = useState("");
-  const [productPrice, setProductPrice] = useState("");
+  const [productPrice, setProductPrice] = useState();
   const [productImg, setProductImg] = useState();
-  const [stockStatus, setStockStatus] = useState("");
+  const [stockStatus, setStockStatus] = useState();
   const [values, setValues] = useState(initialFvalues);
   const [product, setProduct] = useState([]);
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
+  const [productNameError, setProductNameError] = useState("");
+  const [productBarcodeError, setProductBarcodeError] = useState("");
+  const [productPriceError, setProductPriceError] = useState("");
+  const [productImgError, setProductImgError] = useState("");
+  const [productShortDescError, setProductShortDescError] = useState("");
+  const [categoryError, setCategoryError] = useState("");
+  const [stockStatusError, setStockStatusError] = useState("");
+  const [productDescError, setProductDescError] = useState("");
   var categoryId = "";
   var categoryItems = [];
   // useEffect(() => {
@@ -57,6 +66,7 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
     console.log("in category");
     setCategory(e.target.value);
     console.log(category);
+    setCategoryError("");
   };
 
   const addProduct = async () => {
@@ -65,8 +75,18 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
     //   return (
     //     console.log("hbjhjg")
     //   );
+    if(productName !== "" && productBarcode !== "" && productPrice !=="" && productImg !== null && productShortDesc !== "" && category !== "" && stockStatus !== "" ){
+     
+      setProductNameError("");
+      setProductBarcodeError("");
+      setProductPriceError("");
+      setProductImgError("");
+      setProductShortDescError("");
+      setCategoryError("");
+      setStockStatusError("");
+
     console.warn(
-      productQRCode,
+      productBarcode,
       productName,
       category,
       productShortDesc,
@@ -77,7 +97,7 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
     const adminId = JSON.parse(localStorage.getItem("admin"))._id;
     console.log(
       JSON.stringify({
-        productQRCode,
+        productBarcode,
         productName,
         category,
         productShortDesc,
@@ -86,7 +106,7 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
       })
     );
     const formData = new FormData();
-    formData.append("productQRCode", productQRCode);
+    formData.append("productBarcode", productBarcode);
     formData.append("productName", productName);
     formData.append("category", category);
     formData.append("productShortDesc", productShortDesc);
@@ -109,11 +129,39 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
     //setProduct(result['data']);
 
     alert("data has been saved");
-    //  navigate('/products')
+    window.location.reload();
+   
 
     //  result=await result.json();
     //  console.log("after result");
     //  console.warn(result);
+  
+ 
+  }
+  else{
+    if(productName == ""){
+      setProductNameError("Product Name is required");
+    }
+    if(productBarcode == ""){
+      setProductBarcodeError("Product Barcode is required");
+    }
+    if(productPrice == null){
+      setProductPriceError("Product Price is required");
+    }
+    if(productImg == null){
+      setProductImgError("Product Image is required");
+    }
+    if(productShortDesc == ""){
+      setProductShortDescError("Product Short Description is required");
+    }
+    if(category == ""){
+      setCategoryError("Category is required");
+    }
+    if(stockStatus == null){
+      setStockStatusError("Stock Status is required");
+    }
+    
+  }
   };
   return (
     <>
@@ -131,22 +179,31 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
                 className="form-control"
                 onChange={(e) => {
                   setProductName(e.target.value);
+                  setProductNameError("");
                 }}
                 value={productName}
               ></input>
+              {productNameError && ( 
+                <div className="error" style={{color:'red', fontSize:'8px'}}>{productNameError}</div>
+              )}
+
             </div>
 
             <div className="form-group mb-3">
-              <label>Product QR Code</label>
+              <label>Product Barcode Code</label>
               <input
                 type="text"
                 name="sku"
                 className="form-control"
                 onChange={(e) => {
-                  setProductQRCode(e.target.value);
+                  setProductBarcode(e.target.value);
+                  setProductBarcodeError("");
                 }}
-                value={productQRCode}
+                value={productBarcode}
               ></input>
+              {productBarcodeError && (
+                <div className="error" style={{color:'red', fontSize:'8px'}}>{productBarcodeError}</div>
+              )}
             </div>
             <div className="form-group mb-4">
               <label>Image</label>
@@ -156,8 +213,12 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
                 className="form-control"
                 onChange={(e) => {
                   setProductImg(e.target.files[0]);
+                  setProductImgError("");
                 }}
               ></input>
+              {productImgError && (
+                <div className="error" style={{color:'red', fontSize:'8px'}}>{productImgError}</div>
+              )}
             </div>
             <div className="form-group mb-3">
               <label>Select Category</label>
@@ -185,31 +246,42 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
                     <option>Snacks</option>
               <option>Spices</option> */}
               </select>  
+              {categoryError && (
+                <div className="error" style={{color:'red', fontSize:'8px'}}>{categoryError}</div>
+              )}
             
             </div>
             <div className="form-group mb-3">
               <label>Price</label>
               <input
-                type="text"
+                type="number"
                 name="price"
                 className="form-control"
                 onChange={(e) => {
                   setProductPrice(e.target.value);
+                  setProductPriceError("");
                 }}
                 value={productPrice}
               ></input>
+              {productPriceError && (
+                <div className="error" style={{color:'red', fontSize:'8px'}}>{productPriceError}</div>
+              )}
             </div>
             <div className="form-group mb-3">
               <label>Stock</label>
               <input
-                type="text"
+                type="number"
                 name="stock"
                 className="form-control"
                 onChange={(e) => {
                   setStockStatus(e.target.value);
+                  setStockStatusError("");
                 }}
                 value={stockStatus}
               ></input>
+              {stockStatusError && (
+                <div className="error" style={{color:'red', fontSize:'8px'}}>{stockStatusError}</div>
+              )}
             </div>
             <div className="form-group mb-3">
               <label>Description</label>
@@ -219,9 +291,13 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
                 className="form-control"
                 onChange={(e) => {
                   setProductShortDesc(e.target.value);
+                  setProductShortDescError("");
                 }}
                 value={productShortDesc}
               ></textarea>
+              {productShortDescError && (
+                <div className="error" style={{color:'red', fontSize:'8px'}}>{productShortDescError}</div>
+              )}
             </div>
             <button type="submit" className="submitbtn" onClick={addProduct}>
               Submit

@@ -285,13 +285,15 @@ const getCategory = async () => {
               <DeleteIcon />
             </IconButton>
           </Tooltip>
-        ) : (
-          <Tooltip title="Filter list">
-            <IconButton>
-              <FilterListIcon />
-            </IconButton>
-          </Tooltip>
-        )}
+        // ) : (
+        //   <Tooltip title="Filter list">
+        //     <IconButton>
+        //       <FilterListIcon />
+        //     </IconButton>
+        //   </Tooltip>
+        // )
+        ):null
+      }
       </Toolbar>
     );
   };

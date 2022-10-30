@@ -123,7 +123,9 @@ const [active, setActive]=useState('');
         </div>
         <div className="sidebar_logout">
         <Link to="/adminlogin" onClick={logout}>
-                <button className="sidebar_logout_btn" onClick={logout}>
+                <button className="sidebar_logout_btn" 
+                // onClick={logout}
+                >
                   Logout
                 </button>
               </Link>

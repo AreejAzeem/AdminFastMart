@@ -3,7 +3,7 @@ import "./UpdateProduct.css";
 import { Navigate, useParams, useNavigate } from "react-router-dom";
 import config from "../../config/config";
 function UpdateCategory() {
-    const [productSKU, setProductSKU] = useState("");
+    const [productBarcode, setProductBarcode] = useState("");
     const [productName, setProductName] = useState("");
     const [category, setCategory] = useState("");
     const [productShortDesc, setProductShortDesc] = useState("");
@@ -11,6 +11,13 @@ function UpdateCategory() {
     const [productImg, setProductImg] = useState("");
     const [stockStatus, setStockStatus] = useState("");
     const [categories, setCategories]=useState([]);
+    const [productNameError, setProductNameError] = useState("");
+  const [productBarcodeError, setProductBarcodeError] = useState("");
+  const [productPriceError, setProductPriceError] = useState("");
+  const [productImgError, setProductImgError] = useState("");
+  const [productShortDescError, setProductShortDescError] = useState("");
+  const [categoryError, setCategoryError] = useState("");
+  const [stockStatusError, setStockStatusError] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
   const getCategory =async(e) => {
@@ -30,12 +37,22 @@ const changeCategory = async(e) => {
     console.log(e.target.value);
   }
   const updateProduct = async () => {
+if(productName!=='' && productBarcode!==''
+ && productPrice!=='' && productImg!==''
+  && productShortDesc!=='' && category!=='' && stockStatus!==''){
+  setProductNameError("");
+  setProductBarcodeError("");
+  setProductPriceError("");
+  setProductImgError("");
+  setProductShortDescError("");
+  setCategoryError("");
+  setStockStatusError("");
 
     // const data = { categoryName, categoryImg, categoryDesc };
     // console.log(JSON.stringify({ categoryName, categoryImg, categoryDesc }));
     var formData = new FormData();
     // console.log(categoryImg);
-      formData.append('productSKU',productSKU);
+      formData.append('productBarcode',productBarcode);
       formData.append('productName',productName);
       formData.append('category',category);
       formData.append('productShortDesc',productShortDesc);
@@ -60,7 +77,39 @@ const changeCategory = async(e) => {
     //  console.log("result" + result);
     // // console.log("after result");
     // console.warn(result);
-    //   navigate('/products');
+      navigate('/products');}
+     
+     else{
+      if(productBarcode == ""){
+        setProductBarcodeError("Product Barcode is required");
+      }
+      if(productName == ""){
+        setProductNameError("Product Name is required");
+      }
+    
+     
+     
+     
+     
+      if(category == ""){
+        setCategoryError("Category is required");
+      }
+      if(productShortDesc == ""){
+        setProductShortDescError("Product Short Description is required");
+      }
+      if(productImg == ""){
+        setProductImgError("Product Image is required");
+      }
+      if(productPrice == null){
+        setProductPriceError("Product Price is required");
+      }
+      if(stockStatus == null){
+        setStockStatusError("Stock Status is required");
+      }
+     
+
+
+      }
   };
   return (
     <div>
@@ -69,7 +118,7 @@ const changeCategory = async(e) => {
           <div className="card mt-4">
             <div className="card-header">
               <h4 className="display-4 heading" style={{ textAlign: "center", fontSize:"20px" }}>
-                Update Category
+                Update Product
               </h4>
             </div>
             <div
@@ -77,16 +126,20 @@ const changeCategory = async(e) => {
               style={{ marginLeft: "10%", marginRight: "10%" }}
             >
               <div className="form-group mb-4">
-                <label>Product SKU</label>
+                <label>Product Barcode</label>
                 <input
                   type="text"
                   name="sku"
                   className="form-control"
                   onChange={(e) => {
-                    setProductSKU(e.target.value);
+                    setProductBarcode(e.target.value);
+                    setProductBarcodeError("");
                   }}
-                  value={productSKU}
+                  value={productBarcode}
                 ></input>
+                {productBarcodeError && (
+                <div className="error" style={{color:'red', fontSize:'8px'}}>{productBarcodeError}</div>
+              )}
               </div>
               <div className="form-group mb-4">
                 <label>Name</label>
@@ -96,9 +149,13 @@ const changeCategory = async(e) => {
                   className="form-control"
                   onChange={(e) => {
                     setProductName(e.target.value);
+                    setProductNameError("");
                   }}
                   value={productName}
                 ></input>
+                 {productNameError && ( 
+                <div className="error" style={{color:'red', fontSize:'8px'}}>{productNameError}</div>
+              )}
               </div>
               <div className="form-group mb-3">
                   <label>Select Category</label>
@@ -107,6 +164,9 @@ const changeCategory = async(e) => {
                   {categories.map((e, key) => {  
              return( <option key={key} value={e.categoryId}>{e.categoryName}</option>)
 })}                 </select>
+ {categoryError && (
+                <div className="error" style={{color:'red', fontSize:'8px'}}>{categoryError}</div>
+              )}
                 </div>
                 <div className="form-group mb-4">
                 <label>Description</label>
@@ -116,9 +176,13 @@ const changeCategory = async(e) => {
                   className="form-control"
                   onChange={(e) => {
                     setProductShortDesc(e.target.value);
+                    setProductShortDescError("");
                   }}
                   value={productShortDesc}
                 ></input>
+                  {productShortDescError && (
+                <div className="error" style={{color:'red', fontSize:'8px'}}>{productShortDescError}</div>
+              )}
               </div>
               <div className="form-group mb-4">
                 <label>Image</label>
@@ -128,8 +192,12 @@ const changeCategory = async(e) => {
                   className="form-control"
                   onChange={(e) => {
                     setProductImg(e.target.files[0]);
+                    setProductImgError("");
                   }}
                 ></input>
+                 {productImgError && (
+                <div className="error" style={{color:'red', fontSize:'8px'}}>{productImgError}</div>
+              )}
               </div>
               <div className="form-group mb-4">
                 <label>Price</label>
@@ -139,9 +207,13 @@ const changeCategory = async(e) => {
                   className="form-control"
                   onChange={(e) => {
                     setProductPrice(e.target.value);
+                    setProductPriceError("");
                   }}
                   value={productPrice}
                 ></input>
+                  {productPriceError && (
+                <div className="error" style={{color:'red', fontSize:'8px'}}>{productPriceError}</div>
+              )}
               </div>
             
               <div className="form-group mb-4">
@@ -152,9 +224,13 @@ const changeCategory = async(e) => {
                   className="form-control"
                   onChange={(e) => {
                     setStockStatus(e.target.value);
+                    setStockStatusError("");
                   }}
                   value={stockStatus}
                 ></input>
+                  {stockStatusError && (
+                <div style={{color:'red', fontSize:'8px'}}>{stockStatusError}</div>
+              )}
               </div>
               <button className="submit_btn" onClick={updateProduct}>
                 Update

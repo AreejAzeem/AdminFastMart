@@ -17,6 +17,10 @@
 width: 80%;
 margin:7% !important;
 }
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+}
 .submitbtn{
     position: relative;
     background-color: #de751f;

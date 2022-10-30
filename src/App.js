@@ -31,17 +31,18 @@ function App() {
           <Sidebar /> */}
             <Routes>
               {/* {hide ? null : <Topbar />} */}
-
-              {/* {hide ? null : <Sidebar />} */}
-              <Route element={<PrivateComponent />}>
+    <Route  element={<PrivateComponent/>}>
                 <Route
-                  path="/home"
+                  path="/"
                   exact
                   element={
                     <>
                       <Topbar />
                       <div style={{ display: "flex" }}>
-                        <Sidebar /> <Home />
+                        <Sidebar 
+                      
+                        
+                        /> <Home />
                       </div>
                     </>
                   }
@@ -180,17 +181,30 @@ function App() {
                 />
               
                     
-              </Route>
-              <Route
+            
+              {/* <Route
                 path="/"
                 exact
                 element={
                   <>
                     <Login />
                     {/* {setHide(true)}; */}
-                  </>
-                }
-              ></Route>
+                 
+                {/* }
+              </Route>
+               */} 
+               </Route>
+
+               <Route
+              path="/login"
+              exact
+              element={
+                <>
+                  <Login />
+                  {/* {setHide(true)}; */}
+                </>
+              }
+            ></Route>
             </Routes>
             {/* </div> */}
           </>

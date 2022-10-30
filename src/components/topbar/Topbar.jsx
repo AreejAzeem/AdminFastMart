@@ -4,15 +4,26 @@ import { NotificationsNone, Language, Settings } from "@mui/icons-material";
 import { CBadge } from "@coreui/react";
 import { Link, Navigate } from "react-router-dom";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { useNavigate } from "react-router-dom";
 
 function Topbar() {
+  let navigate = useNavigate();
   const logout = () => {
     console.log("apple");
     localStorage.clear();
-    //Navigate('/adminlogin');
+    navigate("/");
+    
   };
   return (
-    <div className="topbar" style={{ position: "static" }}>
+    <div className="topbar" style={{ position: "static" , 
+    border: "0.9px solid var(--lightgray)",
+    boxShadow: "0 0 10px 0 rgba(0,0,0,0.1)",
+    backgroundColor: "#fff",
+
+  
+  
+
+   }}>
       <div className="topbarWrapper">
         <div className="topLeft">
           <span className="logo">FastMart</span>
@@ -38,11 +49,11 @@ function Topbar() {
           </div>
           <div className="right_topRight">
             <div className="logout_btncont">
-              <Link to="/adminlogin" onClick={logout}>
+             
                 <button className="logout_btn" onClick={logout}>
                   Logout
                 </button>
-              </Link>
+             
             </div>
             <div className="topbarIconContainer">
               <NotificationsNone />

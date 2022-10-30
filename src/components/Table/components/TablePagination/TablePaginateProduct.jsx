@@ -198,7 +198,7 @@ EnhancedTableHead.propTypes = {
 };
 
 
-export default function TablePaginateProduct() {
+export default function TablePaginateProduct(props) {
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("productSKU");
   const [selected, setSelected] = React.useState([]);
@@ -211,7 +211,7 @@ export default function TablePaginateProduct() {
   useEffect(
     () => {  
       getProducts();
-    },[]
+    },[props.filteredData]
   );
 const deleteProduct = async (ids) => {
     console.warn("hi deleteee" + ids[0]);
@@ -230,6 +230,11 @@ const deleteProduct = async (ids) => {
 };
   const getProducts = async () => {
     setRows([]);
+    if(props.filteredData.length>0){
+      console.log("in line 229 "+props.filteredData.length);
+      setProduct(props.filteredData);
+    }
+    else{
     // let result = await fetch("http://192.168.30.176:4000/categories/category");
     // let result = await fetch("http://localhost:5000/products/product");
     let result = await fetch(config.apiURL + "/products/product");
@@ -262,6 +267,7 @@ const deleteProduct = async (ids) => {
 
     // });
     //   createData(result["data"].orderNo)
+    }
   };
   const EnhancedTableToolbar = (selected) => {
     const { numSelected } = selected;
@@ -309,13 +315,15 @@ const deleteProduct = async (ids) => {
               <DeleteIcon />
             </IconButton>
           </Tooltip>
-        ) : (
-          <Tooltip title="Filter list">
-            <IconButton>
-              <FilterListIcon />
-            </IconButton>
-          </Tooltip>
-        )}
+        ) :null
+        //  (
+        //   <Tooltip title="Filter list">
+        //     <IconButton>
+        //       <FilterListIcon />
+        //     </IconButton>
+        //   </Tooltip>
+        // )
+        }
       </Toolbar>
     );
   };
@@ -450,7 +458,7 @@ const deleteProduct = async (ids) => {
                         padding="none"
                         align="center"
                       >
-                        {row.productSKU}
+                        {row.productBarcode}
                       </TableCell>
                       <TableCell><div style={{ backgroundColor: "white", width: "3px" }}>
                     <img

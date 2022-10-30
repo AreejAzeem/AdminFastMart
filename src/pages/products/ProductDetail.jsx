@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./productDetail.css";
 import { Link, useParams } from "react-router-dom";
 import config from "../../config/config";
-import QRCode from "../../components/Message/QRCode";
+import Barcode from "../../components/Message/Barcode";
 
 function ProductDetail() {
   const [produc, setProduc] = useState([]);
@@ -41,9 +41,25 @@ function ProductDetail() {
             </div>
             <div className="product_QRCode">
               <div className="product_QRCode_animation">
-                <QRCode />
+               <Barcode/>
               </div>
-              <h5 style={{ fontWeight: "normal", opacity: 0.6 }}>ELE00001</h5>
+              <h5 style={{ fontWeight: "normal", opacity: 0.6 }}>{produc.productBarcode}</h5>
+            </div>
+            <div className="product_catgry">
+              <h5
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "1.2rem",
+                  marginRight: "3%",
+                }}
+              >
+                Category :
+              </h5>
+              <h5 style={{ color: "rgba(112,114,117)" }}>
+                {produc.category === undefined
+                  ? ""
+                  : produc.category.categoryName}
+              </h5>
             </div>
             <div className="product_price">
               <h3 style={{ fontWeight: "bold" }}>
@@ -71,32 +87,34 @@ function ProductDetail() {
               </div> */}
             </div>
             <div className="product_des">
+              <h5 style={{ fontWeight: "bold", fontSize: "1.2rem", marginTop:"6%" }}>
+                Description :
+              </h5>
               <p
                 style={{
                   color: "rgba(112,114,117)",
                   textAlign: "justify",
-                  marginTop: "3%",
+                
+                  border: "0.4px solid",
+                  borderColor:"#E0E0E0",
+                  borderRadius:"5px",
+                  padding:"3%",
+                  boxShadow:"0px 0px 5px 0px rgba(0,0,0,0.1)",
+                  marginTop:"2%",
+                  marginBottom:"2%",
+                  width:"100%",
+                  height:"100%",
+                  overflow:"auto",
+                  
+
+
+
                 }}
               >
-                {produc.productDesc}
+                {produc.productShortDesc}
               </p>
             </div>
-            <div className="product_catgry">
-              <h5
-                style={{
-                  fontWeight: "bold",
-                  fontSize: "1.2rem",
-                  marginRight: "3%",
-                }}
-              >
-                Category :
-              </h5>
-              <h5 style={{ color: "rgba(112,114,117)" }}>
-                {produc.category === undefined
-                  ? ""
-                  : produc.category.categoryName}
-              </h5>
-            </div>
+           
             <Link to="/products">
               <button className="Product_btn">Back to Product</button>
             </Link>

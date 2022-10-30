@@ -28,7 +28,7 @@
 }
 .product_img{
     width:40%;
-    height: 50%;
+    height:4%;
 }
 .img_product{
   width: 100%;
@@ -36,13 +36,13 @@
   
 }
 .product_detail_des{
-  width:50%;
+  width:30%;
   height:40%; 
-justify-content: space-around;
-margin-left: 2%;
+  justify-content: space-around;
+  margin-left: 4%;
 }
 .product_title{
-  
+  margin-bottom: -3%;
 }
 .product_QRCode{
   margin-top: 2%;

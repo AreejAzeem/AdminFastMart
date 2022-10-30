@@ -20,6 +20,7 @@ export default function Search({setSearchInput}) {
           id="outlined-basic"
           variant="outlined"
           fullWidth
+        
           label="Search"
           onChange={inputHandler}
         />

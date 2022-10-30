@@ -27,13 +27,15 @@ console.log("in line 16 "+searchInput);
       <h2 className="category_title">Categories</h2>
       <div className="category_searchContainer">
         <div className="category_searchField">
-          <Search placeholder="search by category type" setSearchInput={setSearchInput} />
-           <BiSearch size={30} color={"#ffff"} className="category_searchField_searchbtn"
+          <Search placeholder="search by category type" setSearchInput={setSearchInput} 
+          className="category_searchInput" 
+         />
+           <BiSearch size={30} color="orange"className="category_searchField_searchbtn"
            onClick={getFilteredData}/>
         </div>
-        <div className="category_Field">
+        {/* <div className="category_Field">
           <Category />
-        </div>
+        </div> */}
         <div className="add_category">
           <button className="addCategory_btn"  onClick={() => setIsDrawerOpen(true)}>+ Add Category
          </button>

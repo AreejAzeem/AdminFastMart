@@ -1,37 +1,77 @@
-import { Link, useNavigate } from "react-router-dom";
-import { BrowserRouter as Router } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { apiURL } from "../../config/config";
+import config from "../../config/config";
 import "./Login.css";
 
 function Login() {
   const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passError, setPassError] = useState("");
   const [password, setPassword] = useState("");
+  const [notValidUser, setNotValidUser] = useState();
   const navigate = useNavigate();
   useEffect(() => {
-    const auth = localStorage.getItem("admin");
-    if (auth) {
-      navigate("/home");
-    }
+    console.log("in use effect");
+    localStorage.setItem("admin",
+    {"email": "areejhbbg87@gmail.com",
+    "adminId":"62deb8a46d199f0f32c34d36"
+  })
+
+    // // if (auth) {
+    // //   navigate("/home");
+    // //   // {<Navigate to="/home" replace={true}/>}
+    // //   console.log("naviagte to home");
+    // // }
   });
-  const handleSubmit = async () => {
-    console.log({ email, password });
-    let result = await fetch(apiURL +"/adminlogin", {
-      method: "post",
-      body: JSON.stringify({ email, password }),
-      headers: {
-        "Content-Type": "Application/json",
-      },
-    });
-    result = await result.json();
-    console.log("aaaaaaaaaaa");
-    console.log(result);
-    if (result.email) {
-      localStorage.setItem("admin", JSON.stringify(result));
-      console.log(localStorage.getItem("admin"));
-      navigate("/home");
+  //email validation
+  function ValidateEmail(inputText) {
+    var atpos = inputText.indexOf("@");
+    var dotpos = inputText.lastIndexOf(".");
+    if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= inputText.length) {
+      console.log("in validate email");
+      setEmailError("Not a valid e-mail address");
+      return false;
     } else {
-      alert("please enter correct details");
+      setEmailError("");
+      return true;
+    }
+  }
+  const handleSubmit = async () => {
+    console.log("in handle submit");
+    var error = ValidateEmail(email);
+    if (error) {
+      console.log("in line 48 " + emailError);
+      if (password.length > 5) {
+        console.log("in line 50 ");
+        //setPassError("");
+        console.log("in line 52 ");
+        let result = await fetch(config.adminURL + "/users/adminlogin", {
+          mode: "no-cors",
+          method: "post",
+          body: JSON.stringify({ email, password }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }).then((res) => {console.log("After fetch"); return res});
+        console.log("line 29");
+
+        
+        console.log(result);
+        console.log("aaaaaaaaaaa");
+        console.log(result);
+        if (result.email) {
+          localStorage.setItem("admin", JSON.stringify(result));
+          console.log("in login ");
+          console.log(localStorage.getItem("admin"));
+          navigate("/home");
+        } else {
+          console.log("in else 72");
+          setNotValidUser("User Not Found");
+        }
+      } else {
+        console.log("in line 75 " + passError);
+        setPassError("password must be 6 characters");
+      }
     }
   };
   return (
@@ -74,7 +114,6 @@ function Login() {
         </div>
         <div className="login_rightcontainer">
           <div className="heading">
-         
             <h3
               style={{
                 textAlign: "Left",
@@ -96,6 +135,19 @@ function Login() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
+                {emailError != "" ? (
+                  <span
+                    style={{
+                      color: "red",
+                      fontSize: "12px",
+                      fontWeight: "bold",
+                      fontFamily: "Open Sans,sans-serif",
+                      marginLeft: "10px",
+                    }}
+                  >
+                    {emailError}
+                  </span>
+                ) : null}
               </div>
               <div className="input_container2">
                 <h5 className="login_label">Password</h5>
@@ -105,12 +157,26 @@ function Login() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                {passError != "" ? (
+                  <span
+                    style={{
+                      color: "red",
+                      fontSize: "12px",
+                      fontWeight: "bold",
+                      fontFamily: "Open Sans,sans-serif",
+                      marginLeft: "10px",
+                    }}
+                  >
+                    {passError}
+                  </span>
+                ) : null}
               </div>
               <div className="login_buttonContainer">
+                {notValidUser !== "" ? <span>{notValidUser}</span> : null}
                 <button
                   className="login_Button"
                   type="submit "
-                  onClick={handleSubmit}
+                  // onClick={handleSubmit}
                 >
                   Login In
                 </button>

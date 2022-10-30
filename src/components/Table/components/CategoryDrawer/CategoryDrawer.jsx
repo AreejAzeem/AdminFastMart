@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import "./categoryDrawer.css";
 import config from "../../../../config/config";
+import { UploadFile } from "@mui/icons-material";
+import axios from "axios";
+import { Navigate, useNavigate } from "react-router-dom";
+
 {
   /*<link
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -23,30 +27,102 @@ function CategoryDrawer() {
   const[categoryName,setCategoryName]=useState('');
   const[categoryImg,setCategoryImg]=useState('');
   const[categoryDesc,setCategoryDesc]=useState('');
-  const addCategory=async()=>{
-    console.warn(categoryName,categoryImg,categoryDesc);
+  const [categoryNameError, setCategoryNameError]=useState('');
+  const [categoryImgError, setCategoryImgError]=useState('');
+  const[categoryDescError, setCategoryDescError]=useState('');
+  const navigate=useNavigate();
+  const onBeforeUpload=(image)=> {
+    // get the file size in bytes
+    const sizeInBytes = image.size;
+    alert("File size is: " + sizeInBytes);
+    return sizeInBytes;
+    // get the file size in standard format
+   
+}
+  const addCategory=async(event)=>{
+    event.preventDefault();
+    console.log("in add category");
+    if(categoryName!=='' && categoryImg!='' && categoryDesc!=''){
+      const Imagesize=onBeforeUpload(categoryImg);
+      console.log("line 42"+ Imagesize);
+    if(Imagesize<1000000){
+      setCategoryImgError('');
+    console.log(categoryName,categoryImg,categoryDesc);
     // const adminId=JSON.parse(localStorage.getItem("admin"))._id;
-    // console.log(JSON.stringify({categoryName,categoryImg,categoryDesc,adminId}))
+     console.log(JSON.stringify({categoryName,categoryImg,categoryDesc}))
+    
     const formData=new FormData();
+    
     formData.append('categoryName',categoryName);
+    console.log(formData.get('categoryName'));
     formData.append('categoryImg',categoryImg);
+    console.log(formData.get('categoryImg'));
     formData.append('categoryDesc',categoryDesc);
-    console.log("in form data"+formData.categoryName);
-    let result=await fetch(config.apiURL+"/categories/category",{
-      mode: 'no-cors',
+    const catObj={"categoryName":categoryName,
+    "categoryImg":categoryImg,
+    "categoryDesc":categoryDesc};
+    console.log(catObj);
+ 
+  // let result= await axios.post(`${config.apiURL}/categories/category`,
+  //   catObj,
+  //   {
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   }
+
+  // )
+  //   .then((res)=>{
+  //     console.log(res);
+  //     if(res.data.status===200){
+  //       alert("category added successfully");
+  //     }
+  //     else{
+  //       alert("category not added");
+  //     }
+  //   })
+   
+   
+    let result= await fetch(config.apiURL+"/categories/category",{
+      mode:'no-cors',
       method:'post',
       body:formData,
       headers:{
-        "Content-Type":"application/json"
-      }
+        "Content-Type":"application/json",
+      },
     });
+   if(result){
     console.log(result);
-     alert("data has been saved");
-     
+    alert("Category Added");
+    window.location.reload();
+   }
+  }
+  else{
+    setCategoryImgError("File size should be less than 1Mb");
+  }
+  }
+  else{
+  console.log("please fill all the fields");
+    if(!categoryName){
+      setCategoryNameError("Please enter category name");
+
+    }
+   if(!categoryImg){
+    console.log("in category img error");
+      setCategoryImgError("Please select category image");
+    
+    }
+    if(!categoryDesc){
+      setCategoryDescError("Please enter category description");
+    }
+  }
+  
+    
+  }
     //  result=await result.json();
     //  console.log("after result");
     //  console.warn(result);
-  }
+  
   
   // const [values, setValues] = useState(initialFvalues);
   // const handleInputChange = (e) => {
@@ -70,9 +146,13 @@ function CategoryDrawer() {
                     type="text"
                     name="name"
                     className="form-control"
-                    onChange={(e)=>{setCategoryName(e.target.value)}}
+                    onChange={(e)=>{setCategoryName(e.target.value)
+                    setCategoryNameError('')}}
                     value={categoryName}
+                    
                   ></input>
+              {categoryNameError!=='' ? <span style={{color:'red', fontSize:'8px'}}>{categoryNameError}</span>:null}
+      {/* {categoryName==='' ? <span style={{color:'red', fontSize:'8px'}}>Correct input required</span>:null} */}
                 </div>
             <div className="form-group mb-4">
                   <label>Image</label>
@@ -80,9 +160,12 @@ function CategoryDrawer() {
                     type="file"
                     name="file"
                     className="form-control"
-                    onChange={(e)=>{setCategoryImg(e.target.files[0])}}
+                    onChange={(e)=>{setCategoryImg(e.target.files[0])
+                    setCategoryImgError('')}}
                     
                   ></input>
+                                   {categoryImgError!=="" ? <span style={{color:'red', fontSize:'8px'}}>{categoryImgError}</span>:null}
+
                 </div>
                 <div className="form-group mb-4">
                   <label>Description</label>
@@ -93,6 +176,7 @@ function CategoryDrawer() {
                     onChange={(e)=>{setCategoryDesc(e.target.value)}}
                     value={categoryDesc}
                   ></input>
+                  {categoryDescError && <span style={{color:'red', fontSize:'8px'}}>{categoryDescError}</span>}
                 </div>
                 {/* <div className="form-group mb-4">
                   <label>Status</label>

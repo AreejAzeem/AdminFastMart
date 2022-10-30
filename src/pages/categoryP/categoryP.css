@@ -16,36 +16,49 @@
   }
   .category_searchContainer {
     display: flex;
-    flex: 4;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    width: 98%;
+    padding-top: 18px;
+    padding-bottom: 18px;
     padding-left: 10px;
     padding-right: 10px;
     border: 1px solid;
     border-color: #ddd;
     background-color: white;
     border-radius: 5px;
-    justify-content: space-evenly;
+    justify-content: space-around;
     flex-wrap: wrap;
     align-items: center;
     margin: 10px;
   }
   .category_searchField {
-    flex: 1;
+   
     margin-left: 4%;
     margin-right: 4%;
     display:flex;
+    width:60% !important;
+  }
+  .category_searchInput{
+    width: 70% !important;
+    display: flex !important;
+    
+  }
+  .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
+width: 100% !important;
+  display: flex !important;
+  
   }
   .category_Field {
     flex: 1;
     margin-left: 4%;
     margin-right: 4%;
+    width:20%;
   }
  
   .add_category {
     flex: 1;
     margin-left: 4%;
     margin-right: 4%;
+    width: 35%;
   }
   .addCategory_btn {
     position: relative;
@@ -61,7 +74,9 @@
     text-decoration: none;
     overflow: hidden;
     cursor: pointer;
+    width: 100%;
   }
+
   /*
   .addProduct_btn:after {
     content: "";
@@ -86,10 +101,14 @@
     margin:10px;
   }
   .category_searchField_searchbtn{
-    background-color: #de751f;
+    margin-top: 1%;
+    margin-left: 2%;
+ color:var(--orangeStandard);
     height:70% !important;
     vertical-align: middle;
     cursor: pointer;
+    width:6%;
+
    
   
   }

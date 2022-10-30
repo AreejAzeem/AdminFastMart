@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import lottie from "lottie-web";
 
-import qrAnimation from "../../Lotties/qrCode.json";
+import barcodeAnimation from "../../Lotties/barcode.json";
 
-const QRCode= ({showDiv}) => {
+const Barcode= ({showDiv}) => {
   const anime = useRef(null);
   const showdiv=()=>{
     showDiv(true);
@@ -15,7 +15,7 @@ const QRCode= ({showDiv}) => {
       renderer: "svg",
       loop: true,
       autoplay: true,
-      animationData: qrAnimation,
+      animationData: barcodeAnimation,
     });
     return () => lottie.stop();
   }, []);
@@ -24,4 +24,4 @@ const QRCode= ({showDiv}) => {
   )
 };
 
-export default QRCode;
+export default Barcode;

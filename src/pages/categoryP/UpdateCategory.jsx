@@ -6,11 +6,45 @@ function UpdateCategory() {
   const [categoryName, setCategoryName] = useState("");
   const [categoryImg, setCategoryImg] = useState("");
   const [categoryDesc, setCategoryDesc] = useState("");
+  const [categoryNameError, setCategoryNameError]=useState('');
+  const [categoryImgError, setCategoryImgError]=useState('');
   const { id } = useParams();
   const navigate = useNavigate();
+  const onBeforeUpload=(image)=> {
+    // get the file size in bytes
+    const sizeInBytes = image.size;
+    alert("File size is: " + sizeInBytes);
+    return sizeInBytes;
+    // get the file size in standard format
+   
+}
+  useEffect(() => {
+    // fetch(`${config.apiURL}/category/:${id}`,
+
+    //   { method: "GET" ,
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   }   }   
+    //   )
+    //   .then((res) => {res.json()
+    //   console.log(res);})
+    //   .then((data) => {
+    //     console.log(data);
+    //     // setCategoryName(data.categoryName);
+    //     // setCategoryImg(data.categoryImg);
+    //     // setCategoryDesc(data.categoryDesc);
+    //   });
+
+  }, []);
+
 
   const updateCategory = async () => {
+    if(categoryName!=='' && categoryImg!='' ){
+      const Imagesize=onBeforeUpload(categoryImg);
+      console.log("line 42"+ Imagesize);
+    if(Imagesize<1000000){
 
+      setCategoryImgError('');
     const data = { categoryName, categoryImg, categoryDesc };
     console.log(JSON.stringify({ categoryName, categoryImg, categoryDesc }));
     var formData = new FormData();
@@ -32,11 +66,29 @@ function UpdateCategory() {
       }
      
     );
-    // result = await result.json();
-    // console.log("result" + result);
+  
+    console.log("result" + result);
     // console.log("after result");
     // console.warn(result);
-      navigate('/category');
+      navigate('/category');}
+      else{
+        setCategoryImgError("File size should be less than 1Mb");
+      }
+    }
+    else{
+      console.log("please fill all the fields");
+        if(!categoryName){
+          setCategoryNameError("Please enter category name");
+    
+        }
+       if(!categoryImg){
+        console.log("in category img error");
+          setCategoryImgError("Please select category image");
+        
+        }
+      }
+      
+
   };
   return (
     <div>
@@ -60,9 +112,12 @@ function UpdateCategory() {
                   className="form-control"
                   onChange={(e) => {
                     setCategoryName(e.target.value);
+                    setCategoryNameError('')
                   }}
                   value={categoryName}
                 ></input>
+                  {categoryNameError!=='' ? <span style={{color:'red', fontSize:'8px'}}>{categoryNameError}</span>:null}
+
               </div>
               <div className="form-group mb-4">
                 <label>Image</label>
@@ -72,8 +127,11 @@ function UpdateCategory() {
                   className="form-control"
                   onChange={(e) => {
                     setCategoryImg(e.target.files[0]);
+                    setCategoryImgError('')
                   }}
                 ></input>
+             {categoryImgError!=="" ? <span style={{color:'red', fontSize:'8px'}}>{categoryImgError}</span>:null}
+
               </div>
               <div className="form-group mb-4">
                 <label>Description</label>
