@@ -13,7 +13,7 @@ function Customer() {
     <>
       <div className="customer">
       <div className="customerWrapper">
-        <h2 className="customer_title">Customers</h2>
+        <h2 className="customer_title">Customer</h2>
         <div className="customer_searchContainer">
           <div className="customer_searchField">
             <Search placeholder="Search Customer by name / email / phone" />
