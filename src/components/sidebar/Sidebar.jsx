@@ -47,7 +47,7 @@ const [active, setActive]=useState('');
       <div className="sidebarWrapper">
         <div className="sidebarMenu">
           <ul className="sidebarList">
-          <Link to="/home" className="link">
+          <Link to="/" className="link">
             <li className="sidebarListItem" >
               <LineStyle className="sidebarIcon" />
               Home

@@ -27,7 +27,7 @@ flex-direction: row;
 }
 .demand_list{
 
-  width:50%;
+  width:90%;
  /* background-color: var(--darkgray); */
  margin-bottom: 5%;
  padding:3%;
@@ -66,7 +66,7 @@ opacity:60%;
  display: flex;
   border:0.1px solid var(--darkergray);
   /* margin-left: 1%; */
-  width: 100%;
+  width: 90%;
   /* border-radius: 20px; */
   height: fit-content;
  

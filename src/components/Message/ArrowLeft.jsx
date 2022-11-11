@@ -6,7 +6,7 @@ import arrowAnimation from "../../Lotties/arrowLeft.json";
 const ArrowLeft = ({showDiv}) => {
   const anime = useRef(null);
   const showdiv=()=>{
-    showDiv(true);
+    showDiv(false);
   }
   useEffect(() => {
     

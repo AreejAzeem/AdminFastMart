@@ -8,9 +8,20 @@
 .demandListDetail_acceptedWrapper{
     box-shadow: var(--darkgray);
     background-color: white;
-    margin:3%;
+    margin:1%;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+0 2px 4px rgba(0,0,0,0.07), 
+0 4px 8px rgba(0,0,0,0.07), 
+0 8px 16px rgba(0,0,0,0.07),
+0 16px 32px rgba(0,0,0,0.07), 
+0 16px 32px rgba(0,0,0,0.07), 
+0 32px 64px rgba(0,0,0,0.07);
+  background-color: white;
+  margin-left:-0.3%; 
+  margin-top: -4%;
+  margin-right: -1%;
 }
 .demandListDetail_accepted_header{
     margin-top: 2%;
@@ -33,12 +44,13 @@ align-self: center;
 }
 .demandlistDetail_accepted_imgDiv{
     width:50%;
-    height: 20%;
+   height: fit-content;
    
 }
 .demandlistDetail_accepted_img{
     width:50%;
-    height: 50%;
+    height:10rem;
+
 }
 .demandlistDetail_accepted_userDiv{
 margin-top: 7px;
@@ -58,17 +70,26 @@ font-style:normal;
 font-weight: 100;
 }
 .demandList_accepted_message{
-   margin-left: 4%;
-   margin-right: 4%;
+  
+  width:600px;
+margin-left: 8px;
+margin-right: 8px;
+margin-top: 1%;
 }
 .demandList_accepted_messageText{
     font-size: 15px;
     opacity: 80%;
+    padding :2%;
+ 
+    opacity: 80%;
+    border: 3px solid var(--lightgray);
+    border-radius: 8px;
 
 }
 .demandListDetail_accepted_orderContainer{
     display: flex;
     margin-left: 4%;
+    margin-top:-2%;
 
 }
 .demandListDetail_accepted_orderLabel{
@@ -99,12 +120,19 @@ font-size: 18px;
     width: 100%;
 }
   .approved_demandListDetail{
-    width:30%;
-   margin-left: 35%;
+    width:50%;
+    margin-top: -3%;
+   margin-left: 25%;
   margin-right: 50%;
     background-color: green;
     color: white;
-    padding: 3%;
-    opacity: 80%;
+    padding: 2%;
+    opacity: 64%;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.demandlistDetail_accepted_productDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width:30%;
 }
