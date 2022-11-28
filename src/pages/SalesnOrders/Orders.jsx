@@ -55,9 +55,9 @@ function Orders() {
               <div className="orders_searchField">
                 <Search placeholder="Search Order" />
               </div>
-              <div className="orderslimit_Field">
+              {/* <div className="orderslimit_Field">
                 <Price />
-              </div>
+              </div> */}
               <div className="download_orders">
                 <button
                   className="downloadOrders_btn"

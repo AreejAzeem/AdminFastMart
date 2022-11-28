@@ -1,0 +1,94 @@
+.offer{
+    width:98%;
+    height:100%;
+
+    border: 0.3px solid gray;
+    border-radius: 5px;
+align-items: center;
+
+margin: 1%;
+background-image: linear-gradient(to right, #f1ebe1 0%, #f8f8f4 100%);
+display: flex;
+
+
+  
+
+}
+.offer_Wrapper{
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin: 1%;
+}
+.offer_Container{
+    width: 100%;
+    height: 100%;
+    --bgOpacity: 0.2;
+    display: flex;
+
+
+  
+}
+.offer_LeftContainer{
+    width: 100%;
+    text-align: center;
+ 
+}
+.offer_LeftContainer_title{
+display: flex;
+text-align: center;
+justify-content: center;
+justify-items: center;
+align-items: center;
+}
+.offer_LeftContainer_h1{
+   font-size: large;
+ font-weight: 500;
+    color: #000;
+    margin-top: 7px;
+  margin-left: 5px;
+
+
+}
+.offer_LeftContainer_description{
+    font-size: 13px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+}
+.offer_RightContainer{
+   
+display: flex;
+flex-direction: column;
+background-repeat: round;
+    background-size: cover;
+   
+   
+}
+.offer_RightContainer_categoryDiv{
+    display: flex;
+
+}
+.offer_RightContainer_imgDiv{
+    width: 100%;
+}
+.offer-RightContainer_img{
+    width: 130px;
+    height: 100px;
+}
+.offerRightConatiner_validDiv{
+    display: flex;
+    margin-top: 5px;
+}
+.offer_RightContainer_discountDiv{
+
+}
+.offer_RightContainer_discounthead{
+    display: flex;
+}

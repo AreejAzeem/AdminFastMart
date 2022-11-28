@@ -215,7 +215,7 @@ function OrdersTable() {
         style={{
           width: "100%",
           alignItems: "center",
-          
+          height:"20000rem !important",
           border: "1px solid #ddd",
           borderRadius:"10px"
         }}

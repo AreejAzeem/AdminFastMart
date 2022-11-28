@@ -107,10 +107,14 @@ const [active, setActive]=useState('');
               <ChatBubbleOutline className="sidebarIcon" />
               Feedback
             </li>
-            <li className="sidebarListItem ">
+            <Link to="/marketing" className="link">
+            <li   className="sidebarListItem " onClick={()=>{
+              
+            }}>
               <WorkOutline className="sidebarIcon" />
               Marketing
             </li>
+            </Link>
             <li className="sidebarListItem">
               <Timeline className="sidebarIcon" />
               Analytics

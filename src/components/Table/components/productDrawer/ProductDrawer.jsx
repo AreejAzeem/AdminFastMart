@@ -225,8 +225,7 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
               <select
                 name="category_id"
                 className="form-control"
-                onChange={changeCategory}
-                
+                onChange={changeCategory} 
                 onClick={getCategory}
                 value={category}
                 multiple={false}

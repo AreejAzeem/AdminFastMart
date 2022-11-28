@@ -18,7 +18,8 @@ import UpdateProduct from "./pages/products/UpdateProduct";
 import Demand from "./pages/Demand/Demand";
 import AcceptedDemand from "./pages/Demand/AcceptedDemand";
 import RejectedDemand from "./pages/Demand/RejectedDemand";
-
+import Marketing from "./pages/Marketing/Marketing.jsx"
+import CreateAdPage from "./pages/Marketing/CreateAdPage";
 function App() {
   const [hide, setHide] = useState(false);
   return (
@@ -179,8 +180,31 @@ function App() {
                     </>
                   }
                 />
-              
-                    
+                <Route
+                 path="/marketing"
+                 element={
+                   <>
+                     <Topbar />
+                     <div style={{ display: "flex" }}>
+                       <Sidebar /> <Marketing/>
+                     </div>
+                   </>
+                 }
+                 >
+                </Route> 
+                <Route
+                 path="/marketing/createAd"
+                 element={
+                   <>
+                     <Topbar />
+                     <div style={{ display: "flex" }}>
+                       <Sidebar /> <CreateAdPage/>
+                     </div>
+                   </>
+                 }
+                 >
+                </Route> 
+
             
               {/* <Route
                 path="/"

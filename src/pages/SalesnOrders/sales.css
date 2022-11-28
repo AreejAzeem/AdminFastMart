@@ -129,9 +129,26 @@
     flex-direction: column;
   }
   .salesContainer_wrapper_right_top{
-    height: 400px;
+    height: 500px;
     border:1px solid gray;
   }
   .salesContainer_wrapper_right_bottom{
     border:1px solid gray;
   }
+  .sales_details_monthlyDiv{
+align-items: center;
+text-align: center;
+  }
+  .sales_details_monthlyBtn{
+    border: 0.5px solid var(--darkergray);
+    border-radius: 4px;
+    background-color: #82ca9d;
+    color: white;
+    padding: 2px 30px 2px 2px;
+margin-left: 5%;
+height: 30px;
+    cursor: pointer;
+    font-size: 16px;
+
+  }
+  

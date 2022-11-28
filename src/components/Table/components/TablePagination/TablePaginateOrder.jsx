@@ -338,7 +338,7 @@ EnhancedTableToolbar.propTypes = {
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%"}}>
       <Paper sx={{ width: "100%", mb: 2 }}>
         <EnhancedTableToolbar numSelected={selected.length} />
         <TableContainer>
@@ -384,7 +384,7 @@ EnhancedTableToolbar.propTypes = {
                         align="center"  >
                         {row.orderNo}
                       </TableCell>
-                      <TableCell align="center">{row.orderDate}</TableCell>
+                      <TableCell align="center">{row.orderTime ? row.orderDate+"  "+ row.orderTime :row.orderDate}</TableCell>
                       {/* <TableCell align="center">{row.orderUser.username}</TableCell> */}
                       <TableCell align="center">{row.paymentMethod}</TableCell>
                       <TableCell align="center">{row.quantity}</TableCell>

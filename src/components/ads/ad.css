@@ -1,0 +1,75 @@
+.ad{
+    width:98%;
+    height:120px;
+
+    border: 0.3px solid gray;
+    border-radius: 10px;
+align-items: center;
+
+margin: 1%;
+background-image: linear-gradient(to right, #e9dfb6 0%, #dbd8c4 100%);
+display: flex;
+
+
+  
+
+}
+.ad_Wrapper{
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin: 1%;
+}
+.ad_Container{
+    width: 100%;
+    height: 100%;
+    --bgOpacity: 0.2;
+    display: flex;
+
+
+  
+}
+.ad_LeftContainer{
+    width: 70%;
+    text-align: center;
+ 
+}
+.ad_LeftContainer_title{
+display: flex;
+text-align: center;
+justify-content: center;
+justify-items: center;
+align-items: center;
+}
+.ad_LeftContainer_h1{
+   font-size: large;
+ font-weight: 500;
+    color: #000;
+    margin-top: 7px;
+  margin-left: 5px;
+
+
+}
+.ad_LeftContainer_description{
+    font-size: 13px;
+}
+.ad_RightContainer{
+    width: 30%;
+
+background-repeat: round;
+    background-size: cover;
+   
+   
+}
+.ad_RightContainer_imgDiv{
+    width: 100%;
+}
+.ad-RightContainer_img{
+    width: 130px;
+    height: 100px;
+}
