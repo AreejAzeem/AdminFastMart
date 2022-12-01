@@ -19,7 +19,7 @@ function Offer(offer) {
             </div>
             <div className="offer_LeftContainer_description">{offer.offer.advertismentDesc}</div>
             <div style={{display:'flex',justifyContent:'space-between',
-            width:'90%',alignSelf:'center'
+            width:'100%',alignSelf:'center'
        }}>
             {/* <div className="offerRightConatiner_validDiv">
                 <h5 style={{
@@ -55,7 +55,7 @@ function Offer(offer) {
                         fontSize:"0.9rem",
                      color:'var(--orangestandard)',
                      marginTop:"4px",
-                     marginLeft:"30px",
+                     marginLeft:"3px",
 
                     }}>Category : </h5>
                 </div>
@@ -79,7 +79,8 @@ function Offer(offer) {
                      marginTop:"4px"
 
                     }}>Discount : </h5>
-                    <h5 >{offer.offer.discount}{"%"}</h5>
+                    <h5 style={{
+                        fontSize:"1.1rem",}} >{offer.offer.discount}{"%"}</h5>
                   </div>
             </div>
             

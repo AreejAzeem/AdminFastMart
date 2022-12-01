@@ -5,6 +5,7 @@ import "./productDrawer.css";
 import config from "../../../../config/config";
 import { Dropdown } from 'semantic-ui-react'
 import { number } from "react-admin";
+import axios from "axios";
 
 
 
@@ -32,7 +33,7 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
   const [category, setCategory] = useState("");
   const [productShortDesc, setProductShortDesc] = useState("");
   const [productPrice, setProductPrice] = useState();
-  const [productImg, setProductImg] = useState();
+  const [productImg, setProductImg] = useState('');
   const [stockStatus, setStockStatus] = useState();
   const [values, setValues] = useState(initialFvalues);
   const [product, setProduct] = useState([]);
@@ -75,7 +76,7 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
     //   return (
     //     console.log("hbjhjg")
     //   );
-    if(productName !== "" && productBarcode !== "" && productPrice !=="" && productImg !== null && productShortDesc !== "" && category !== "" && stockStatus !== "" ){
+    if(productName !== "" && productBarcode !== "" && productPrice !=="" && productImg !=='' && productShortDesc !== "" && category !== "" && stockStatus !== "" ){
      
       setProductNameError("");
       setProductBarcodeError("");
@@ -94,7 +95,7 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
       stockStatus,
       productPrice
     );
-    const adminId = JSON.parse(localStorage.getItem("admin"))._id;
+   
     console.log(
       JSON.stringify({
         productBarcode,
@@ -102,7 +103,7 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
         category,
         productShortDesc,
         productImg,
-        adminId,
+       
       })
     );
     const formData = new FormData();
@@ -117,19 +118,39 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
     console.log(
       "in form data" + formData.get("productName") + formData.get("productImg")
     );
-    let result = await fetch(config.apiURL + "/products/product", {
-      mode: "no-cors",
+    // let result = await fetch(config.apiURL + "/products/product", {
+    //   mode: "no-cors",
+    //   method: "post",
+    //   body: formData,
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // });
+    // console.log(result);
+    await axios({
       method: "post",
-      body: formData,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    console.log(result);
+      mode: "no-cors",
+      url: config.apiURL + "/products/product",
+      data: formData,
+      headers: { "Content-Type": "multipart/form-data" },
+      })
+      .then((response) => {
+        console.log(response);
+        console.log(response.data);
+        console.log(response.data.data);
+        alert("data has been saved");
+        window.location.reload();
+       
+
+        
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
     //setProduct(result['data']);
 
-    alert("data has been saved");
-    window.location.reload();
+   
    
 
     //  result=await result.json();
@@ -207,18 +228,17 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
             </div>
             <div className="form-group mb-4">
               <label>Image</label>
-              <input
+             <input
                 type="file"
-                name="file"
+                name="image"
                 className="form-control"
                 onChange={(e) => {
                   setProductImg(e.target.files[0]);
                   setProductImgError("");
                 }}
-              ></input>
-              {productImgError && (
-                <div className="error" style={{color:'red', fontSize:'8px'}}>{productImgError}</div>
-              )}
+                value={productImg}
+             />
+              {productImgError!=="" ? <div className="error" style={{color:'red', fontSize:'8px'}}>{productImgError}</div>:null}
             </div>
             <div className="form-group mb-3">
               <label>Select Category</label>

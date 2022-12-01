@@ -41,8 +41,13 @@ function CategoryDrawer() {
 }
   const addCategory=async(event)=>{
     event.preventDefault();
-    console.log("in add category");
+    console.log(categoryDescError);
     if(categoryName!=='' && categoryImg!='' && categoryDesc!=''){
+     
+      setCategoryDescError('');
+      setCategoryImgError('');
+      setCategoryNameError('');
+      console.log(categoryDescError)
       const Imagesize=onBeforeUpload(categoryImg);
       console.log("line 42"+ Imagesize);
     if(Imagesize<1000000){
@@ -83,19 +88,41 @@ function CategoryDrawer() {
   //   })
    
    
-    let result= await fetch(config.apiURL+"/categories/category",{
-      mode:'no-cors',
-      method:'post',
-      body:formData,
-      headers:{
-        "Content-Type":"application/json",
-      },
-    });
-   if(result){
-    console.log(result);
-    alert("Category Added");
-    window.location.reload();
-   }
+    // let result= await fetch(config.apiURL+"/categories/category",{
+    //   mode:'no-cors',
+    //   method:'post',
+    //   body:formData,
+    //   headers:{
+    //     "Content-Type":"application/json",
+    //   },
+    // });
+    await axios ({
+      method: 'post',
+      url: config.apiURL+"/categories/category",
+      data: formData,
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+    .then((res)=>{
+      console.log(res);
+      if(res.status===200){
+        alert("category added successfully");
+        window.location.reload();
+      }
+      else{
+        alert("category not added");
+      }
+    })
+    .catch((err)=>{
+      console.log(err.response.data.message);
+      if(err.response.data.message==="category validation failed: categoryName: Category already in Exists."){
+        setCategoryNameError("Category already in Exists");
+
+      }
+    })
+
+   
   }
   else{
     setCategoryImgError("File size should be less than 1Mb");
@@ -162,6 +189,8 @@ function CategoryDrawer() {
                     className="form-control"
                     onChange={(e)=>{setCategoryImg(e.target.files[0])
                     setCategoryImgError('')}}
+                    value={categoryImg}
+                    
                     
                   ></input>
                                    {categoryImgError!=="" ? <span style={{color:'red', fontSize:'8px'}}>{categoryImgError}</span>:null}
@@ -173,10 +202,14 @@ function CategoryDrawer() {
                     type="text"
                     name="description"
                     className="form-control"
-                    onChange={(e)=>{setCategoryDesc(e.target.value)}}
+                    onChange={(e)=>{setCategoryDesc(e.target.value)
+                    setCategoryDescError('')}}
                     value={categoryDesc}
                   ></input>
-                  {categoryDescError && <span style={{color:'red', fontSize:'8px'}}>{categoryDescError}</span>}
+                  {categoryDescError !=="" ? <span style={{color:'red', fontSize:'8px'}}>{categoryDescError}</span>:null}
+
+                  
+                
                 </div>
                 {/* <div className="form-group mb-4">
                   <label>Status</label>

@@ -276,7 +276,7 @@ function Sales() {
       },
     ],
   };
-const [dataset, setDataset] = useState(data);
+const [dataset, setDataset] = useState();
  
   useEffect(() => {
     getDailySalesData();
@@ -297,25 +297,25 @@ const [dataset, setDataset] = useState(data);
         console.log(dailydata1);
         if (res.data.data) {
           dailydata.push({
-            name: "Slot1",
+            name: "11:00-2:00pm",
             Sales: item.slot1.quantity,
             Revenue: item.slot1.total,
             //amt: 2400,
           });
           dailydata.push({
-            name: "Slot2",
+            name: "02:00 - 05:00pm",
             Sales: item.slot2.quantity,
             Revenue: item.slot2.total,
             //amt: 2210,
           });
           dailydata.push({
-            name: "Slot3",
+            name: "05:00 - 08:00pm",
             Sales: item.slot3.quantity,
             Revenue: item.slot3.total,
             // amt: 2290,
           });
           dailydata.push({
-            name: "Slot4",
+            name: "08:00 - 11:00pm",
             Sales: item.slot4.quantity,
             Revenue: item.slot4.total,
             // amt: 2000,
@@ -498,17 +498,44 @@ const [dataset, setDataset] = useState(data);
     }).then((res) => {
       // "Sales",item[index].slot1.total
       console.log(res.data.data);
-      // res.data.data.map((item, index) => {
-      // setDataset(dataset,dataset.labels.push(item.categoryName))
-      // setDataset(dataset, dataset.data.push(item.total));
-      //   // data.labels.push(item.categoryName);
-      //   // data.datasets[0].data.push(item.total);
-      //   // data.datasets[0].backgroundColor.push(
-      //   //   "#" + Math.floor(Math.random() * 16777215).toString(10)
-      //   // );
+      var labe=[];
+      var dat=[];
+      res.data.data.map((item, index) => {
+        if(index<5){
+       labe.push(item.categoryName);
+       dat.push(item.total);}
+
+      //   setDataset(...dataset, dataset.labels.push(item.categoryName));
+      // setDataset(...dataset,dataset.data.push(item.total));
+      // setDataset(dataset, dataset.data.push(item.total))
+        // data.labels.push(item.categoryName);
+        // data.datasets[0].data.push(item.total);
+        // data.datasets[0].backgroundColor.push(
+        //   "#" + Math.floor(Math.random() * 16777215).toString(10)
+        // );
         
       
-      // });
+      });
+      console.log(labe) ;
+      console.log(dat);
+     
+      setDataset({
+        labels: labe,
+        datasets: [
+          {
+            label: "Sales by Category",
+            data: dat,
+            backgroundColor: [
+              "#83EAF1",
+              "#63A4FF",
+              "#89D4CF",
+              "#B3F6D8",
+              "#52A7C1",
+           ],
+          },
+        ],
+      });
+              
       console.log(dataset);
       console.log(data1);
       
@@ -644,8 +671,8 @@ const [dataset, setDataset] = useState(data);
           </div>
           <div className="salesContainer_wrapper_right">
             <div className="salesContainer_wrapper_right_top">
-           {data.labels.length>0? 
-              <Doughnut data={data} /> : <div style={{ textAlign: "center" }}>No Data</div>}
+           {dataset ?
+              <Doughnut data={dataset} /> : <div style={{ textAlign: "center" }}>No Data</div>}
             
               <h5
                 style={{

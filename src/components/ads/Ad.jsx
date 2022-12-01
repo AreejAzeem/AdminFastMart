@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import config from "../../config/config";
 import "./ad.css";
 function Ad(ad) {
   console.log(ad);
@@ -24,7 +25,7 @@ function Ad(ad) {
           </div>
           <div className="ad_RightContainer">
             <div className="ad_RightContainer_imgDiv">
-              <img  className="ad-RightContainer_img" src={ad.ad.advertismentAttachment}></img>
+              <img  className="ad-RightContainer_img" src={config.apiURL+ad.ad.advertismentAttachment}></img>
             </div>
           </div>
         </div>

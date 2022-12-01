@@ -1,0 +1,85 @@
+.Complaint{
+    width:90%;
+    height:40%;
+
+    border: 0.3px solid gray;
+    border-radius: 10px;
+align-items: center;
+
+margin: 1%;
+background-image: linear-gradient(to right, #ebe9e3 0%, #dbd8c4 100%);
+display: flex;
+margin-bottom: 10px;
+margin-left:5%;
+
+
+  
+
+}
+.Complaint_Wrapper{
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin: 1%;
+}
+.Complaint_Container{
+    width: 100%;
+    height: 100%;
+    --bgOpacity: 0.2;
+    display: flex;
+
+
+  
+}
+.Complaint_LeftContainer{
+    width: 100%;
+    text-align: center;
+ 
+}
+.Complaint_LeftContainer_title{
+display: flex;
+text-align: center;
+justify-content: center;
+justify-items: center;
+align-items: center;
+}
+.Complaint_LeftContainer_h1{
+   font-size: large;
+ font-weight: 500;
+    color: #000;
+ width:90%;
+  margin-left: 17%;
+
+
+}
+.Complaint_LeftContainer_description{
+    font-size: 13px;
+    border: 0.5px solid var(--orangestandard);
+    border-radius: 20px;
+    margin-left: 15%;
+    margin-right: 15%;padding: 20px;
+    background-color: white;
+}
+.Complaint_RightContainer{
+    width: 30%;
+
+background-repeat: round;
+    background-size: cover;
+   
+   
+}
+.Complaint_RightContainer_imgDiv{
+    width: 100%;
+}
+.Complaint-RightContainer_img{
+    width: 130px;
+    height: 100px;
+}
+
+
+

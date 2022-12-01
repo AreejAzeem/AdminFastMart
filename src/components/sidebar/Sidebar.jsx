@@ -102,11 +102,12 @@ const [active, setActive]=useState('');
             </Link>
             {subMenuDemand ? <SubMenuDemand firstMenu="Pending" secondMenu="Accepted" thirdMenu="Rejected"/>:null}
               
-           
+           <Link to="/feedback" className="link">
             <li className="sidebarListItem">
               <ChatBubbleOutline className="sidebarIcon" />
               Feedback
             </li>
+            </Link>
             <Link to="/marketing" className="link">
             <li   className="sidebarListItem " onClick={()=>{
               

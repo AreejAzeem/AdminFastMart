@@ -20,6 +20,7 @@ import AcceptedDemand from "./pages/Demand/AcceptedDemand";
 import RejectedDemand from "./pages/Demand/RejectedDemand";
 import Marketing from "./pages/Marketing/Marketing.jsx"
 import CreateAdPage from "./pages/Marketing/CreateAdPage";
+import Feedback from "./pages/Feedback/Feedback";
 function App() {
   const [hide, setHide] = useState(false);
   return (
@@ -199,6 +200,18 @@ function App() {
                      <Topbar />
                      <div style={{ display: "flex" }}>
                        <Sidebar /> <CreateAdPage/>
+                     </div>
+                   </>
+                 }
+                 >
+                </Route> 
+                <Route
+                 path="/feedback"
+                 element={
+                   <>
+                     <Topbar />
+                     <div style={{ display: "flex" }}>
+                       <Sidebar /> <Feedback/>
                      </div>
                    </>
                  }

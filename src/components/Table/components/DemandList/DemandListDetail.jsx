@@ -36,6 +36,63 @@ approveDemand();
     rejectDemand();
    
   }
+  const sendNotificationAccept=async(res)=>{
+    const dat=res.data.data;
+    console.log(dat);
+    await axios({
+      mode: 'no-cors',
+      method: 'post',
+      url: config.apiURL+"/notifications/forDemand",
+      headers: {
+
+        'Content-Type': 'application/json',
+      },
+      data: {
+        "demandId": dat.demandId,
+        "demandProgress": "Accepted",
+        "message": dat.message,
+        "createdDateTime": dat.createdDateTime,
+        "fcm_token":"csq6vUc8QMms8Zi6DbIpbm:APA91bEO9zR_nfVnN3FUOk4ZVaFrPYqhiWgXNN29VC0-02x9mXULtZ7NnhwTb0tAUEAy6qwEkejHEfh88Lmp4f3Z2Az49qCFat3LNEVT9FbVyDcC-zf2qPC1htK9gdGyu4-qY0ESFsD0"
+
+      },
+      
+    }).then((res)=>{
+      console.log(res);
+      if(res.data.data){
+        console.log(res.data.data);
+        setSuccess(true);
+      }
+    })
+  }
+  const sendNotificationReject=async(res)=>{
+    const dat=res.data.data;
+    console.log(dat);
+    await axios({
+      mode: 'no-cors',
+      method: 'post',
+
+      url: config.apiURL+"/notifications/forDemand",
+      headers: {
+          
+          'Content-Type': 'application/json',
+        },
+      data: {
+        "demandId": dat.demandId,
+        "demandProgress": "Rejected",
+        "message": dat.message,
+        "createdDateTime": dat.createdDateTime,
+        "fcm_token":"csq6vUc8QMms8Zi6DbIpbm:APA91bEO9zR_nfVnN3FUOk4ZVaFrPYqhiWgXNN29VC0-02x9mXULtZ7NnhwTb0tAUEAy6qwEkejHEfh88Lmp4f3Z2Az49qCFat3LNEVT9FbVyDcC-zf2qPC1htK9gdGyu4-qY0ESFsD0"
+
+      }
+    }).then((res)=>{
+      console.log(res);
+      if(res.data.data){
+        console.log(res.data.data);
+        setReject(true);
+      }
+    })
+  }
+
   const approveDemand = async()=> {
   await axios(config.apiURL + `/demands/demandUpdate?demandId=${demandDetail ? demandDetail.demandId: defaultDetail.demandId}&progress=Accepted`, {
 
@@ -48,6 +105,8 @@ approveDemand();
   }).then((res) => {
     console.log(res);
     setSuccess(true);
+   sendNotificationAccept(res);
+
   });
   }
   const rejectDemand = async()=> {
@@ -62,6 +121,7 @@ approveDemand();
     }).then((res) => {
       console.log(res);
       setReject(true);
+      sendNotificationReject(res);
     });
     }
   const getOrderNumber=async()=>{
