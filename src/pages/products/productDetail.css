@@ -53,7 +53,10 @@
   margin-left: -5%;
 }
 .product_price{
-
+display: flex;
+flex-direction: row;
+width:200px;
+justify-content: space-between;
 }
 .product_stock_quantity{
   display: flex;

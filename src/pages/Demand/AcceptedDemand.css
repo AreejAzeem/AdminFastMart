@@ -28,7 +28,7 @@
  flex-direction: row;
  }
  .acceptedDemand_list{
-   width:100%;
+   width:300px;
   /* background-color: var(--darkgray); */
   margin-bottom: 5%;
   padding:3%;

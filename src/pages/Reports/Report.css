@@ -1,0 +1,129 @@
+.receiptDialog{
+    width:100% !important;
+   
+}
+
+.receiptDialog_wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  
+}
+.receiptDialog_topContain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.receiptDialog_top_header{
+    font-size: 35px;
+    color: var(--darkestgray);
+}
+.receiptDialog_top_date{
+    font-size: 12px;
+    color: var(--darkestgray);
+}
+.receiptDialog_top_orderNo{
+    font-size: 11px;
+    color: var(--darkestgray);
+}
+.receiptDialog_middleContain{
+    margin-top: 2%;
+}
+.middleContain_line{
+    border: 0.3px solid var(--darkgray);
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 1%;
+    margin-top: 2%;
+}
+.middleContain_header{
+    display: flex;
+    flex-direction: row;
+    margin-left: 10%;
+    margin-right: 10%;
+    justify-content: space-around;
+}
+.middleContain_productName{
+    color:black;
+    font-weight: bold;
+}
+.middleContain_productQty{
+    color:black;
+    font-weight: bold;
+
+}
+.middleContain_productPrice{
+    color:black;
+    font-weight: bold;
+
+}
+.middleContain_total{
+    color:black;
+    font-weight: bold;
+}
+.productContainer{
+    width: 100%;
+}
+.productContainer_wrapper{
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+margin-left: 10%;
+    margin-right: 9%;
+    text-align: center;
+}
+.productContainer_productName{
+    font-size: 14px;
+    color: rgb(62, 60, 60);
+    opacity: 70%;
+    width:20%;
+}
+.productConatiner_productQty{
+    font-size: 14px;
+    color: rgb(62, 60, 60);
+    opacity: 70%;
+    width:10%;
+}
+.productConatiner_productPrice{
+    font-size: 14px;
+    color: rgb(62, 60, 60);
+    opacity: 70%;
+    width:20%;
+}
+.productConatiner_productTotal{
+    font-size: 14px;
+    color: rgb(62, 60, 60);
+    opacity: 70%;
+    width:20%;
+}
+.middleContain_productContainer_scroll{
+    height:67px;
+    overflow-y: scroll; 
+}
+.receiptDialog_subtotal{
+    margin-top: 2%;
+    margin-left: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-right: 3%;
+}
+
+.receiptDialog_subtotalText{
+    font-weight: bold;
+    
+}
+.receiptDialog_subtotalText{
+   
+}
+.printReceipt{
+    margin-right: 33% !important;
+    background-color: var(--orangestandard) !important;
+    color: white !important;
+    border-radius: 20px !important;
+    padding: 7px !important;
+    font-size: 15px !important;
+    margin-bottom: 2% !important;
+    width:180px !important;
+}

@@ -116,14 +116,12 @@ const [active, setActive]=useState('');
               Marketing
             </li>
             </Link>
-            <li className="sidebarListItem">
-              <Timeline className="sidebarIcon" />
-              Analytics
-            </li>
+            {/* <Link to="/reports" className="link">
             <li className="sidebarListItem">
               <DocumentScanner className="sidebarIcon" />
               Reports
             </li>
+            </Link> */}
           </ul>
         </div>
         <div className="sidebar_logout">

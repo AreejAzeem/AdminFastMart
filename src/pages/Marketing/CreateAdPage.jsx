@@ -367,7 +367,7 @@ function CreateAdPage({ handleChange, formInputData, handleSubmit }) {
           //   advertismentImg: adImg,
           // };
           // console.log(item);
-          if (adImg.size < 1000000) {
+          if (adImg.size < 1000000 ) {
             var formData = new FormData();
             // console.log(categoryImg);
             formData.append("title", adTitle);
@@ -408,12 +408,16 @@ function CreateAdPage({ handleChange, formInputData, handleSubmit }) {
                 sendNotificationAd(response.data.data);
                 navigate("/marketing");
               } else {
+               
                 alert("Advertisement not added");
               }
+            }).then((error)=>{
+              console.log(error);
             });
+
           } else {
             console.log("in else of ad");
-            setadImgError("Image size should be less than 1MB");
+            setadImgError("Image size should be less than 1MB and png jpeg format");
           }
         }
       } else {

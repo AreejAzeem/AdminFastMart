@@ -55,7 +55,7 @@ function RejectedDemand() {
       //  document.getElementById('demand_list_detail_id').style.transition='transform 3s';
       //  document.getElementById('demand_list_detail_id').style.transition='2s';
       console.log("in hide true")
-      document.getElementById("rejectedDemand_list_id").style.width = "55%";
+      document.getElementById("rejectedDemand_list_id").style.width = "300px";
   
       //  setClasss('demand_list_detail_collapse');
     
@@ -64,8 +64,8 @@ function RejectedDemand() {
    else {
       console.log("in hide false")
       // document.getElementById('demand_list_detail_id').style.display='contents';
-      document.getElementById("rejectedDemand_list_id").style.width = "40%";
-      document.getElementById("rejectedDemand_list_detail_id").style.width = "40%";
+      document.getElementById("rejectedDemand_list_id").style.width = "400px";
+    
 
       // document.getElementById('demand_list_detail_id').style.border='1px solid var(--darkergray)';
   

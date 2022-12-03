@@ -79,10 +79,10 @@ function getComparator(order, orderBy) {
 
 const headCells = [
   {
-    id: "productQRcode",
+    id: "productBarcode",
     numeric: false,
     disablePadding: false,
-    label: "QR code",
+    label: "Barcode",
     align: "center",
   },
   {
@@ -106,6 +106,13 @@ const headCells = [
     label: "Product Category",
     align: "center",
   },
+  {
+    id: "productRetailPrice",
+    numeric: true,
+    disablePadding: false,
+    label: "Retail Price",
+  },
+  
   {
     id: "productPrice",
     numeric: true,
@@ -163,7 +170,7 @@ function EnhancedTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? "right" : "center"}
+            align={headCell.numeric ? "center" : "center"}
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -419,7 +426,8 @@ const deleteProduct = async (ids) => {
               onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
               rowCount={product.length}
-              style={{ textAlign: "center" }}
+              style={{ textAlign: "center",
+           }}
             />
             <TableBody>
               {/* if you don't need to support IE11, you can replace the `stableSort` call with:
@@ -460,15 +468,16 @@ const deleteProduct = async (ids) => {
                       >
                         {row.productBarcode}
                       </TableCell>
-                      <TableCell><div style={{ backgroundColor: "white", width: "3px" }}>
+                      <TableCell><div style={{ backgroundColor: "white", width: "3px",}}>
                     <img
-                      style={{ width: "40px", borderRadius: "5px" }}
+                      style={{ width: "40px", borderRadius: "5px" ,marginLeft:"45px"}}
                       src={url + row.productImg}
                       alt=""
                     />
                   </div></TableCell>
                       <TableCell align="center">{row.productName}</TableCell>
                       <TableCell align="center">{row.category.categoryName}</TableCell>
+                      <TableCell align="center">{row.productRetailPrice}</TableCell>
                       <TableCell align="center">{row.productPrice}</TableCell>
                       <TableCell align="center">{row.stockStatus}</TableCell>
                       <TableCell align="center"> {

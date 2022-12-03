@@ -11,3 +11,16 @@ font-size: 0.875rem;
 .css-1mxz8qt-MuiPaper-root{
     background-color: aquamarine !important;
 }
+.css-1ex1afd-MuiTableCell-root{
+text-align: center;
+}
+.css-1ex1afd-MuiTableCell-root{
+    text-align: center !important; 
+}
+.table_category th, td{
+    text-align: center !important;
+    justify-content: center !important;
+    justify-items: center !important;
+    align-items: center !important;
+    
+}

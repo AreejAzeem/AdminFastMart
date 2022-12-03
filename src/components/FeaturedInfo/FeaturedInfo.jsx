@@ -3,8 +3,11 @@ import "./featuredInfo.css"
 import ArticleSharpIcon from '@mui/icons-material/ArticleSharp';
 import ShoppingCartSharpIcon from '@mui/icons-material/ShoppingCartSharp';
 import MoneySharpIcon from '@mui/icons-material/MoneySharp';
+import axios from 'axios'
+import config from "../../config/config";
 
-function FeaturedInfo() {
+function FeaturedInfo(props) {
+ 
   return (
     <div className='featured'>
         <div className='featuredItem'>
@@ -15,7 +18,7 @@ function FeaturedInfo() {
                 </div>
             <span className='featuredTitle'>Today Revenue</span>
             <div className='featuredMoneyImgContainer'>
-                <span className='featuredMoney'>$244</span> 
+                <span className='featuredMoney'>Rs {" "+props.total}</span> 
              </div>
            
         </div>
@@ -25,9 +28,9 @@ function FeaturedInfo() {
                     <ShoppingCartSharpIcon className='featuredImgIcon' size={70}/>
                     </span>
                 </div>
-            <span className='featuredTitle'>Today Sales</span>
+            <span className='featuredTitle'>Today Products Sold</span>
             <div className='featuredMoneyImgContainer'>
-                <span className='featuredMoney'>$244</span> 
+                <span className='featuredMoney'>{props.quantity}</span> 
              </div>
            
         </div>
@@ -37,9 +40,9 @@ function FeaturedInfo() {
                     <MoneySharpIcon className='featuredImgIcon' size='10px'/>
                     </span>
                 </div>
-            <span className='featuredTitle'>Cost</span>
+            <span className='featuredTitle'>Users Registered</span>
             <div className='featuredMoneyImgContainer'>
-                <span className='featuredMoney'>$244</span> 
+                <span className='featuredMoney'>300</span> 
              </div>
            
         </div>

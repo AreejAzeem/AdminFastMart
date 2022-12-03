@@ -11,6 +11,9 @@
     vertical-align: center;
 
 }
+.demandlist_wrapper{
+  width: 100%;
+}
 .demandlist:hover{
   background-color: white;
   

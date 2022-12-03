@@ -67,7 +67,7 @@ showDiv(true);
     //  document.getElementById('demand_list_detail_id').style.transition='2s';
  // setClasss('demand_list_animation');
  console.log("in hide true")
-     document.getElementById('demand_list_id').style.width='100%';
+     document.getElementById('demand_list_id').style.width='400px';
   //   setClasss('demand_list_animation');
    //  setClasss('demand_list_detail_collapse');
    
@@ -77,7 +77,7 @@ showDiv(true);
     // document.getElementById('demand_list_detail_id').style.display='contents';
    // setClasss('demand_list_animation');
    console.log("in hide false")
-     document.getElementById('demand_list_id').style.width='50%';
+     document.getElementById('demand_list_id').style.width='400px';
     // document.getElementById('demand_list_detail_id').style.border='1px solid var(--darkergray)';
     
     return;

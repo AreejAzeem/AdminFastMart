@@ -27,15 +27,15 @@ const initialFvalues = {
   description: "made my day",
 };
 
-function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
+function ProductDrawer() {
   const [productBarcode, setProductBarcode] = useState("");
   const [productName, setProductName] = useState("");
   const [category, setCategory] = useState("");
   const [productShortDesc, setProductShortDesc] = useState("");
   const [productPrice, setProductPrice] = useState();
-  const [productImg, setProductImg] = useState('');
+  const [productImg, setProductImg] = useState();
   const [stockStatus, setStockStatus] = useState();
-  const [values, setValues] = useState(initialFvalues);
+
   const [product, setProduct] = useState([]);
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
@@ -47,6 +47,9 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
   const [categoryError, setCategoryError] = useState("");
   const [stockStatusError, setStockStatusError] = useState("");
   const [productDescError, setProductDescError] = useState("");
+  const[productRetailPrice,setProductRetailPrice]=useState();
+  const [productRetailPriceError, setProductRetailPriceError]=useState("");
+const fileInput=React.createRef();
   var categoryId = "";
   var categoryItems = [];
   // useEffect(() => {
@@ -71,13 +74,13 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
   };
 
   const addProduct = async () => {
+    console.log("in add product");
     // categoryItems=getCategory();
     // category.map((item, index) => {
     //   return (
     //     console.log("hbjhjg")
     //   );
     if(productName !== "" && productBarcode !== "" && productPrice !=="" && productImg !=='' && productShortDesc !== "" && category !== "" && stockStatus !== "" ){
-     
       setProductNameError("");
       setProductBarcodeError("");
       setProductPriceError("");
@@ -85,6 +88,7 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
       setProductShortDescError("");
       setCategoryError("");
       setStockStatusError("");
+      setProductRetailPriceError("");
 
     console.warn(
       productBarcode,
@@ -112,11 +116,12 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
     formData.append("category", category);
     formData.append("productShortDesc", productShortDesc);
     formData.append("productPrice", productPrice);
+    formData.append("productRetailPrice", productRetailPrice);
     formData.append("productImg", productImg);
     formData.append("stockStatus", stockStatus);
 
     console.log(
-      "in form data" + formData.get("productName") + formData.get("productImg")
+      "in form data" + formData.get("productName") + formData.get("productImg")+formData.get("productRetailPrice")
     );
     // let result = await fetch(config.apiURL + "/products/product", {
     //   mode: "no-cors",
@@ -157,7 +162,6 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
     //  console.log("after result");
     //  console.warn(result);
   
- 
   }
   else{
     if(productName == ""){
@@ -180,6 +184,9 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
     }
     if(stockStatus == null){
       setStockStatusError("Stock Status is required");
+    }
+    if(productRetailPrice == null){
+      setProductRetailPriceError("Product Retail Price is required");
     }
     
   }
@@ -232,11 +239,12 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
                 type="file"
                 name="image"
                 className="form-control"
+               ref={fileInput}
                 onChange={(e) => {
                   setProductImg(e.target.files[0]);
                   setProductImgError("");
                 }}
-                value={productImg}
+              
              />
               {productImgError!=="" ? <div className="error" style={{color:'red', fontSize:'8px'}}>{productImgError}</div>:null}
             </div>
@@ -270,17 +278,36 @@ function ProductDrawer({ handleChange, formInputData, handleSubmit }) {
               )}
             
             </div>
+
             <div className="form-group mb-3">
-              <label>Price</label>
+              <label>Retail Price</label>
               <input
                 type="number"
                 name="price"
                 className="form-control"
                 onChange={(e) => {
+                  setProductRetailPrice(e.target.value);
+                  setProductRetailPriceError("");
+                }}
+                value={productRetailPrice}
+              ></input>
+              {productRetailPriceError && (
+                <div className="error" style={{color:'red', fontSize:'8px'}}>{productRetailPriceError}</div>
+              )}
+            </div>
+
+            <div className="form-group mb-3">
+              <label>Price</label>
+              <input
+                type="number"
+                name="price"
+                
+                className="form-control"
+                onChange={(e) => {
                   setProductPrice(e.target.value);
                   setProductPriceError("");
                 }}
-                value={productPrice}
+                value={productPrice || ""}
               ></input>
               {productPriceError && (
                 <div className="error" style={{color:'red', fontSize:'8px'}}>{productPriceError}</div>

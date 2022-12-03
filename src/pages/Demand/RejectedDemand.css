@@ -22,12 +22,13 @@
        }
  .rejectedDemand_list_container{
    height: 100%;
- width: fit-content;
+ width: 250px;
  display: flex;
  flex-direction: row;
+
  }
  .rejectedDemand_list{
-   width:100%;
+   width:300px;
   /* background-color: var(--darkgray); */
   margin-bottom: 5%;
   padding:3%;
@@ -60,8 +61,9 @@
    margin-top: 2%;
   display: flex;
    border:1px solid var(--darkergray);
-   width: 60%;
+   width: 900px;
    height: fit-content;
+   margin-left: 100px;
    
  }
  

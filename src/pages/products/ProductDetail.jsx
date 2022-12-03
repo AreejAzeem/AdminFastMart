@@ -60,9 +60,41 @@ function ProductDetail() {
                   ? ""
                   : produc.category.categoryName}
               </h5>
+
             </div>
             <div className="product_price">
-              <h3 style={{ fontWeight: "bold" }}>
+              <h3 style={{
+                fontWeight: "bold",
+                fontSize: "1.2rem",
+                marginRight: "3%",
+                marginTop: "2%",
+
+              }}>Retail Price</h3>
+              <h3 style={{ fontWeight: "bold" ,
+            color:"gray",
+            fontSize:"1.2rem",
+            border:"0.2px solid var(--darkergray)",
+            borderRadius:"5px",
+            padding:"5px",
+            }}>
+                {"Rs. " + produc.productRetailPrice}
+              </h3>
+            </div>
+            <div className="product_price">
+              <h3 style={{
+                fontWeight: "bold",
+                fontSize: "1.2rem",
+                marginRight: "3%",
+                marginTop: "2%",
+
+              }}>Price</h3>
+              <h3 style={{ fontWeight: "bold" ,
+            color:"gray",
+            fontSize:"1.2rem",
+            border:"0.2px solid var(--darkergray)",
+            borderRadius:"5px",
+            padding:"5px",
+            }}>
                 {"Rs. " + produc.productPrice}
               </h3>
             </div>

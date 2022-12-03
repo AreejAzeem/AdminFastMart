@@ -3,6 +3,7 @@
     width: 100% !important;
     --bg-opacity: 1;
     background-color: rgba(249,250,251,var(--bg-opacity));
+    margin-right: 1%;
   }
   .salesWrapper{
     margin:3%;
@@ -95,52 +96,65 @@
 
   .salesContainer{
     width:100%;
+   
   }
   .salesContainer_wrapper{
     display: flex !important;
-    flex-direction: row !important;
+    flex-direction: column !important;
   }
   .salesContainer_wrapper_left{
    
    
-    border: 1px solid gray;
+    border:0.8px solid var(--darkgray);
+    border-width: 1px;
  
-    width :70%;
+    width :100%;
     display: flex;
-    flex-direction: column;
+    height:500px;
+    flex-direction: row;
+
   }
   .salesContainer_wrapper_left_top{
-    height: 600px;
-    border:1px solid gray;
+    height: 500px;
+    border:0.8px solid var(--darkgray);
+    border-width: 1px;
+    width:60%;
 
     
   }
   .salesContainer_wrapper_left_bottom{
     height: 50%;
-    border:1px solid gray;
+    border:0.8px solid var(--darkgray);
+    border-width: 1px;
+    margin-top: -5px;
+    
   }
 
   .salesContainer_wrapper_right{
    
-    border:1px solid gray;
+    border:0.8px solid var(--darkgray);
+    border-width: 1px;
  
-    width:38%;
+    width:100%;
     display: flex;
     flex-direction: column;
   }
   .salesContainer_wrapper_right_top{
     height: 500px;
-    border:1px solid gray;
+    border:0.8px solid var(--darkgray);
+    border-width: 1px;
+    width:40%
   }
   .salesContainer_wrapper_right_bottom{
-    border:1px solid gray;
+    border:0.8px solid var(--darkgray);
+    border-width: 1px;
   }
   .sales_details_monthlyDiv{
 align-items: center;
 text-align: center;
   }
   .sales_details_monthlyBtn{
-    border: 0.5px solid var(--darkergray);
+    border: 0.8px solid var(--darkergray);
     border-radius: 4px;
     background-color: #82ca9d;
     color: white;
@@ -151,4 +165,12 @@ height: 30px;
     font-size: 16px;
 
   }
+ .sales_details_monthlyDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: right;
+    margin-right: 30px;
+    margin-top: 4px;
+ }
   

@@ -59,7 +59,7 @@ function AcceptedDemand() {
       //  document.getElementById('demand_list_detail_id').style.transition='transform 3s';
     //  document.getElementById('demand_list_detail_id').style.transition='2s';
       console.log("bbbbbbbbbb")
-     document.getElementById('acceptedDemand_list_id').style.width='60%';
+     document.getElementById('acceptedDemand_list_id').style.width='300px';
     
 
    //  setClasss('demand_list_detail_collapse');
@@ -68,7 +68,7 @@ function AcceptedDemand() {
   }
   if(!hide){
     // document.getElementById('demand_list_detail_id').style.display='contents';
-     document.getElementById('acceptedDemand_list_id').style.width='50%';
+     document.getElementById('acceptedDemand_list_id').style.width='400px';
 
     // document.getElementById('demand_list_detail_id').style.border='1px solid var(--darkergray)';  
     return;

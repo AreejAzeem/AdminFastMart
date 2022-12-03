@@ -142,6 +142,9 @@ import { Doughnut } from "react-chartjs-2";
 import axios from "axios";
 import config from "../../config/config";
 import { useEffect } from "react";
+import ReportDialog from "../../components/Table/components/Dialog/ReportDialog";
+
+import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -226,6 +229,11 @@ function Sales() {
   const [weeklyData, setWeeklyData] = useState();
   const [monthlyData, setMonthlyData] = useState();
   const[categorySales, setCategorySales] = useState();
+  const[dailyReportData, setDailyReportData] = useState();
+  const[weeklyReportData, setWeeklyReportData] = useState();
+  const[monthlyReportData, setMonthlyReportData] = useState();
+  const [openReportDialog , setOpenReportDialog] = useState(false);
+  const[reportData, setReportData]= useState();
   const data = {
     labels: [],
     datasets: [
@@ -281,6 +289,10 @@ const [dataset, setDataset] = useState();
   useEffect(() => {
     getDailySalesData();
     getSalesByCategory();
+    getDailyReportData();
+    
+   
+
   }, []);
   const getDailySalesData = async () => {
     await axios({
@@ -488,6 +500,7 @@ const [dataset, setDataset] = useState();
       return res.data;
     });
   };
+
   const getSalesByCategory = async () => {
     await axios({
       method: "GET",
@@ -518,7 +531,7 @@ const [dataset, setDataset] = useState();
       });
       console.log(labe) ;
       console.log(dat);
-     
+     if(res.data.data){
       setDataset({
         labels: labe,
         datasets: [
@@ -535,6 +548,7 @@ const [dataset, setDataset] = useState();
           },
         ],
       });
+    }
               
       console.log(dataset);
       console.log(data1);
@@ -546,13 +560,76 @@ const [dataset, setDataset] = useState();
       // })
     
     });}
+    const getDailyReportData = async () => {
+      await axios({
+        method: "GET",
+        url: config.apiURL + "/reports/getDailyReport",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+      }).then((res) => {
+        console.log(res.data.data);
+        var data=res.data.data;
+        if(res.data.data){
+        setDailyReportData(data);
+        getWeeklyReportData();}
+        }).catch((err) => {
+          console.log(err);
+        }
+      );
+      
+    }
+    const getWeeklyReportData = async () => {
+      await axios({
+        method: "GET",
+        url: config.apiURL + "/reports/getWeeklyReport",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+      }).then((res) => {
+        console.log(res.data.data);
+        var data=res.data.data;
+        if(res.data.data){
+        setWeeklyReportData(data);
+        getMonthlyReportData();}
+        }).catch((err) => {
+          console.log(err);
+        }
+      );
+    }
+    const getMonthlyReportData = async () => {
+      await axios({
+        method: "GET",
+        url: config.apiURL + "/reports/getMonthlyReport",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+      }).then((res) => {
+        console.log(res.data.data);
+        var data=res.data.data;
+        if(res.data.data){
+        setMonthlyReportData(data);}
+        }).catch((err) => {
+          console.log(err);
+        }
+      );
+    }
+
   return (
     <div className="sales">
       <div className="sales__details">
-        <div>
-          <h4>Sales Overview</h4>
-        </div>
-        <div className="sales_details_monthlyDiv">
+        
+       
+      </div>
+      <div className="salesContainer">
+        <div className="salesContainer_wrapper">
+          <div className="salesContainer_wrapper_left">
+            <div className="salesContainer_wrapper_left_top">
+              <div style={{ width: "100%" }}>
+              <div className="sales_details_monthlyDiv">
           <select
             className="sales_details_monthlyBtn"
             onChange={(e) => {
@@ -575,13 +652,8 @@ const [dataset, setDataset] = useState();
             <option value="Monthly">Monthly</option>
           </select>
         </div>
-      </div>
-      <div className="salesContainer">
-        <div className="salesContainer_wrapper">
-          <div className="salesContainer_wrapper_left">
-            <div className="salesContainer_wrapper_left_top">
-              <div style={{ width: "100%" }}>
-                <ResponsiveContainer width="100%" height={400}>
+                <ResponsiveContainer width="100%" height={450}>
+                  
                   {dailyData ? (
                     <AreaChart
                       width={730}
@@ -665,14 +737,11 @@ const [dataset, setDataset] = useState();
                 </ResponsiveContainer>
               </div>
             </div>
-            <div className="salesContainer_wrapper_left_bottom">
-              left bottom
-            </div>
-          </div>
-          <div className="salesContainer_wrapper_right">
             <div className="salesContainer_wrapper_right_top">
            {dataset ?
-              <Doughnut data={dataset} /> : <div style={{ textAlign: "center" }}>No Data</div>}
+              <Doughnut data={dataset} style={{
+                width: "100%",
+              }} /> : <div style={{ textAlign: "center" }}>No Data</div>}
             
               <h5
                 style={{
@@ -684,9 +753,147 @@ const [dataset, setDataset] = useState();
                 Sales by Category
               </h5>
             </div>
-            <div className="salesContainer_wrapper_right_bottom">
-              right bottom
+          
+          </div>
+          <div className="salesContainer_wrapper_right">
+          
+
+            <div className="salesContainer_wrapper_left_bottom">
+             <div style={{
+              display: "flex",
+ textAlign: "center",
+ justifyContent: "center",
+ alignItems: "center",
+             }}>
+              <table style={{
+               marginTop: "20px",
+                width: "95%",
+                backgroundColor: "white",
+                
+              }}>
+                <thead>
+                  <tr style={{
+                    marginLeft: "30px",
+                    backgroundColor: "#67B7D1",
+                    color:"white",
+                    height:"50px",
+                    fontSize:"10px",
+
+                  }}>
+                    <th>[]</th>
+                    <th> Discount</th>
+                    <th> Gross profit</th>
+                    <th>Net Profit</th>
+                    <th>Operating Expense</th>
+                    <th>Retail Price</th>
+                    <th>Sale Price</th>
+                    <th>Tax Collected</th>
+                    <th>Generate Report</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  { dailyReportData  && weeklyReportData? (
+                      <tr>
+                        <td  style={{
+                          fontWeight: "bold",
+                          fontSize: "18px",
+                          color:"gray"
+
+                        }}>Daily</td>
+                        <td>{dailyReportData.totalDiscount}</td>
+                        <td>{dailyReportData.totalGrossProfit}</td>
+                        <td>{dailyReportData.totalNetProfit}</td>
+                        <td>{dailyReportData.totalOperatingExpense}</td>
+                        <td>{dailyReportData.totalRetailPrice}</td>
+                        <td>{dailyReportData.totalSalePrice}</td>
+                        <td>{dailyReportData.totalTaxCollected}</td> 
+                        <td><TextSnippetIcon color="red"style={{
+                          cursor: "pointer",
+                          color:"skyblue",
+                        }} onClick={
+                          () => {
+                            console.log("clicked")
+                            setOpenReportDialog(true)
+                            setReportData(dailyReportData)
+                          //  getDailyReportData()
+                          }
+                        }/></td>
+                      </tr>
+                 ) : <div>No data</div>}
+                { weeklyReportData ? (
+                      <tr>
+                        <td style={{
+                          fontWeight: "bold",
+                          fontSize: "18px",
+                          color:"gray",
+                        
+
+                        }}
+                       
+                        >Weekly</td>
+                        <td>{weeklyReportData.totalDiscount}</td>
+                        <td>{weeklyReportData.totalGrossProfit}</td>
+                        <td>{weeklyReportData.totalNetProfit}</td>
+                        <td>{weeklyReportData.totalOperatingExpense}</td>
+                        <td>{weeklyReportData.totalRetailPrice}</td>
+                        <td>{weeklyReportData.totalSalePrice}</td>
+                        <td>{weeklyReportData.totalTaxCollected}</td>
+                        <td><TextSnippetIcon style={{
+                          cursor: "pointer",
+                          color:"skyblue"
+                        }}
+                         onClick={
+                          () => {
+                            console.log("clicked")
+                            setOpenReportDialog(true)
+                            setReportData(weeklyReportData)
+                          //  getDailyReportData()
+                          }
+                        }
+                        /></td>
+                      </tr>
+                 ) :<div>No data</div>}
+                 { monthlyReportData ? (
+                  <tr>
+                    <td style={{
+                          fontWeight: "bold",
+                          fontSize: "18px",
+                          color:"gray"
+
+                        }}>Monthly</td>
+                  <td>{monthlyReportData.totalDiscount}</td>
+                  <td>{monthlyReportData.totalGrossProfit}</td>
+                  <td>{monthlyReportData.totalNetProfit}</td>
+                  <td>{monthlyReportData.totalOperatingExpense}</td>
+                  <td>{monthlyReportData.totalRetailPrice}</td>
+                  <td>{monthlyReportData.totalSalePrice}</td>
+                  <td>{monthlyReportData.totalTaxCollected}</td>
+                  <td><TextSnippetIcon style={{
+                    color:"skyblue",
+                    cursor: "pointer",
+
+                  }}
+                  onClick={
+                    () => {
+                      console.log("clicked")
+                      setOpenReportDialog(true)
+                      setReportData(monthlyReportData)
+                    //  getDailyReportData()
+                    }
+                  }/></td>
+                </tr>
+
+                 ) : (
+                    <div style={{ textAlign: "center" }}>No Data</div>
+                 )}
+                                        {openReportDialog ? <ReportDialog  setOpenReportDialog={setOpenReportDialog} reportData={reportData} /> : null}
+
+                </tbody>
+
+              </table>
+             </div>
             </div>
+            
           </div>
         </div>
       </div>
