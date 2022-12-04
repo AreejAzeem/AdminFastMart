@@ -4,6 +4,14 @@
   }
   .table_container {
     width: 100% !important;
+    display: flex;
+    flex-direction: column;
+   
+  }
+  .table_container_divScroll{
+    width: 100% !important;
+    overflow-y: scroll;
+
   }
   .table_customer{
     width: "100%";

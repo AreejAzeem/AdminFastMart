@@ -5,8 +5,33 @@ import ShoppingCartSharpIcon from '@mui/icons-material/ShoppingCartSharp';
 import MoneySharpIcon from '@mui/icons-material/MoneySharp';
 import axios from 'axios'
 import config from "../../config/config";
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 function FeaturedInfo(props) {
+    const[length, setLength]=useState();
+    useEffect(() => {
+        getCustomer();
+    
+    },[]);
+ const getCustomer = async () => {
+    await axios({
+       
+       method: "GET",
+       url: `${config.apiURL}/users/getUsers`,
+       })
+       .then((res) => {
+         console.log(res.data);
+         if(res.data.data){
+         setLength(res.data.data.length);
+       }
+       }
+       )
+       .catch((err) => {
+         console.log(err);
+       }
+       );
+   }
  
   return (
     <div className='featured'>
@@ -42,7 +67,7 @@ function FeaturedInfo(props) {
                 </div>
             <span className='featuredTitle'>Users Registered</span>
             <div className='featuredMoneyImgContainer'>
-                <span className='featuredMoney'>300</span> 
+                <span className='featuredMoney'>{length ? length:0}</span> 
              </div>
            
         </div>
