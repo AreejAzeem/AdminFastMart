@@ -27,11 +27,18 @@
     margin-top: 2%;
     margin-bottom: 5px;
     width: 100%;
+    display: flex;
     justify-items: center;
     align-items: center;
     align-content: center;
     text-align: center;
+    justify-content: center;
+
   
+}
+.demandListDetail_rejected_head{
+    text-align: center;
+ 
 }
 .demandlistDetail_rejected_userContainer{
 display: flex;

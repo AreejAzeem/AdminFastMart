@@ -79,19 +79,20 @@ function getComparator(order, orderBy) {
 
 const headCells = [
   {
-    id: "productBarcode",
-    numeric: false,
-    disablePadding: false,
-    label: "Barcode",
-    align: "center",
-  },
-  {
     id: "productImg",
     numeric: false,
     disablePadding: false,
     label: "Product Image",
     align: "center",
   },
+  {
+    id: "productBarcode",
+    numeric: false,
+    disablePadding: false,
+    label: "Barcode",
+    align: "center",
+  },
+ 
   {
     id: "productName",
     numeric: false,
@@ -237,11 +238,14 @@ const deleteProduct = async (ids) => {
 };
   const getProducts = async () => {
     setRows([]);
+    console.log(props.filteredData);
     if(props.filteredData.length>0){
+      console.log(props.filteredData);
       console.log("in line 229 "+props.filteredData.length);
       setProduct(props.filteredData);
     }
     else{
+    
     // let result = await fetch("http://192.168.30.176:4000/categories/category");
     // let result = await fetch("http://localhost:5000/products/product");
     let result = await fetch(config.apiURL + "/products/product");
@@ -324,7 +328,7 @@ const deleteProduct = async (ids) => {
           </Tooltip>
         ) :null
         //  (
-        //   <Tooltip title="Filter list">
+        //   <Tooltip tit le="Filter list">
         //     <IconButton>
         //       <FilterListIcon />
         //     </IconButton>
@@ -430,6 +434,7 @@ const deleteProduct = async (ids) => {
            }}
             />
             <TableBody>
+              
               {/* if you don't need to support IE11, you can replace the `stableSort` call with:
                  rows.slice().sort(getComparator(order, orderBy)) */}
              { console.log("line 382")}
@@ -441,6 +446,9 @@ const deleteProduct = async (ids) => {
                   const labelId = `enhanced-table-checkbox-${index}`;
                   var url = config.apiURL;
                   return (
+                   
+                      
+                  
                     <TableRow
                       hover
                       onClick={(event) => handleClick(event, row.productId)}
@@ -459,6 +467,13 @@ const deleteProduct = async (ids) => {
                           }}
                         />
                       </TableCell>
+                      <TableCell><div style={{ backgroundColor: "white", width: "3px",}}>
+                    <img
+                      style={{ width: "40px", borderRadius: "5px" ,marginLeft:"45px"}}
+                      src={url + row.productImg}
+                      alt=""
+                    />
+                  </div></TableCell>
                       <TableCell
                         component="th"
                         id={labelId}
@@ -468,13 +483,7 @@ const deleteProduct = async (ids) => {
                       >
                         {row.productBarcode}
                       </TableCell>
-                      <TableCell><div style={{ backgroundColor: "white", width: "3px",}}>
-                    <img
-                      style={{ width: "40px", borderRadius: "5px" ,marginLeft:"45px"}}
-                      src={url + row.productImg}
-                      alt=""
-                    />
-                  </div></TableCell>
+                     
                       <TableCell align="center">{row.productName}</TableCell>
                       <TableCell align="center">{row.category.categoryName}</TableCell>
                       <TableCell align="center">{row.productRetailPrice}</TableCell>
@@ -488,7 +497,7 @@ const deleteProduct = async (ids) => {
                     </IconContext.Provider>
                   }</TableCell>
                   <TableCell> <div>
-                    <Link to={"/updateproduct/" + row.productId}>
+                    <Link to={"/updateproduct/" + row.productId} >
                       <ModeEditOutlineIcon
                         style={{
                           margin: "3px",
@@ -499,7 +508,10 @@ const deleteProduct = async (ids) => {
                     </Link>
 
                   </div></TableCell>
+                  
                     </TableRow>
+                  
+                    
                   );
                 })}
               {emptyRows > 0 && (

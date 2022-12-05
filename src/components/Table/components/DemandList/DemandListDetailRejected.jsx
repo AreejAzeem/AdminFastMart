@@ -36,6 +36,33 @@ console.log(rejectedDemandDetail);
           <div className="demandListDetail_rejected_dateDiv">
             <h6 className="demandListDetail_rejected_date">{rejectedDemandDetail.createdDateTime.split("T")[0]}</h6>
           </div>
+          <div className="demandlistDetail_accepted_productDiv">
+            <h4 style={{
+              color:'gray',
+              fontSize:'14px',
+              fontWeight:'700',
+              justifyContent:'center',
+              verticalAlign:'middle',
+              marginTop:'6px',
+              
+              
+            }}> Product :</h4>
+            <h6 style={{
+              color:'black',
+              fontSize:'14px',
+
+              fontWeight:'400',
+              justifyContent:'center',
+              border:'0.3px solid gray',
+              borderRadius:'10px',
+              padding:'8px',
+              verticalAlign:'middle',
+              background:'var(--orangestandard)',
+              backgroundOpacity:'0.5',
+              opacity:0.9,
+              color:'white',
+            }}>{rejectedDemandDetail.demandProduct}</h6>
+          </div>
           <div className="demandList_rejected_message">
             <p className="demandList_rejected_messageText">
              {rejectedDemandDetail.message}
@@ -119,7 +146,7 @@ console.log(rejectedDemandDetail);
          </div>
         </div>
       </div>
-    </div>:null
+    </div>:<div>No Rejected demands</div>
 
 }
     </div>

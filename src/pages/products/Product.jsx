@@ -31,8 +31,11 @@ function Product() {
   let result = await fetch(config.apiURL+`/products/product?productName=${searchInput}`);
   result = await result.json();
   console.log(result);
-  setProduct(result["data"]);
-}
+  if(result){
+    setProduct(result["data"]);
+  }
+  }
+  
  
  const handleChange=(evnt)=>{  
      const newInput = (data)=>({...data, [evnt.target.name]:evnt.target.value})
@@ -82,7 +85,7 @@ function Product() {
         <h2 className="product_title">Products</h2></div>
         <div className="product_searchContainer">
           <div className="product_searchField">
-            <Search placeholder="Search Product" setSearchInput={setSearchInput} />
+            <Search placeholder="Search Product by Name" setSearchInput={setSearchInput} />
             <BiSearch size={38} color="orange" style={{marginTop:'7px', marginLeft:'3px', cursor:'pointer'}} 
            onClick={getFilteredData}/>
           </div>

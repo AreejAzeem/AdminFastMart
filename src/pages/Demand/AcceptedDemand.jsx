@@ -103,7 +103,9 @@ function AcceptedDemand() {
                         }}>No demands to show</div>}
           </div>
           
-          {hide  && acceptedDemandList && acceptedDefaultDetail && acceptedDemandDetail? 
+          {hide  && acceptedDemandList 
+          // && acceptedDefaultDetail && acceptedDemandDetail
+          ? 
           <div className={classs} id="acceptedDemand_list_detail_id">
           <div className="acceptedDemand_list_collapser"> 
             <div className="acceptedDemand_list_collapserWrap">

@@ -2,14 +2,15 @@ import { React, useState, useEffect } from "react";
 import "./UpdateProduct.css";
 import { Navigate, useParams, useNavigate } from "react-router-dom";
 import config from "../../config/config";
-function UpdateCategory() {
+import axios from "axios";
+function UpdateProduct() {
     const [productBarcode, setProductBarcode] = useState("");
     const [productName, setProductName] = useState("");
     const [category, setCategory] = useState("");
     const [productShortDesc, setProductShortDesc] = useState("");
-    const [productPrice, setProductPrice] = useState("");
+    const [productPrice, setProductPrice] = useState();
     const [productImg, setProductImg] = useState("");
-    const [stockStatus, setStockStatus] = useState("");
+    const [stockStatus, setStockStatus] = useState();
     const [categories, setCategories]=useState([]);
     const [productNameError, setProductNameError] = useState("");
   const [productBarcodeError, setProductBarcodeError] = useState("");
@@ -17,9 +18,46 @@ function UpdateCategory() {
   const [productImgError, setProductImgError] = useState("");
   const [productShortDescError, setProductShortDescError] = useState("");
   const [categoryError, setCategoryError] = useState("");
-  const [stockStatusError, setStockStatusError] = useState("");
-  const { id } = useParams();
+  const [stockStatusError, setStockStatusError] = useState();
+  const[productRetailPrice,setProductRetailPrice]=useState();
+  const[productRetailPriceError,setProductRetailPriceError]=useState("");
+  const[id,setId]=useState(useParams().id);
+  // const { id } = useParams();
   const navigate = useNavigate();
+  useEffect(() => {
+    console.log("use eefectgh")
+     if(id){
+    getPreviousProduct();}
+  } ,[id])
+
+  const getPreviousProduct = async () => {
+ 
+    console.log(id);
+
+    await axios({
+      method: "get",
+      url: config.apiURL+"/products/product/"+id,
+      headers: {
+        "Content-Type": "application/json",
+
+      },
+
+    }).then((res) => {
+      console.log(res.data);
+      setProductBarcode(res.data.data.productBarcode);
+      setProductName(res.data.data.productName);
+      setCategory(res.data.data.category.categoryName);
+      setProductShortDesc(res.data.data.productShortDesc);
+      setProductPrice(res.data.data.productPrice);
+      setProductImg(res.data.data.productImg);
+      setStockStatus(res.data.data.stockStatus);
+      setProductRetailPrice(res.data.data.productRetailPrice);
+    }
+    ).catch((err) => {
+      console.log(err);
+    }
+    )
+  }
   const getCategory =async(e) => {
     // console.log("in category");
     // setCategory(e.target.categoryId);
@@ -37,12 +75,14 @@ const changeCategory = async(e) => {
     console.log(e.target.value);
   }
   const updateProduct = async () => {
+    
 if(productName!=='' && productBarcode!==''
- && productPrice!=='' && productImg!==''
+ && productPrice!=="" && productRetailPrice!=="" && productImg!==''
   && productShortDesc!=='' && category!=='' && stockStatus!==''){
   setProductNameError("");
   setProductBarcodeError("");
   setProductPriceError("");
+  setProductRetailPriceError("");
   setProductImgError("");
   setProductShortDescError("");
   setCategoryError("");
@@ -57,6 +97,7 @@ if(productName!=='' && productBarcode!==''
       formData.append('category',category);
       formData.append('productShortDesc',productShortDesc);
       formData.append('productPrice',productPrice);
+      formData.append("productRetailPrice",productRetailPrice);
       formData.append('productImg',productImg);
       formData.append('stockStatus',stockStatus);
       console.log(formData.get('category'));
@@ -72,12 +113,16 @@ if(productName!=='' && productBarcode!==''
         },
       }
      
-    );
+    ).then((res) => {
+      console.log(res);
+      alert("Product Updated Successfully");
+      navigate("/products");
+    });
     //  result = await result.json();
     //  console.log("result" + result);
     // // console.log("after result");
     // console.warn(result);
-      navigate('/products');}
+      }
      
      else{
       if(productBarcode == ""){
@@ -86,11 +131,6 @@ if(productName!=='' && productBarcode!==''
       if(productName == ""){
         setProductNameError("Product Name is required");
       }
-    
-     
-     
-     
-     
       if(category == ""){
         setCategoryError("Category is required");
       }
@@ -102,6 +142,9 @@ if(productName!=='' && productBarcode!==''
       }
       if(productPrice == null){
         setProductPriceError("Product Price is required");
+      }
+      if(productRetailPrice == null){
+        setProductRetailPriceError("Product Retail Price is required");
       }
       if(stockStatus == null){
         setStockStatusError("Stock Status is required");
@@ -199,6 +242,22 @@ if(productName!=='' && productBarcode!==''
                 <div className="error" style={{color:'red', fontSize:'8px'}}>{productImgError}</div>
               )}
               </div>
+              <div className="form-group mb-3">
+              <label>Retail Price</label>
+              <input
+                type="number"
+                name="price"
+                className="form-control"
+                onChange={(e) => {
+                  setProductRetailPrice(e.target.value);
+                  setProductRetailPriceError("");
+                }}
+                value={productRetailPrice}
+              ></input>
+              {productRetailPriceError && (
+                <div className="error" style={{color:'red', fontSize:'8px'}}>{productRetailPriceError}</div>
+              )}
+            </div>
               <div className="form-group mb-4">
                 <label>Price</label>
                 <input
@@ -209,7 +268,7 @@ if(productName!=='' && productBarcode!==''
                     setProductPrice(e.target.value);
                     setProductPriceError("");
                   }}
-                  value={productPrice}
+                  value={productPrice || ""}
                 ></input>
                   {productPriceError && (
                 <div className="error" style={{color:'red', fontSize:'8px'}}>{productPriceError}</div>
@@ -243,4 +302,4 @@ if(productName!=='' && productBarcode!==''
   );
 }
 
-export default UpdateCategory;
+export default UpdateProduct;

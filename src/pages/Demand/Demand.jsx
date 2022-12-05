@@ -34,7 +34,8 @@ const getDetail=async()=>{
       var pendingDemand=res.data.data.filter((item)=>item.demandProgress==='Pending');
       console.log(pendingDemand)
       if(pendingDemand.length>0){
-    setDemandList(pendingDemand);}
+    setDemandList(pendingDemand);
+    showDiv(true);}
     else{
       console.log("no pending demand");
     }
@@ -57,7 +58,7 @@ const getDetail=async()=>{
 }
 useEffect(()=>{
  getDetail();
-showDiv(true);
+
 
  },[])
   const showDetailPanel=(e)=>{
@@ -115,7 +116,12 @@ showDiv(true);
                         }
           </div> 
           {
-      hide && defaultDetail && demandDetail ? 
+      hide
+       && 
+       demandDetail 
+       && defaultDetail
+       
+       ? 
           <div className={classs} id="demand_list_detail_id" >
           <div className="demand_list_collapser">
             <div className="demand_list_collapserWrap" onClick={showDetailPanel}>

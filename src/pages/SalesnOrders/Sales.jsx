@@ -802,7 +802,7 @@ const [dataset, setDataset] = useState();
                         }}>Daily</td>
                         <td>{dailyReportData.totalDiscount}</td>
                         <td>{dailyReportData.totalGrossProfit}</td>
-                        <td>{dailyReportData.totalNetProfit}</td>
+                        <td>{dailyReportData.totalNetProfit.toFixed(2)}</td>
                         <td>{dailyReportData.totalOperatingExpense}</td>
                         <td>{dailyReportData.totalRetailPrice}</td>
                         <td>{dailyReportData.totalSalePrice}</td>
@@ -833,7 +833,7 @@ const [dataset, setDataset] = useState();
                         >Weekly</td>
                         <td>{weeklyReportData.totalDiscount}</td>
                         <td>{weeklyReportData.totalGrossProfit}</td>
-                        <td>{weeklyReportData.totalNetProfit}</td>
+                        <td>{weeklyReportData.totalNetProfit.toFixed(2)}</td>
                         <td>{weeklyReportData.totalOperatingExpense}</td>
                         <td>{weeklyReportData.totalRetailPrice}</td>
                         <td>{weeklyReportData.totalSalePrice}</td>
@@ -863,7 +863,7 @@ const [dataset, setDataset] = useState();
                         }}>Monthly</td>
                   <td>{monthlyReportData.totalDiscount}</td>
                   <td>{monthlyReportData.totalGrossProfit}</td>
-                  <td>{monthlyReportData.totalNetProfit}</td>
+                  <td>{monthlyReportData.totalNetProfit.toFixed(2)}</td>
                   <td>{monthlyReportData.totalOperatingExpense}</td>
                   <td>{monthlyReportData.totalRetailPrice}</td>
                   <td>{monthlyReportData.totalSalePrice}</td>

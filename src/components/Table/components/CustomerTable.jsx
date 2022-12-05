@@ -5,15 +5,28 @@ import config from "../../../config/config";
 import TextSnippetIcon from "@mui/icons-material/TextSnippet";
 import ReportDialogCustomer from "./Dialog/ReportDialogCustomer";
 
-function CustomerTable() {
+function CustomerTable(props) {
   const [customer, setCustomer] = useState([]);
   const[reportData,setReportData ]=useState();
   useEffect(() => {
     getCustomer();
-  }, []);
+    console.log(props.filteredData);
+  }, [props.filteredData]);
   const getCustomer = async () => {
-   await axios({
-      
+    console.log(props.filteredData);
+    if (props.filteredData) {
+      if(props.filteredData.length<1){
+        alert("Customer","No data found");
+      }
+      else{
+      setCustomer((data) => [props.filteredData]);
+    
+    }
+
+    }
+    
+ else{
+   await axios({ 
       method: "GET",
       url: `${config.apiURL}/users/getUsers`,
       })
@@ -28,8 +41,10 @@ function CustomerTable() {
         console.log(err);
       }
       );
+    }
   };
   const getReportCustomerData = async(data) => {
+    
     await axios({
       method: "GET",
       url: `${config.apiURL}/reports/getCustomerReport?userId=${data}`,
@@ -39,11 +54,10 @@ function CustomerTable() {
         setReportData(res.data.data);
         setOpenReportDialog(true);
       }
-     
-     
     }).catch((err) => {
       console.log(err);
     })
+    
   }
   const [customerData, setCustomerData] = useState(
   //   [
@@ -145,6 +159,7 @@ function CustomerTable() {
           alignItems: "center",
           border: "1px solid #ddd",
           borderRadius: "10px ",
+          height:"fit-content !important",
         }}
       >
         <thead
@@ -158,12 +173,7 @@ function CustomerTable() {
             position: "sticky",
           }}
         >
-          <tr className={
-            customer.length <= 5
-              ? "table_row"
-              : "..table_container_divScroll"
-
-          }>
+          <tr >
           <th style={{
              padding:"0.5rem"
             }}>Sr.</th>
@@ -190,7 +200,6 @@ function CustomerTable() {
             }}>Generate Report</th>
           </tr>
         </thead>
-      
         <tbody
           style={{
             width: "100%",
@@ -198,11 +207,11 @@ function CustomerTable() {
             backgroundColor: "white",
             border: "1px solid #ddd",
             overflowY: "scroll",
-            height:"300px",
+            height:"fit-content !important",
            
           }}
         >
-          {customer.map((customer, index) => (
+          {customer.length>0 ? customer.map((customer, index) => (
             <tr key={customer.id}>
               <td>{index + 1}</td>
               <td>{customer.username}</td>
@@ -231,7 +240,7 @@ function CustomerTable() {
                     }
                   }/></td>
             </tr>
-          ))}
+          )):<tr><td>No data found</td></tr>}
         </tbody>
        
       </table>

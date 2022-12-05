@@ -18,37 +18,38 @@ import UpdateProduct from "./pages/products/UpdateProduct";
 import Demand from "./pages/Demand/Demand";
 import AcceptedDemand from "./pages/Demand/AcceptedDemand";
 import RejectedDemand from "./pages/Demand/RejectedDemand";
-import Marketing from "./pages/Marketing/Marketing.jsx";
+import Marketing from "./pages/Marketing/Marketing";
 import CreateAdPage from "./pages/Marketing/CreateAdPage";
 import Feedback from "./pages/Feedback/Feedback";
-import Report from "./pages/Reports/Report.jsx";
+import Report from "./pages/Reports/Report";
 function App() {
   const [hide, setHide] = useState(false);
   return (
     <div className="App">
-      <div className="AppGlass">
-        <main>
-          <>
-            {/* <Topbar />
+    <div className="AppGlass">
+      <main>
+        <>
+          {/* <Topbar />
           <div style={{ display: "flex" }}>
           <Sidebar /> */}
-            <Routes>
-              {/* {hide ? null : <Topbar />} */}
-              <Route element={<PrivateComponent />}>
-                <Route
-                  path="/"
-                  exact
-                  element={
-                    <>
-                      <Topbar />
-                      <div style={{ display: "flex" }}>
-                        <Sidebar />
-                        <Home />
-                      </div>
-                    </>
-                  }
-                />
-                {/* <Route
+          <Routes>
+            {/* {hide ? null : <Topbar />} */}
+
+            {/* {hide ? null : <Sidebar />} */}
+            <Route element={<PrivateComponent />}>
+              <Route
+                path="/home"
+                exact
+                element={
+                  <>
+                    <Topbar />
+                    <div style={{ display: "flex" }}>
+                      <Sidebar /> <Home />
+                    </div>
+                  </>
+                }
+              />
+              {/* <Route
                 path="/"
                 element={
                   <>
@@ -56,7 +57,7 @@ function App() {
                   </>
                 }
               /> */}
-                {/* 
+              {/* 
               <Route
                 path="/"
                 element={
@@ -65,82 +66,93 @@ function App() {
                   </>
                 }
               /> */}
+              <Route
+                path="/sales&orders/sales"
+                element={
+                  <>
+                    <Topbar />
+                    <div style={{ display: "flex" }}>
+                      <Sidebar /> <Sales />
+                    </div>
+                  </>
+                }
+              />
+              <Route
+                path="/sales&orders/orders"
+                element={
+                  <>
+                    <Topbar />
+                    <div style={{ display: "flex" }}>
+                      <Sidebar /> <Orders />
+                    </div>
+                  </>
+                }
+              />
+              <Route
+                path="/customers"
+                element={
+                  <>
+                    <Topbar />
+                    <div style={{ display: "flex" }}>
+                      <Sidebar /> <Customer />
+                    </div>
+                  </>
+                }
+              />
+              <Route
+                path="/products"
+                exact
+                element={
+                  <>
+                    <Topbar />
+                    <div style={{ display: "flex" }}>
+                      <Sidebar /> <Product />
+                    </div>
+                  </>
+                }
+              ></Route>
+              <Route
+                path="/products/Detail/:id"
+                exact
+                element={
+                  <>
+                    <Topbar />
+                    <div style={{ display: "flex" }}>
+                      <Sidebar /> <ProductDetail />
+                    </div>
+                  </>
+                }
+              ></Route>
+              <Route
+                path="/category"
+               
+                element={
+                  <>
+                    <Topbar />
+                    <div style={{ display: "flex" }}>
+                      <Sidebar /> <CategoryP />
+                    </div>
+                  </>
+                }
+              ></Route>
+               <Route
+                path="/updatecategory/:id"
+               
+                element={
+                  
+                   <UpdateCategory />
+                 
+                }
+              ></Route>
                 <Route
-                  path="/sales&orders/sales"
-                  element={
-                    <>
-                      <Topbar />
-                      <div style={{ display: "flex" }}>
-                        <Sidebar /> <Sales />
-                      </div>
-                    </>
-                  }
-                />
-                <Route
-                  path="/sales&orders/orders"
-                  element={
-                    <>
-                      <Topbar />
-                      <div style={{ display: "flex" }}>
-                        <Sidebar /> <Orders />
-                      </div>
-                    </>
-                  }
-                />
-                <Route
-                  path="/customers"
-                  element={
-                    <>
-                      <Topbar />
-                      <div style={{ display: "flex" }}>
-                        <Sidebar /> <Customer />
-                      </div>
-                    </>
-                  }
-                />
-                <Route
-                  path="/products"
-                  exact
-                  element={
-                    <>
-                      <Topbar />
-                      <div style={{ display: "flex" }}>
-                        <Sidebar /> <Product />
-                      </div>
-                    </>
-                  }
-                ></Route>
-                <Route
-                  path="/products/Detail/:id"
-                  exact
-                  element={
-                    <>
-                      <Topbar />
-                      <div style={{ display: "flex" }}>
-                        <Sidebar /> <ProductDetail />
-                      </div>
-                    </>
-                  }
-                ></Route>
-                <Route
-                  path="/category"
-                  element={
-                    <>
-                      <Topbar />
-                      <div style={{ display: "flex" }}>
-                        <Sidebar /> <CategoryP />
-                      </div>
-                    </>
-                  }
-                ></Route>
-                <Route
-                  path="/updatecategory/:id"
-                  element={<UpdateCategory />}
-                ></Route>
-                <Route
-                  path="/updateproduct/:id"
-                  element={<UpdateProduct />}
-                ></Route>
+                path="/updateproduct/:id"
+               
+                element={
+                  
+                   <UpdateProduct />
+                 
+                }
+              ></Route>
                 <Route
                   path="/demand"
                   element={
@@ -229,34 +241,21 @@ function App() {
                     </>
                   }
                 ></Route>
-
-                {/* <Route
-                path="/"
-                exact
-                element={
-                  <>
-                    <Login />
-                    {/* {setHide(true)}; */}
-
-                {/* }
-              </Route>
-               */}
-              </Route>
-
-              <Route
-                path="/login"
-                exact
-                element={
-                  <>
-                    <Login />
-                    {/* {setHide(true)}; */}
-                  </>
-                }
-              ></Route>
-            </Routes>
-            {/* </div> */}
-          </>
-        </main>
+            </Route>
+            <Route
+              path="/"
+              exact
+              element={
+                <>
+                  <Login />
+                  {/* {setHide(true)}; */}
+                </>
+              }
+            ></Route>
+          </Routes>
+          {/* </div> */}
+        </>
+      </main>
       </div>
     </div>
   );

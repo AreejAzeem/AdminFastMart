@@ -11,7 +11,8 @@ function Topbar() {
   const logout = () => {
     console.log("apple");
     localStorage.clear();
-    navigate("/");
+    navigate("/")
+ 
     
   };
   return (
@@ -19,10 +20,6 @@ function Topbar() {
     border: "0.9px solid var(--lightgray)",
     boxShadow: "0 0 10px 0 rgba(0,0,0,0.1)",
     backgroundColor: "#fff",
-
-  
-  
-
    }}>
       <div className="topbarWrapper">
         <div className="topLeft">
@@ -55,13 +52,13 @@ function Topbar() {
                 </button>
              
             </div>
-            <div className="topbarIconContainer">
+            {/* <div className="topbarIconContainer">
               <NotificationsNone />
               <CBadge className="topIconBadge">99+</CBadge>
             </div>
             <div className="topbarIconContainer">
               <Settings />
-            </div>
+            </div> */}
             <div className="topbarIconContainer">
               <MoreVertIcon />
             </div>
