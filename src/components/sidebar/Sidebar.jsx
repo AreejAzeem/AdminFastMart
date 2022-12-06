@@ -47,7 +47,7 @@ const [active, setActive]=useState('');
       <div className="sidebarWrapper">
         <div className="sidebarMenu">
           <ul className="sidebarList">
-          <Link to="/" className="link">
+          <Link to="/home" className="link">
             <li className="sidebarListItem" >
               <LineStyle className="sidebarIcon" />
               Home
@@ -125,7 +125,7 @@ const [active, setActive]=useState('');
           </ul>
         </div>
         <div className="sidebar_logout">
-        <Link to="/adminlogin" onClick={logout}>
+        <Link to="/" onClick={logout}>
                 <button className="sidebar_logout_btn" 
                 // onClick={logout}
                 >

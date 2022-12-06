@@ -168,7 +168,7 @@ product=product['product'];
                 </div>
               </div>
               <div className="reportDialog_body">
-                <div className="reportDialog_salesHeader">Sales Report</div>
+                <div className="reportDialog_salesHeader">{props.reportTitle+" "}Sales Report</div>
              <div className="receiptDialog_top_date">Date : {" "+new Date().toLocaleString()}</div>
 
                 <div className="reportDialog_tableDiv">

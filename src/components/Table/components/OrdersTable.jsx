@@ -401,13 +401,13 @@ function OrdersTable(props) {
             <tr key={order.id}>
               <td>{index + 1}</td>
               <td>{order.orderNo}</td>
-              <td>{order.orderUser ? order.orderUser.username : " "}</td>
+              <td>{order.orderUser ? order.orderUser.username : "-"}</td>
               <td>{order.paymentMethod}</td>
               <td>{order.orderDate ? order.orderDate :" "}</td>
               <td>{order.orderTime ? order.orderTime :" " }</td>
               <td>{order.quantity}</td>
               <td>{order.total}</td>
-              <td>{order.orderDiscount ? order.orderDiscount : " "}</td>
+              <td>{order.orderDiscount ? order.orderDiscount : "-"}</td>
             </tr>
           ))}
         </tbody>

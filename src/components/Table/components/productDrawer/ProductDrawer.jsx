@@ -55,6 +55,14 @@ const fileInput=React.createRef();
   // useEffect(() => {
   //  getCategory();
   // }, []);
+  const onBeforeUpload=(image)=> {
+    // get the file size in bytes
+    const sizeInBytes = image.size;
+    alert("File size is: " + sizeInBytes);
+    return sizeInBytes;
+    // get the file size in standard format
+   
+}
   const getCategory = async (e) => {
     // console.log("in category");
     // setCategory(e.target.categoryId);
@@ -81,6 +89,7 @@ const fileInput=React.createRef();
     //     console.log("hbjhjg")
     //   );
     if(productName !== "" && productBarcode !== "" && productPrice !=="" && productImg !=='' && productShortDesc !== "" && category !== "" && stockStatus !== "" ){
+      console.log(productPrice)
       setProductNameError("");
       setProductBarcodeError("");
       setProductPriceError("");
@@ -110,6 +119,11 @@ const fileInput=React.createRef();
        
       })
     );
+    const Imagesize=onBeforeUpload(productImg);
+    console.log("line 42"+ Imagesize);
+    if(Imagesize<1000000){
+      console.log(Imagesize);
+      setProductImgError("");
     const formData = new FormData();
     formData.append("productBarcode", productBarcode);
     formData.append("productName", productName);
@@ -152,7 +166,10 @@ const fileInput=React.createRef();
       .catch((error) => {
         console.log(error);
       });
-
+    }
+    else{
+setProductImgError("Image size should be less than 1MB");
+    }
     //setProduct(result['data']);
 
    
@@ -170,7 +187,7 @@ const fileInput=React.createRef();
     if(productBarcode == ""){
       setProductBarcodeError("Product Barcode is required");
     }
-    if(productPrice == null){
+    if(productPrice === "" || productPrice == null){
       setProductPriceError("Product Price is required");
     }
     if(productImg == null){
@@ -182,10 +199,10 @@ const fileInput=React.createRef();
     if(category == ""){
       setCategoryError("Category is required");
     }
-    if(stockStatus == null){
+    if(stockStatus == ""){
       setStockStatusError("Stock Status is required");
     }
-    if(productRetailPrice == null){
+    if(productRetailPrice === "" || productRetailPrice == null){
       setProductRetailPriceError("Product Retail Price is required");
     }
     
@@ -241,8 +258,15 @@ const fileInput=React.createRef();
                 className="form-control"
                ref={fileInput}
                 onChange={(e) => {
+                  if(onBeforeUpload(e.target.files[0])<1000000){
                   setProductImg(e.target.files[0]);
-                  setProductImgError("");
+                  setProductImgError("");}
+                  else{
+                    setProductImgError("Image size should be less than 1MB");
+                    
+
+                  }
+
                 }}
               
              />
@@ -257,6 +281,7 @@ const fileInput=React.createRef();
                 onClick={getCategory}
                 value={category}
                 multiple={false}
+               
               >
                 {categories.map((e, key) => {
                   return (
@@ -314,9 +339,9 @@ const fileInput=React.createRef();
               )}
             </div>
             <div className="form-group mb-3">
-              <label>Stock</label>
-              <input
-                type="number"
+              <label>Select Stock Status</label>
+              {/* <input
+                type="text"
                 name="stock"
                 className="form-control"
                 onChange={(e) => {
@@ -324,7 +349,22 @@ const fileInput=React.createRef();
                   setStockStatusError("");
                 }}
                 value={stockStatus}
-              ></input>
+              ></input> */}
+              <select
+               className="form-control"
+               onChange={
+                (e) => {
+                  setStockStatus(e.target.value);
+                  setStockStatusError("");
+                }
+              }
+              value={stockStatus}
+              defaultValue="In"
+              
+              >
+                <option value="In">In </option>
+                <option value="Out">Out </option>
+              </select>
               {stockStatusError && (
                 <div className="error" style={{color:'red', fontSize:'8px'}}>{stockStatusError}</div>
               )}

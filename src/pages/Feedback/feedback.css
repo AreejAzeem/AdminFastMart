@@ -87,22 +87,10 @@ margin-right: 10px;
     cursor: pointer;
     margin-right: 10px;
   }
-  .homePage_bottomContain_productSection_adDiv_Scroll{
-   overflow-y: scroll;
- height: 665px;
-    /* box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
-      0 2px 4px rgba(0,0,0,0.07), 
-      0 4px 8px rgba(0,0,0,0.07), 
-      0 8px 16px rgba(0,0,0,0.07),
-      0 16px 32px rgba(0,0,0,0.07), 
-      0 16px 32px rgba(0,0,0,0.07), 
-      0 32px 64px rgba(0,0,0,0.07);
-      border-radius: 20px; */
-
-  }
-  .homePage_bottomContain_productSection_offerDiv_Scroll{
+  
+  .homePage_bottomContain_productSection_feedbackDiv_Scroll{
     overflow-y: scroll;
-  height: 500px;
+  height: 665px;
      /* box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
        0 2px 4px rgba(0,0,0,0.07), 
        0 4px 8px rgba(0,0,0,0.07), 

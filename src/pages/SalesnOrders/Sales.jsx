@@ -233,6 +233,7 @@ function Sales() {
   const[weeklyReportData, setWeeklyReportData] = useState();
   const[monthlyReportData, setMonthlyReportData] = useState();
   const [openReportDialog , setOpenReportDialog] = useState(false);
+  const[reportTitle, setReportTitle] = useState();
   const[reportData, setReportData]= useState();
   const data = {
     labels: [],
@@ -356,43 +357,43 @@ const [dataset, setDataset] = useState();
 
         if (res.data.data) {
           weeklydata.push({
-            name: "Monday",
+            name: "Day1",
             Sales: item.day1.quantity,
             Revenue: item.day1.total,
             //amt: 2400,
           });
           weeklydata.push({
-            name: "Tuesday",
+            name: "Day2",
             Sales: item.day2.quantity,
             Revenue: item.day2.total,
             //amt: 2210,
           });
           weeklydata.push({
-            name: "Wednesday",
+            name: "Day3",
             Sales: item.day3.quantity,
             Revenue: item.day3.total,
             // amt: 2290,
           });
           weeklydata.push({
-            name: "Thursday",
+            name: "Day4",
             Sales: item.day4.quantity,
             Revenue: item.day4.total,
             // amt: 2000,
           });
           weeklydata.push({
-            name: "Friday",
+            name: "Day5",
             Sales: item.day5.quantity,
             Revenue: item.day5.total,
             // amt: 2290,
           });
           weeklydata.push({
-            name: "Saturday",
+            name: "Day6",
             Sales: item.day6.quantity,
             Revenue: item.day6.total,
             // amt: 2000,
           });
           weeklydata.push({
-            name: "Sunday",
+            name: "Day7",
             Sales: item.day7.quantity,
             Revenue: item.day7.total,
             // amt: 2290,
@@ -814,6 +815,7 @@ const [dataset, setDataset] = useState();
                           () => {
                             console.log("clicked")
                             setOpenReportDialog(true)
+                            setReportTitle("Daily")
                             setReportData(dailyReportData)
                           //  getDailyReportData()
                           }
@@ -846,6 +848,7 @@ const [dataset, setDataset] = useState();
                           () => {
                             console.log("clicked")
                             setOpenReportDialog(true)
+                            setReportTitle("Weekly")
                             setReportData(weeklyReportData)
                           //  getDailyReportData()
                           }
@@ -877,6 +880,7 @@ const [dataset, setDataset] = useState();
                     () => {
                       console.log("clicked")
                       setOpenReportDialog(true)
+                      setReportTitle("Monthly")
                       setReportData(monthlyReportData)
                     //  getDailyReportData()
                     }
@@ -886,7 +890,7 @@ const [dataset, setDataset] = useState();
                  ) : (
                     <div style={{ textAlign: "center" }}>No Data</div>
                  )}
-                                        {openReportDialog ? <ReportDialog  setOpenReportDialog={setOpenReportDialog} reportData={reportData} /> : null}
+                                        {openReportDialog ? <ReportDialog  setOpenReportDialog={setOpenReportDialog} reportData={reportData} reportTitle={reportTitle} /> : null}
 
                 </tbody>
 
@@ -1034,43 +1038,43 @@ const monthlydata = [
 ];
 const weeklydata = [
   {
-    name: "Monday",
+    name: "Day1",
     Sales: 40,
     Revenue: 2400,
     amt: 2400,
   },
   {
-    name: "Tuesday",
+    name: "Day2",
     Sales: 35,
     Revenue: 1398,
     amt: 2210,
   },
   {
-    name: "Wednesday",
+    name: "Day3",
     Sales: 120,
     Revenue: 12000,
     amt: 2290,
   },
   {
-    name: "Thursday",
+    name: "Day4",
     Sales: 80,
     Revenue: 7000,
     amt: 2000,
   },
   {
-    name: "Friday",
+    name: "Day5",
     Sales: 70,
     Revenue: 4800,
     amt: 2181,
   },
   {
-    name: "Saturday",
+    name: "Day6",
     Sales: 1009,
     Revenue: 7800,
     amt: 2500,
   },
   {
-    name: "Sunday",
+    name: "Day7",
     Sales: 65,
     Revenue: 4300,
     amt: 2100,

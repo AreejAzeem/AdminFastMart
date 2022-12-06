@@ -13,10 +13,12 @@ import config from "../../config/config";
 function Customer() {
   const[searchInput, setSearchInput]=useState("");
   const[customer, setCustomer]=useState('');
+  const [searchClicked, setSearchClicked]=useState(false);
   useEffect(() => {
     getFilteredData();
   }, []);
   const getFilteredData = async () => {
+    setSearchClicked(true);
     await axios({
       method: "get",
       url: `${config.apiURL}/users/getUsers`,
@@ -29,7 +31,8 @@ function Customer() {
           if(res.data.data){
             res.data.data.map((data)=>{
               if(data.username===searchInput){
-                console.log(data);
+                console.log(searchInput)
+                console.log(data.username);
                 setCustomer(data);
               }
             })
@@ -63,7 +66,7 @@ function Customer() {
        
       
         <div className="customer_table">
-          <CustomerTable filteredData={customer}/>
+          <CustomerTable filteredData={customer} searchClicked={searchClicked}/>
         </div>
       </div>
       </div>

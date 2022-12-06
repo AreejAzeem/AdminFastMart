@@ -15,16 +15,20 @@ function CustomerTable(props) {
   const getCustomer = async () => {
     console.log(props.filteredData);
     if (props.filteredData) {
-      if(props.filteredData.length<1){
-        alert("Customer","No data found");
-      }
-      else{
+      // if(props.filteredData.length<1){
+      //   alert("No data found");
+      // }
+
       setCustomer((data) => [props.filteredData]);
     
-    }
+   
 
     }
-    
+  else if(props.filteredData===undefined){
+    alert("Customer","No data found");
+  }
+
+  
  else{
    await axios({ 
       method: "GET",
@@ -211,15 +215,16 @@ function CustomerTable(props) {
            
           }}
         >
-          {customer.length>0 ? customer.map((customer, index) => (
+          {customer.length>0  ? customer.map((customer, index) => (
             <tr key={customer.id}>
               <td>{index + 1}</td>
               <td>{customer.username}</td>
-              <td>{customer.userImage!=="" ? customer.userImage :<img style={{
+              <td><img  style={{
                 width:"35px",
                 height:"35px",
+                borderRadius:"20px"
              
-              }} src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o="/>}</td>
+              }} src={customer.userImage!=="" ? config.apiURL+customer.userImage :"https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o="}></img></td>
               <td>{customer.email}</td>
               <td>{customer.date ? customer.date.split('T')[0] :"Not defined"}</td>
               <td>{customer.phone ? customer.phone :"+92000000000"}</td>
@@ -240,7 +245,8 @@ function CustomerTable(props) {
                     }
                   }/></td>
             </tr>
-          )):<tr><td>No data found</td></tr>}
+          )) : props.searchClicked && customer.length===0 ? <tr><td colSpan="8">No data found</td></tr> : <tr><td colSpan="8">No data found</td></tr>}
+
         </tbody>
        
       </table>

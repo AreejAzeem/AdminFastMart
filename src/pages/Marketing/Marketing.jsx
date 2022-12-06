@@ -82,7 +82,7 @@ function Marketing() {
                       : "homePage_bottomContain_productSection_adDiv_Scroll"
                   }
                 >
-                  {ads ? 
+                  {ads.length>0 ? 
                   <div>
                     {ads.map((ad) => {
                       return (
@@ -93,7 +93,12 @@ function Marketing() {
                       );
                     })
                   }
-                  </div>:<div>No ads to show</div>}
+                  </div>:<div style={{
+                    fontSize: "1.5rem",
+                    color: "gray",
+                    opacity: "0.5",
+                    textAlign: "center",
+                  }}>No ads to show</div>}
                    
                   
                 </div>
@@ -122,9 +127,14 @@ function Marketing() {
                       marginLeft: "0.5rem",
                     }}
                   >
-                    {offers
+                    {offers.length > 0
                       ? offers.map((offer) => <Offer offer={offer} />)
-                      : null}
+                      : <div style={{
+                        fontSize: "1.5rem",
+                        color: "gray",
+                        opacity: "0.5",
+                        textAlign: "center",
+                      }}>No Offers to show</div>}
                   </div>
                 </div>
               </div>

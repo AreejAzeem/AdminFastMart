@@ -25,7 +25,7 @@ const initialFvalues = {
 
 function CategoryDrawer() {
   const[categoryName,setCategoryName]=useState('');
-  const[categoryImg,setCategoryImg]=useState('');
+  const[categoryImg,setCategoryImg]=useState();
   const[categoryDesc,setCategoryDesc]=useState('');
   const [categoryNameError, setCategoryNameError]=useState('');
   const [categoryImgError, setCategoryImgError]=useState('');
@@ -187,9 +187,11 @@ function CategoryDrawer() {
                     type="file"
                     name="file"
                     className="form-control"
-                    onChange={(e)=>{setCategoryImg(e.target.files[0])
+                    onChange={(e)=>{
+                      setCategoryImg(e.target.files[0])
+
                     setCategoryImgError('')}}
-                    value={categoryImg}
+                
                     
                     
                   ></input>

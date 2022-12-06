@@ -21,7 +21,7 @@ import RejectedDemand from "./pages/Demand/RejectedDemand";
 import Marketing from "./pages/Marketing/Marketing";
 import CreateAdPage from "./pages/Marketing/CreateAdPage";
 import Feedback from "./pages/Feedback/Feedback";
-import Report from "./pages/Reports/Report";
+
 function App() {
   const [hide, setHide] = useState(false);
   return (
@@ -230,17 +230,7 @@ function App() {
                     </>
                   }
                 ></Route>
-                  <Route
-                  path="/reports"
-                  element={
-                    <>
-                      <Topbar />
-                      <div style={{ display: "flex" }}>
-                        <Sidebar /> <Report />
-                      </div>
-                    </>
-                  }
-                ></Route>
+             
             </Route>
             <Route
               path="/"

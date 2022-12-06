@@ -46,11 +46,11 @@ function UpdateProduct() {
       console.log(res.data);
       setProductBarcode(res.data.data.productBarcode);
       setProductName(res.data.data.productName);
-      setCategory(res.data.data.category.categoryName);
+      // setCategory(res.data.data.category.categoryName);
       setProductShortDesc(res.data.data.productShortDesc);
       setProductPrice(res.data.data.productPrice);
-      setProductImg(res.data.data.productImg);
-      setStockStatus(res.data.data.stockStatus);
+      setProductImg(config.apiURL+res.data.data.productImg);
+     // setStockStatus(res.data.data.stockStatus);
       setProductRetailPrice(res.data.data.productRetailPrice);
     }
     ).catch((err) => {
@@ -283,7 +283,13 @@ if(productName!=='' && productBarcode!==''
                   className="form-control"
                   onChange={(e) => {
                     setStockStatus(e.target.value);
+                    if(stockStatus == "In" || stockStatus == "Out"){
                     setStockStatusError("");
+                    }
+                    else{
+                      setStockStatusError("Stock Status should be In or Out");
+                    }
+             
                   }}
                   value={stockStatus}
                 ></input>

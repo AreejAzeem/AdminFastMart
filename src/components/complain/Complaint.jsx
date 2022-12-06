@@ -9,6 +9,7 @@ function Complaint(complaint) {
     
   }, []);
   return (
+    
     <div className="Complaint">
       <div className="Complaint_Wrapper">
         <div className="Complaint_Container">
