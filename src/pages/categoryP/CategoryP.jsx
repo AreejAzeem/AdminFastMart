@@ -27,7 +27,7 @@ console.log("in line 16 "+searchInput);
       <h2 className="category_title">Categories</h2>
       <div className="category_searchContainer">
         <div className="category_searchField">
-          <Search placeholder="search by category type" setSearchInput={setSearchInput} 
+          <Search placeholder="search by name" setSearchInput={setSearchInput} 
           className="category_searchInput" 
          />
            <BiSearch size={30} color="orange"className="category_searchField_searchbtn"

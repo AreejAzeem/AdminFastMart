@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import "./UpdateCategory.css";
 import { Navigate, useParams, useNavigate } from "react-router-dom";
 import config from "../../config/config";
+import { Category } from "@mui/icons-material";
 function UpdateCategory() {
   const [categoryName, setCategoryName] = useState("");
   const [categoryImg, setCategoryImg] = useState("");
@@ -13,7 +14,7 @@ function UpdateCategory() {
   const onBeforeUpload=(image)=> {
     // get the file size in bytes
     const sizeInBytes = image.size;
-    alert("File size is: " + sizeInBytes);
+   // alert("File size is: " + sizeInBytes);
     return sizeInBytes;
     // get the file size in standard format
    
@@ -66,7 +67,7 @@ function UpdateCategory() {
       }
      
     );
-  
+  alert("category updated successfully");
     console.log("result" + result);
     // console.log("after result");
     // console.warn(result);

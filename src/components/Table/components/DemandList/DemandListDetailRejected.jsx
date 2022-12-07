@@ -52,15 +52,16 @@ console.log(rejectedDemandDetail);
               fontSize:'14px',
 
               fontWeight:'400',
-              justifyContent:'center',
-              border:'0.3px solid gray',
-              borderRadius:'10px',
-              padding:'8px',
-              verticalAlign:'middle',
-              background:'var(--orangestandard)',
-              backgroundOpacity:'0.5',
-              opacity:0.9,
-              color:'white',
+              border: "0.1px solid lightgray",
+              borderRadius: "10px",
+              padding: "8px",
+              verticalAlign: "middle",
+             background: "var(--orangestandard)",
+             backgroundOpacity: "0.5",
+              opacity: 0.9,
+              marginLeft:"-40px",
+              color: "white",
+            //  color:'white',
             }}>{rejectedDemandDetail.demandProduct}</h6>
           </div>
           <div className="demandList_rejected_message">
@@ -116,6 +117,41 @@ console.log(rejectedDemandDetail);
         <div className="demandListDetail_rejected_dateDiv">
           <h6 className="demandListDetail_rejected_date">{defaultDetail.createdDateTime.split("T")[0]}</h6>
         </div>
+        <div className="demandlistDetail_productDiv">
+              <h4
+                style={{
+                  color: "gray",
+                  fontSize: "14px",
+                  fontWeight: "700",
+                  justifyContent: "center",
+                  verticalAlign: "middle",
+                  marginTop: "6px",
+                }}
+              >
+                {" "}
+                Product :
+              </h4>
+              <h6
+                style={{
+             
+                  fontSize: "14px",
+
+                  fontWeight: "400",
+                  justifyContent: "center",
+                  border: "0.1px solid lightgray",
+                  borderRadius: "10px",
+                  padding: "8px",
+                  verticalAlign: "middle",
+                 background: "var(--orangestandard)",
+                 backgroundOpacity: "0.5",
+                  opacity: 0.9,
+                  marginLeft:"-40px",
+                  color: "white",
+                }}
+              >
+                {defaultDetail.demandProduct}
+              </h6>
+            </div>
         <div className="demandList_rejected_message">
           <p className="demandList_rejected_messageText">
            {defaultDetail.message}

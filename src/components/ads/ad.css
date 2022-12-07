@@ -60,6 +60,7 @@ align-items: center;
 }
 .ad_LeftContainer_description{
     font-size: 13px;
+    opacity: 70%;
 }
 .ad_RightContainer{
     width: 30%;

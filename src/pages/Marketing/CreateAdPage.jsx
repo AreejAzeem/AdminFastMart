@@ -81,7 +81,7 @@ function CreateAdPage({ handleChange, formInputData, handleSubmit }) {
   const onBeforeUpload = (image) => {
     // get the file size in bytes
     const sizeInBytes = image.size;
-    alert("File size is: " + sizeInBytes);
+   // alert("File size is: " + sizeInBytes);
     return sizeInBytes;
     // get the file size in standard format
   };
@@ -617,7 +617,7 @@ function CreateAdPage({ handleChange, formInputData, handleSubmit }) {
                     marginBottom: "10px",
                   }}
                 >
-                  {adTypeError}
+                  {adTypeError} 
                 </div>
               )}
               {adType === "2" ? (
@@ -834,6 +834,13 @@ function CreateAdPage({ handleChange, formInputData, handleSubmit }) {
               <button
                 type="submit"
                 className="submitbtn"
+                style={{
+                  borderRadius:"20px",
+                   textAlign:"center",
+                   justifyContent:"center",
+                   marginLeft:"270px",
+                   width:"150px"
+                }}
                 onClick={addAdvertisement}
               >
                 Submit

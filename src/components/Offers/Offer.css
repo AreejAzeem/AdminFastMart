@@ -85,6 +85,7 @@ background-repeat: round;
 .offerRightConatiner_validDiv{
     display: flex;
     margin-top: 5px;
+    justify-content: space-between;
 }
 .offer_RightContainer_discountDiv{
     margin-right:10px;

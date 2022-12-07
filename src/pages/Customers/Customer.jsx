@@ -59,7 +59,7 @@ function Customer() {
               borderRaduis: "10px !important",
             }}
             setSearchInput={setSearchInput}/>
-                        <BiSearch size={38} color={"rgb(231, 128, 55)"} style={{marginTop:'7px', marginLeft:'3px', cursor:'pointer'}} 
+                        <BiSearch size={38} color={"rgb(231, 128, 55)"} style={{marginTop:'10px', marginLeft:'10px', cursor:'pointer'}} 
                         onClick={getFilteredData} /></div>
 
           </div>

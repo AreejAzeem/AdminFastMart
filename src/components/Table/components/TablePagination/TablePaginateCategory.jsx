@@ -31,6 +31,7 @@ import RoundChild from "../RoundChild";
 
 import "./TablePaginateCategory.css";
 import config from "../../../../config/config";
+import axios from "axios";
 
 // function createData(
 //   orderNum,
@@ -86,6 +87,15 @@ const headCells = [
     disablePadding: false,
     label: "Id",
     align: "center",
+  
+  },
+  {
+    id: "categoryName",
+    numeric: false,
+    disablePadding: false,
+    label: "Name",
+    align: "center",
+  
   },
   {
     id: "categoryImg",
@@ -95,11 +105,12 @@ const headCells = [
     align: "center",
   },
   {
-    id: "categoryParent",
+    id: "categoryDesc",
     numeric: false,
     disablePadding: false,
-    label: "Parent",
+    label: "Description",
     align: "center",
+  
   },
   // {
   //   id: "categoryChild",
@@ -154,7 +165,7 @@ function EnhancedTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? "right" : "center"}
+            align={headCell.numeric ? "center" : "center"}
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -172,7 +183,6 @@ function EnhancedTableHead(props) {
             </TableSortLabel>
           </TableCell>
         ))}
- <TableCell style={{textAlign:'center'}}><Typography className="tablehead_detail" style={{fontSize:"0.875rem", fontWeight:"500",fontFamily: "'Inter', sans-serif"}}>Children</Typography></TableCell>
         {/* <TableCell><Typography className="tablehead_detail" style={{fontSize:"0.875rem", fontWeight:"500",fontFamily: "'Inter', sans-serif"}}>Details</Typography></TableCell> */}
         <TableCell><Typography className="tablehead_edit" style={{fontSize:"0.875rem", fontWeight:"500",fontFamily: "'Inter', sans-serif"}}>Edit</Typography></TableCell>
       </TableRow>
@@ -209,18 +219,35 @@ export default function TablePaginateCategory(props) {
     console.warn("hi deleteee" + ids[0]);
     ids.map(async(id)=>{
 
-    let result = await fetch(
+    // let result = await fetch(
       
-      config.apiURL+"/categories/category/"+id,
-      {
-        method: "delete",
+    //   config.apiURL+"/categories/category/"+id,
+    //   {
+    //     method: "delete",
+    //   }
+    // ).then((res)=>{
+    //   result =  result.json();
+    //   if (result) {
+    //     alert("Record Deleted");
+    //     setCategory(category.filter((item) => item.categoryId !== id));
+    //   }
+    // });
+    await axios({
+      method: 'delete',
+      url: config.apiURL+"/categories/category/"+id,
+      headers: {
+        'Content-Type': 'application/json',
+
+      },
+    }).then((res)=>{
+      console.log(res);
+      if (res.status===200) {
+        alert("Record Deleted");
+        setCategory(category.filter((item) => item.categoryId !== id));
       }
-    );
-    result = await result.json();
-    if (result) {
-      alert("Record Deleted");
-      setCategory(category.filter((item) => item.categoryId !== id));
-    }
+
+    })
+   
 });
 setSelected([]);
   };
@@ -233,7 +260,7 @@ const getCategory = async () => {
     else{
     // let result = await fetch("http://192.168.30.176:4000/categories/category");
     // let result = await fetch("http://localhost:5000/categories/category");
-     let result = await fetch(config.apiURL+"/categories/category");
+     let result = await fetch(config.apiURL+"/categories/categoriesForAdmin");
 
     result = await result.json();
     console.log(result);
@@ -416,6 +443,9 @@ const getCategory = async () => {
                         <Checkbox
                         onClick={(event) => handleClick(event, row.categoryId)}
                           color="primary"
+                          style={{
+                            marginRight: "10px",
+                          }}
                           checked={isItemSelected}
                           inputProps={{
                             "aria-labelledby": labelId,
@@ -428,22 +458,39 @@ const getCategory = async () => {
                         scope="row"
                         padding="none"
                         align="center"
+                       
                       >
-                        {index}
+                        <h5 style={{
+                          fontWeight:"normal",
+                          fontSize:"16px",
+                          marginRight:"17px"
+                        }}>{row.categoryId}</h5>
+                        
                       </TableCell>
-                      <TableCell><div style={{ backgroundColor: "white", width: "3px" }}>
+                      <TableCell
+                       
+                      >
+                        {row.categoryName}
+                      </TableCell>
+                      <TableCell><div style={{ backgroundColor: "white", width: "100px", justifyContent:"center",
+                    marginLeft:"50px" }}>
                     <img
                       style={{ width: "40px", borderRadius: "5px" }}
                       src={url + row.categoryImg}
                       alt=""
                     />
                   </div></TableCell>
-                      <TableCell align="center">{row.categoryName}</TableCell>
-                      <TableCell> {
-                    <>
-                      <RoundChild name={row.categoryName} />
-                    </>
-                  }</TableCell>
+                      
+                      <TableCell style={{
+                        alignItems: "center",
+                        textAlign: "center",
+                        justifyContent: "center",
+                      }}> 
+                    {/* <>
+                      <RoundChild name={row.categoryDesc} />
+                    </> */}
+                    {row.categoryDesc}
+                  </TableCell>
                       {/* <TableCell align="center">{<VisibilityOutlinedIcon />}</TableCell> */}
 
                       <TableCell align="center"> 
@@ -452,6 +499,7 @@ const getCategory = async () => {
                       <ModeEditOutlineIcon
                         style={{
                           margin: "3px",
+                          marginRight:"13px",
                           color: "#de751f",
                           cursor: "pointer",
                         }}

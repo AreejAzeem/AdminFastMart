@@ -2,7 +2,7 @@ import React from "react";
 import "./search.css";
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
-export default function Search({setSearchInput}) {
+export default function Search({setSearchInput, placeholder}) {
   const [inputText, setInputText] = useState("");
  
   let inputHandler = (e) => {
@@ -20,8 +20,8 @@ export default function Search({setSearchInput}) {
           id="outlined-basic"
           variant="outlined"
           fullWidth
-        
-          label="Search"
+       
+          label={placeholder}
           onChange={inputHandler}
         />
     </div>

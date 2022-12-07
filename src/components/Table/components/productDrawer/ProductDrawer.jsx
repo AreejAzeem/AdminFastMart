@@ -58,7 +58,7 @@ const fileInput=React.createRef();
   const onBeforeUpload=(image)=> {
     // get the file size in bytes
     const sizeInBytes = image.size;
-    alert("File size is: " + sizeInBytes);
+    // alert("File size is: " + sizeInBytes);
     return sizeInBytes;
     // get the file size in standard format
    
@@ -119,9 +119,14 @@ const fileInput=React.createRef();
        
       })
     );
-    const Imagesize=onBeforeUpload(productImg);
-    console.log("line 42"+ Imagesize);
-    if(Imagesize<1000000){
+    var Imagesize;
+    if(productImg){
+  Imagesize =onBeforeUpload(productImg);
+    console.log("line 42"+ Imagesize);}
+    else{
+      setProductImgError("Image is required")
+    }
+    if( Imagesize<1000000){
       console.log(Imagesize);
       setProductImgError("");
     const formData = new FormData();

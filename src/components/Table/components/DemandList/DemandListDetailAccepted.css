@@ -120,14 +120,14 @@ font-size: 18px;
     width: 100%;
 }
   .approved_demandListDetail{
-    width:50%;
+    width:100%;
     margin-top: -3%;
-   margin-left: 25%;
-  margin-right: 50%;
+ 
+
     background-color: green;
     color: white;
     padding: 2%;
-    opacity: 64%;
+    opacity: 50%;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 .demandlistDetail_accepted_productDiv{

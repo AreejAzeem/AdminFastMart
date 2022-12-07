@@ -214,21 +214,22 @@ product=product['product'];
                         </tr>
                         </thead>
                         <tbody>
-                        <tr style={{
-                           backgroundColor:"var(--lightgray)",
-                        }}>
+                        
+                        <tr>
                             <td>1</td>
                         <td style={{
                             fontWeight:"bold",
-                        }}> Discount</td>   
-                        <td>{props.reportData.totalDiscount}</td>
+                        }}>Total Sales </td>
+                        <td>{props.reportData.totalSalePrice.toFixed(2)}</td>
                         </tr>
-                        <tr>
+                        <tr style={{
+                           backgroundColor:"var(--lightgray)",
+                        }}>
                             <td>2</td>
                         <td style={{
                             fontWeight:"bold",
-                        }}> Gross profit</td>
-                        <td>{props.reportData.totalGrossProfit.toFixed(2)}</td>
+                        }}>Total Retail Price</td>
+                        <td>{props.reportData.totalRetailPrice.toFixed(2)}</td>
                         </tr>
                         <tr style={{
                            backgroundColor:"var(--lightgray)",
@@ -236,11 +237,30 @@ product=product['product'];
                             <td>3</td>
                         <td style={{
                             fontWeight:"bold",
-                        }}>Net Profit</td>
-                        <td>{props.reportData.totalNetProfit.toFixed(2)}</td>
+                        }}> Total Discount</td>   
+                        <td>{props.reportData.totalDiscount.toFixed(2)}</td>
                         </tr>
+                       
                         <tr>
                             <td>4</td>
+                        <td style={{
+                            fontWeight:"bold",
+                        }}>Total Gross profit</td>
+                        <td>{props.reportData.totalGrossProfit.toFixed(2)}</td>
+                        </tr>
+                        <tr style={{
+                           backgroundColor:"var(--lightgray)",
+                        }}>
+                            <td>5</td>
+                        <td style={{
+                            fontWeight:"bold",
+                        }}>Tax Collected</td> 
+                        <td >{props.reportData.totalTaxCollected.toFixed(2)}</td> 
+                        
+
+                            </tr>
+                            <tr>
+                            <td>6</td>
                         <td style={{
                             fontWeight:"bold",
                         }}>Operating Expense</td>
@@ -249,30 +269,15 @@ product=product['product'];
                         <tr style={{
                            backgroundColor:"var(--lightgray)",
                         }}>
-                            <td>5</td>
-                        <td style={{
-                            fontWeight:"bold",
-                        }}>Retail Price</td>
-                        <td>{props.reportData.totalRetailPrice}</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                        <td style={{
-                            fontWeight:"bold",
-                        }}>Sale Price</td>
-                        <td>{props.reportData.totalSalePrice}</td>
-                        </tr>
-                        <tr style={{
-                           backgroundColor:"var(--lightgray)",
-                        }}>
                             <td>7</td>
                         <td style={{
                             fontWeight:"bold",
-                        }}>Tax Collected</td> 
-                        <td >{props.reportData.totalTaxCollected}</td> 
-                        
-
-                            </tr>
+                        }}>Total Net Profit</td>
+                        <td>{props.reportData.totalNetProfit.toFixed(2)}</td>
+                        </tr>
+                       
+                       
+                      
                             </tbody>
                     </table>
 

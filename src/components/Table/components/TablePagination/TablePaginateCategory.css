@@ -1,2 +1,11 @@
 .css-1q1u3t4-MuiTableRow-root.MuiTableRow-hover:hover{    background-color: "primary.light" !important;
 }
+.css-1ndpvdd-MuiTableCell-root{
+margin-left: 30px !important;
+width:300px !important;
+
+}
+.css-1ygcj2i-MuiTableCell-root{
+    width: 170px !important;
+    text-align: center;
+}

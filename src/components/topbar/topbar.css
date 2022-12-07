@@ -12,15 +12,16 @@
   border-color: rgb(246, 246, 236);
 }
 .topLeft {
-  width: 27.5%;
-  margin: 0px !important ;
+  width: 16%;
+margin-left: 18px;
   padding: 0px !important;
 }
 .user_topbar {
   display: flex;
   border-color: rgb(39, 38, 36);
 
-  width: 100%;
+  width:200px;
+
   padding: 5px 5px;
 }
 .topbarWrapper {
@@ -99,4 +100,5 @@
 }
 .logout_btncont{
   margin-right: 3%;
+  display: flex;
 }

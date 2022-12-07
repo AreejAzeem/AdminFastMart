@@ -81,12 +81,14 @@ function Product() {
     <>
       <div className="product">
       <div className="productWrapper">
-        <div >
+        <div style={{
+          marginLeft:'8px',
+        }}>
         <h2 className="product_title">Products</h2></div>
         <div className="product_searchContainer">
           <div className="product_searchField">
             <Search placeholder="Search Product by Name" setSearchInput={setSearchInput} />
-            <BiSearch size={38} color="orange" style={{marginTop:'7px', marginLeft:'3px', cursor:'pointer'}} 
+            <BiSearch size={38} color="orange" style={{marginTop:'9px', marginLeft:'14px', cursor:'pointer'}} 
            onClick={getFilteredData}/>
           </div>
           {/* <div className="category_Field">

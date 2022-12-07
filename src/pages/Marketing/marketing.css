@@ -75,7 +75,7 @@ margin-right: 10px;
     position: relative;
     background-color: #de751f;
     border: none;
-    border-radius: 3px;
+    border-radius: 40px !important;
     font-size: 15px;
     color: #ffffff;
     padding: 13px;
@@ -86,10 +86,13 @@ margin-right: 10px;
     overflow: hidden;
     cursor: pointer;
     margin-right: 10px;
+    margin-top: 5px !important;
   }
   .homePage_bottomContain_productSection_adDiv_Scroll{
    overflow-y: scroll;
  height: 507px;
+ margin-left: 20px;
+ width:98%;
     /* box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
       0 2px 4px rgba(0,0,0,0.07), 
       0 4px 8px rgba(0,0,0,0.07), 

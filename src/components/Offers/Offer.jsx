@@ -67,6 +67,7 @@ function Offer(offer) {
                      
                         borderRadius:"0.5rem",
                         padding:"0.3rem",
+                        marginLeft:"7px"
                     }}>{offer.offer.categoryId.categoryName}</h5>
                 </div>
 
@@ -86,9 +87,15 @@ function Offer(offer) {
             
                </div>
                  <div className="offerRightConatiner_validDiv">
+                  <div style={{
+                    width:"90%",
+                    display:"flex",
+
+                  }}>
                 <h5 style={{
                     fontSize:"1rem",
                     marginTop:"4px",
+                    marginLeft:"5px",
                 }}>From</h5>
                 <h5 style={{
                     fontSize:"1rem",
@@ -99,6 +106,11 @@ function Offer(offer) {
                     padding:"4px",
                     borderRadius:"5px",
                 }}>{offer.offer.startDate}</h5>
+                </div>
+                <div style={{
+                    width:"30%",
+                    display:"flex",
+                  }}>
                 <h5 style={{
                     fontSize:"1rem",
                     marginTop:"4px",
@@ -113,6 +125,7 @@ function Offer(offer) {
                     padding:"4px",
                     borderRadius:"5px",
                 }}>{offer.offer.endDate}</h5>
+                </div>
                </div> 
 
           </div>

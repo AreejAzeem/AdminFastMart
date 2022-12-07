@@ -43,7 +43,7 @@ function FeaturedInfo(props) {
                 </div>
             <span className='featuredTitle'>Today Revenue</span>
             <div className='featuredMoneyImgContainer'>
-                <span className='featuredMoney'>Rs {" "+props.total}</span> 
+                <span className='featuredMoney'>Rs {" "+props.total.toFixed(2)}</span> 
              </div>
            
         </div>

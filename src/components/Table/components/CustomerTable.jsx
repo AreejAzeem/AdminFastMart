@@ -179,28 +179,28 @@ function CustomerTable(props) {
         >
           <tr >
           <th style={{
-             padding:"0.5rem"
+             
             }}>Sr.</th>
             <th style={{
-             padding:"0.5rem"
+           
             }}>Name</th>
             <th style={{
-             padding:"0.5rem"
+            
             }}>Image</th>
             <th style={{
-             padding:"0.5rem"
+          
             }}>Email</th>
             <th style={{
-             padding:"0.5rem"
+            
             }}>Date</th>
             <th style={{
-             padding:"0.5rem"
+            
             }}>Phone</th>
             <th style={{
-             padding:"0.5rem"
+             
             }}>City</th>
             <th style={{
-             padding:"0.5rem"
+            
             }}>Generate Report</th>
           </tr>
         </thead>

@@ -34,7 +34,7 @@ function CategoryDrawer() {
   const onBeforeUpload=(image)=> {
     // get the file size in bytes
     const sizeInBytes = image.size;
-    alert("File size is: " + sizeInBytes);
+    // alert("File size is: " + sizeInBytes);
     return sizeInBytes;
     // get the file size in standard format
    

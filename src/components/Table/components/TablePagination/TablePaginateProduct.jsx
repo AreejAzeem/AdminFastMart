@@ -488,7 +488,13 @@ const deleteProduct = async (ids) => {
                       <TableCell align="center">{row.category.categoryName}</TableCell>
                       <TableCell align="center">{row.productRetailPrice}</TableCell>
                       <TableCell align="center">{row.productPrice}</TableCell>
-                      <TableCell align="center">{row.stockStatus}</TableCell>
+                      <TableCell style={{
+                        color: (row.stockStatus === "in" || row.stockStatus==="In" || row.stockStatus==="IN" )? "green" : (row.stockStatus==="Out" || row.stockStatus==="out" || row.stockStatus==="OUT") ? "red" :"black",
+                     fontWeight: "bold",
+                     fontSize: "15px",
+                    
+                       
+                      }} align="center">{row.stockStatus }</TableCell>
                       <TableCell align="center"> {
                     <IconContext.Provider value={{ color: "blue" }}>
                       <Link to={"/products/Detail/" + row.productId}>

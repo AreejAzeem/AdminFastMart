@@ -85,7 +85,7 @@ function Orders() {
                   borderRaduis: "10px !important",
                 }}
                 setSearchInput={setSearchInput}/>
-                <BiSearch size={38} color="orange" style={{marginTop:'7px', marginLeft:'3px', cursor:'pointer'}}
+                <BiSearch size={38} color="orange" style={{marginTop:'10px', marginLeft:'10px', cursor:'pointer'}}
                 onClick={getFilteredData} 
 />
               </div>

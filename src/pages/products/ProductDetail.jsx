@@ -70,9 +70,9 @@ function ProductDetail() {
                 marginTop: "2%",
 
               }}>Retail Price</h3>
-              <h3 style={{ fontWeight: "bold" ,
+              <h3 style={{ 
             color:"gray",
-            fontSize:"1.2rem",
+            fontSize:"1rem",
             border:"0.2px solid var(--darkergray)",
             borderRadius:"5px",
             padding:"5px",
@@ -88,9 +88,9 @@ function ProductDetail() {
                 marginTop: "2%",
 
               }}>Price</h3>
-              <h3 style={{ fontWeight: "bold" ,
+              <h3 style={{
             color:"gray",
-            fontSize:"1.2rem",
+            fontSize:"1rem",
             border:"0.2px solid var(--darkergray)",
             borderRadius:"5px",
             padding:"5px",
@@ -99,14 +99,19 @@ function ProductDetail() {
               </h3>
             </div>
             <div className="product_stock_quantity">
-              <div className="stock">
+              <div className="stock" style={{
+                 backgroundColor:(produc.stockStatus==="in" ||produc.stockStatus==="IN" || produc.stockStatus==="In"  )? "rgba(222,247,236,var(--bg-opacity)" :"#D03D56",
+                 opacity:"60%"
+              }}>
                 <h5
                   style={{
                     fontSize: " 1rem",
                     textOpacity: "4",
-                    color: "rgba(14,159,110)",
+                    color:((produc.stockStatus==="in" ||produc.stockStatus==="IN" || produc.stockStatus==="In"  )? "rgba(14,159,110)" : "rgba(255,0,0)"),
                     marginBottom: "0rem",
                     padding: "1.5px",
+                  
+                    
                   }}
                 >
                   {"Stock : " + produc.stockStatus}
@@ -124,19 +129,17 @@ function ProductDetail() {
               </h5>
               <p
                 style={{
-                  color: "rgba(112,114,117)",
                   textAlign: "justify",
                 
-                  border: "0.4px solid",
-                  borderColor:"#E0E0E0",
+                 color:"gray",
                   borderRadius:"5px",
                   padding:"3%",
-                  boxShadow:"0px 0px 5px 0px rgba(0,0,0,0.1)",
-                  marginTop:"2%",
+                marginTop:"-10px",
                   marginBottom:"2%",
                   width:"100%",
                   height:"100%",
                   overflow:"auto",
+                  marginLeft:'-7px'
                   
 
 

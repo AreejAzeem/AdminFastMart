@@ -5,6 +5,8 @@ import { CBadge } from "@coreui/react";
 import { Link, Navigate } from "react-router-dom";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useNavigate } from "react-router-dom";
+import BiLogOutCircle from "@mui/icons-material/Logout";
+import config from "../../config/config";
 
 function Topbar() {
   let navigate = useNavigate();
@@ -15,6 +17,7 @@ function Topbar() {
  
     
   };
+  
   return (
     <div className="topbar" style={{ position: "static" , 
     border: "0.9px solid var(--lightgray)",
@@ -27,7 +30,9 @@ function Topbar() {
           <div className="user_topbar">
             <img
               style={{ display: "block" }}
-              src="https://stat1.bollywoodhungama.in/wp-content/uploads/2019/04/The-Girl-On-The-Train-24-306x393.jpg"
+              src={config.apiURL + "/uploads/users/1670354979962-IMG_1000020276_625678.jpeg"}
+            
+              
               alt="topAvatar"
               className="topAvatar"
             />
@@ -40,16 +45,21 @@ function Topbar() {
         </div>
         <div className="topRight">
           <div className="left_topRight">
-            <h3 style={{ font_size: "3rem", margin: "5px" }}>
-              Dashboard Overview
+            <h3 style={{ font_size: "3rem", margin: "5px" ,marginLeft:"16px"}}>
+              Dashboard 
             </h3>
           </div>
           <div className="right_topRight">
             <div className="logout_btncont">
-             
-                <button className="logout_btn" onClick={logout}>
-                  Logout
-                </button>
+             <h5 style={{
+              fontSize:"14px",
+              color:"var(--orangestandard)",
+              marginRight:"10px",
+              marginTop:"8px",
+              fontWeight:"bold",
+              opacity:"70%"
+             }}>Logout</h5>
+               <BiLogOutCircle onClick={logout} style={{ fontSize: "2rem", color: "var(--orangestandard)" }} /> 
              
             </div>
             {/* <div className="topbarIconContainer">
@@ -59,9 +69,9 @@ function Topbar() {
             <div className="topbarIconContainer">
               <Settings />
             </div> */}
-            <div className="topbarIconContainer">
+            {/* <div className="topbarIconContainer">
               <MoreVertIcon />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

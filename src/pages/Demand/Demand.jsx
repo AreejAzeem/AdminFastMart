@@ -31,7 +31,7 @@ const getDetail=async()=>{
     console.log(res);
     if(res.data.data){
       console.log(res.data.data);
-      var pendingDemand=res.data.data.filter((item)=>item.demandProgress==='Pending');
+      var pendingDemand=res.data.data.filter((item)=>item.demandProgress==='Pending' || item.demandProgress==='pending');
       console.log(pendingDemand)
       if(pendingDemand.length>0){
     setDemandList(pendingDemand);
@@ -118,8 +118,8 @@ useEffect(()=>{
           {
       hide
        && 
-       demandDetail 
-       && defaultDetail
+      demandDetail 
+      && defaultDetail
        
        ? 
           <div className={classs} id="demand_list_detail_id" >

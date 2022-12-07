@@ -12,7 +12,7 @@ import DemandListDetailRejected from "../../components/Table/components/DemandLi
 
 function RejectedDemand() {
   const [hide, setHide] = useState(true);
-  const [classs, setClasss] = useState("demand_list_detail");
+  const [classs, setClasss] = useState("rejectedDemand_list_detail");
   const [rejectedDemandList, setRejectedDemandList]=useState();
   const [rejectedDemandDetail, setRejectedDemandDetail]=useState();
   var rejectedDefaultDetail;
@@ -30,7 +30,7 @@ function RejectedDemand() {
        console.log(res);
        if(res.data.data){
          console.log(res.data.data);
-         var rejectedDemand=res.data.data.filter((item)=>item.demandProgress==='Rejected');
+         var rejectedDemand=res.data.data.filter((item)=>item.demandProgress==='Rejected' || item.demandProgress==='rejected');
          console.log(rejectedDemand)
          if(rejectedDemand.length>0){
           console.log("rejected demnad")
@@ -64,7 +64,7 @@ function RejectedDemand() {
    else {
       console.log("in hide false")
       // document.getElementById('demand_list_detail_id').style.display='contents';
-      document.getElementById("rejectedDemand_list_id").style.width = "500px";
+      document.getElementById("rejectedDemand_list_id").style.width = "400px";
     
 
       // document.getElementById('demand_list_detail_id').style.border='1px solid var(--darkergray)';
@@ -100,11 +100,18 @@ function RejectedDemand() {
                           width:'1000px',
                           textAlign:'center',
                           color:'var(--darkestgray)',
-                        }}>No demands to show</div>}
+                        }}></div>}
             </div>
 
-            {(hide  && rejectedDefaultDetail) && (rejectedDemandList && rejectedDemandDetail) ? (
-              <div className={classs} id="rejectedDemand_list_detail_id">
+            {(hide 
+            //  && rejectedDefaultDetail) && (rejectedDemandList && rejectedDemandDetail
+              )
+              ? (
+              <div className={classs} id="rejectedDemand_list_detail_id" style={{
+                width:"55%",
+                height:"515px",
+                marginTop:"50px"
+              }}>
                 <div className="acceptedDemand_list_collapser">
                   <div className="rejectedDemand_list_collapserWrap">
                     <BsArrowLeftCircleFill

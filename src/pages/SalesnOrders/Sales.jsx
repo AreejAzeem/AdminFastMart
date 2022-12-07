@@ -781,7 +781,7 @@ const [dataset, setDataset] = useState();
                     fontSize:"10px",
 
                   }}>
-                    <th>[]</th>
+                    <th>Report</th>
                     <th> Discount</th>
                     <th> Gross profit</th>
                     <th>Net Profit</th>
@@ -802,12 +802,12 @@ const [dataset, setDataset] = useState();
 
                         }}>Daily</td>
                         <td>{dailyReportData.totalDiscount}</td>
-                        <td>{dailyReportData.totalGrossProfit}</td>
+                        <td>{dailyReportData.totalGrossProfit.toFixed(2)}</td>
                         <td>{dailyReportData.totalNetProfit.toFixed(2)}</td>
-                        <td>{dailyReportData.totalOperatingExpense}</td>
-                        <td>{dailyReportData.totalRetailPrice}</td>
-                        <td>{dailyReportData.totalSalePrice}</td>
-                        <td>{dailyReportData.totalTaxCollected}</td> 
+                        <td>{dailyReportData.totalOperatingExpense.toFixed(2)}</td>
+                        <td>{dailyReportData.totalRetailPrice.toFixed(2)}</td>
+                        <td>{dailyReportData.totalSalePrice.toFixed(2)}</td>
+                        <td>{dailyReportData.totalTaxCollected.toFixed(2)}</td> 
                         <td><TextSnippetIcon color="red"style={{
                           cursor: "pointer",
                           color:"skyblue",
@@ -834,12 +834,12 @@ const [dataset, setDataset] = useState();
                        
                         >Weekly</td>
                         <td>{weeklyReportData.totalDiscount}</td>
-                        <td>{weeklyReportData.totalGrossProfit}</td>
+                        <td>{weeklyReportData.totalGrossProfit.toFixed(2)}</td>
                         <td>{weeklyReportData.totalNetProfit.toFixed(2)}</td>
-                        <td>{weeklyReportData.totalOperatingExpense}</td>
-                        <td>{weeklyReportData.totalRetailPrice}</td>
-                        <td>{weeklyReportData.totalSalePrice}</td>
-                        <td>{weeklyReportData.totalTaxCollected}</td>
+                        <td>{weeklyReportData.totalOperatingExpense.toFixed(2)}</td>
+                        <td>{weeklyReportData.totalRetailPrice.toFixed(2)}</td>
+                        <td>{weeklyReportData.totalSalePrice.toFixed(2)}</td>
+                        <td>{weeklyReportData.totalTaxCollected.toFixed(2)}</td>
                         <td><TextSnippetIcon style={{
                           cursor: "pointer",
                           color:"skyblue"
@@ -865,12 +865,12 @@ const [dataset, setDataset] = useState();
 
                         }}>Monthly</td>
                   <td>{monthlyReportData.totalDiscount}</td>
-                  <td>{monthlyReportData.totalGrossProfit}</td>
+                  <td>{monthlyReportData.totalGrossProfit.toFixed(2)}</td>
                   <td>{monthlyReportData.totalNetProfit.toFixed(2)}</td>
-                  <td>{monthlyReportData.totalOperatingExpense}</td>
-                  <td>{monthlyReportData.totalRetailPrice}</td>
-                  <td>{monthlyReportData.totalSalePrice}</td>
-                  <td>{monthlyReportData.totalTaxCollected}</td>
+                  <td>{monthlyReportData.totalOperatingExpense.toFixed(2)}</td>
+                  <td>{monthlyReportData.totalRetailPrice.toFixed(2)}</td>
+                  <td>{monthlyReportData.totalSalePrice.toFixed(2)}</td>
+                  <td>{monthlyReportData.totalTaxCollected.toFixed(2)}</td>
                   <td><TextSnippetIcon style={{
                     color:"skyblue",
                     cursor: "pointer",

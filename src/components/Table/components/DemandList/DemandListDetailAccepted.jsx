@@ -52,15 +52,15 @@ function DemandListDetailAccepted({acceptedDemandDetail,defaultDetail }) {
                 fontSize:'14px',
 
                 fontWeight:'400',
-                justifyContent:'center',
-                border:'0.3px solid gray',
-                borderRadius:'10px',
-                padding:'8px',
-                verticalAlign:'middle',
-                background:'var(--orangestandard)',
-                backgroundOpacity:'0.5',
-                opacity:0.9,
-                color:'white',
+                border: "0.1px solid lightgray",
+                  borderRadius: "10px",
+                  padding: "8px",
+                  verticalAlign: "middle",
+                 background: "var(--orangestandard)",
+                 backgroundOpacity: "0.5",
+                  opacity: 0.9,
+                  marginLeft:"-40px",
+                  color: "white",
               }}>{acceptedDemandDetail.demandProduct}</h6>
             </div>
           <div className="demandList_accepted_message">
@@ -134,7 +134,7 @@ function DemandListDetailAccepted({acceptedDemandDetail,defaultDetail }) {
 
               fontWeight:'400',
               justifyContent:'center',
-              border:'0.3px solid gray',
+              border:'0.1px solid lightgray',
               borderRadius:'10px',
               padding:'8px',
               verticalAlign:'middle',
