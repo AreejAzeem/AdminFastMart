@@ -210,9 +210,12 @@ export default function TablePaginateCategory(props) {
   const [category, setCategory] = useState([]);
   const [rows, setRows] = useState([]);
 
+
+
   useEffect(
     () => {  
       getCategory();
+     props.setSearchClicked(true)
     },[props.filteredData]
   );
   const deleteCategory = async (ids) => {
@@ -419,10 +422,11 @@ const getCategory = async () => {
               style={{ textAlign: "center" }}
             />
             <TableBody>
-              {/* if you don't need to support IE11, you can replace the `stableSort` call with:
-                 rows.slice().sort(getComparator(order, orderBy)) */}
-             { console.log("line 382")}
-             { stableSort(category, getComparator(order, orderBy))
+             
+            
+           
+           
+          {  stableSort(category, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
                   console.log("in line 386"+row[index]);
@@ -510,7 +514,7 @@ const getCategory = async () => {
                  
                     </TableRow>
                   );
-                })}
+                })} 
               {emptyRows > 0 && (
                 <TableRow
                   style={{
@@ -520,6 +524,7 @@ const getCategory = async () => {
                   <TableCell colSpan={6} />
                 </TableRow>
               )}
+         
             </TableBody>
           </Table>
         </TableContainer>

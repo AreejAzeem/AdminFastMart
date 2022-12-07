@@ -1,5 +1,5 @@
-import { React, useState , useEffect} from "react";
-import { BiSearch } from 'react-icons/bi';
+import { React, useState, useEffect } from "react";
+import { BiSearch } from "react-icons/bi";
 import "./customer.css";
 import Search from "../../components/search/Search";
 import { Drawer } from "@mui/material";
@@ -8,67 +8,96 @@ import CustomerTable from "../../components/Table/components/CustomerTable.jsx";
 import axios from "axios";
 import config from "../../config/config";
 
-
-
 function Customer() {
-  const[searchInput, setSearchInput]=useState("");
-  const[customer, setCustomer]=useState('');
-  const [searchClicked, setSearchClicked]=useState(false);
+  const [searchInput, setSearchInput] = useState("");
+  const [customer, setCustomer] = useState("");
+  const [searchClicked, setSearchClicked] = useState(false);
   useEffect(() => {
     getFilteredData();
   }, []);
   const getFilteredData = async () => {
     setSearchClicked(true);
+    // await axios({
+    //   method: "get",
+    //   url: `${config.apiURL}/users/getUsers`,
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     },
+    //     })
+    //     .then((res) => {
+    //       console.log(res.data.data);
+    //       if(res.data.data){
+    //         res.data.data.map((data)=>{
+    //         searchInput=searchInput.toLocaleUpperCase();
+
+    //           if(data.username===searchInput){
+    //             console.log(searchInput)
+    //             console.log(data.username);
+    //             setCustomer(data);
+    //           }
+    //         })
+
+    //     }
+    //   }
+    //     )
+    //     .catch((err) => {
+    //       console.log(err);
+    //     }
+    //     );
     await axios({
       method: "get",
-      url: `${config.apiURL}/users/getUsers`,
+      url: `${config.apiURL}/users/getUsers?username=${searchInput}`,
       headers: {
         "Content-Type": "application/json",
-        },
-        })
-        .then((res) => {
+      },
+    })
+      .then((res) => {
+        console.log(res.data.data);
+        if (res.data.data) {
           console.log(res.data.data);
-          if(res.data.data){
-            res.data.data.map((data)=>{
-              if(data.username===searchInput){
-                console.log(searchInput)
-                console.log(data.username);
-                setCustomer(data);
-              }
-            })
-           
+           setCustomer(res.data.data);
         }
-      }
-        )
-        .catch((err) => {
-          console.log(err);
-        }
-        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-  }
-  
   return (
     <>
       <div className="customer">
-      <div className="customerWrapper">
-        <h2 className="customer_title">Customer</h2>
-        <div className="customer_searchContainer">
-          <div className="customer_searchField">
-            <Search placeholder="Search Customer by name " style={{
-              width: "100%",
-              borderRaduis: "10px !important",
-            }}
-            setSearchInput={setSearchInput}/>
-                        <BiSearch size={38} color={"rgb(231, 128, 55)"} style={{marginTop:'10px', marginLeft:'10px', cursor:'pointer'}} 
-                        onClick={getFilteredData} /></div>
-
+        <div className="customerWrapper">
+          <h2 className="customer_title">Customer</h2>
+          <div className="customer_searchContainer">
+            <div className="customer_searchField">
+              <Search
+                placeholder="Search Customer by name "
+                style={{
+                  width: "100%",
+                  borderRaduis: "10px !important",
+                }}
+                setSearchInput={setSearchInput}
+              />
+              <BiSearch
+                size={38}
+                color={"rgb(231, 128, 55)"}
+                style={{
+                  marginTop: "10px",
+                  marginLeft: "10px",
+                  cursor: "pointer",
+                }}
+                onClick={getFilteredData}
+              />
+            </div>
           </div>
-       
-      
-        <div className="customer_table">
-          <CustomerTable filteredData={customer} searchClicked={searchClicked}/>
+
+          <div className="customer_table">
+            <CustomerTable
+              filteredData={customer}
+              searchClicked={searchClicked}
+            />
+          </div>
         </div>
-      </div>
       </div>
     </>
   );

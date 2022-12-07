@@ -13,12 +13,15 @@ function CategoryP() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [searchInput, setSearchInput]=useState("");
   const [category, setCategory]=useState("");
+  const [searchClicked, setSearchClicked]=useState(false);
 console.log("in line 16 "+searchInput);
   const getFilteredData=async()=>{
     let result = await fetch(config.apiURL+`/categories/category?categoryName=${searchInput}`);
     result = await result.json();
     console.log(result);
-    setCategory(result["data"]);
+    if(result["data"]){
+      setSearchClicked(true);
+    setCategory(result["data"]);}
   }
   return (
     <>
@@ -42,7 +45,7 @@ console.log("in line 16 "+searchInput);
         </div>
       </div>
       <div className="category_table">
-              <TablePaginateCategory filteredData={category} />
+              <TablePaginateCategory filteredData={category} setSearchClicked={setSearchClicked} />
   {/* <CategoryTable/> */}
       </div>
     </div>

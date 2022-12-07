@@ -19,8 +19,8 @@ function CustomerTable(props) {
       //   alert("No data found");
       // }
 
-      setCustomer((data) => [props.filteredData]);
-    
+    //  setCustomer((data) => [props.filteredData]);
+    setCustomer(props.filteredData);
    
 
     }
